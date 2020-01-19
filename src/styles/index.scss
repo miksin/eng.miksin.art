@@ -1,0 +1,27 @@
+@import './_typography.scss';
+@import './_variables.scss';
+@import './mixin';
+
+@import './layout.scss';
+@import './grid-view.scss';
+@import './post.scss';
+
+.max-width {
+  max-width: $maxwidth;
+}
+
+.center-view {
+  @include flex(column, nowrap);
+  @include flex-align();
+  width: 100%;
+}
+
+.latest-post-list {
+  width: 100%;
+}
+
+.split-line {
+  border-bottom-style: solid;
+  border-width: 1px;
+  border-color: $lightgrey;
+}

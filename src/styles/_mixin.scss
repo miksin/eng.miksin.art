@@ -1,0 +1,43 @@
+@mixin flex($dir: row, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $dir;
+  flex-wrap: $wrap;
+}
+
+@mixin flex-align($justify-content: center, $align-items: center) {
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin grid($row: 8, $col: 8, $gap: 12px) {
+  display: grid;
+  grid-template-columns: repeat($col, 1fr);
+  grid-template-rows: repeat($row, 1fr);
+  column-gap: $gap;
+  row-gap: $gap;
+  grid-auto-flow: dense;
+}
+
+@mixin grid-pos($x, $y, $width, $height) {
+  grid-row-start: $y;
+  grid-row-end: $y + $height;
+  grid-column-start: $x;
+  grid-column-end: $x + $width;
+}
+
+@mixin aspect-ratio($width: 1, $height: 1) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  :first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
