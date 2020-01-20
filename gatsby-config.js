@@ -2,6 +2,7 @@
 module.exports = {
   pathPrefix: process.env.NODE_ENV === 'production' ? process.env.PUBLIC_PATH || '' : '',
   siteMetadata: {
+    siteUrl: `https://miksin.github.io`,
     title: `Miksin`,
     description: `Software Engineer`,
     author: `Miksin`,
@@ -21,6 +22,7 @@ module.exports = {
     ],
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
