@@ -94,6 +94,21 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Noto Serif TC`,
+            variants: [`400`, `700`]
+          },
+          {
+            family: `Noto Serif JP`,
+            variants: [`400`]
+          },
+        ],
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: process.env.GA_ID || `UA-XXXXXXXXX-X`,
