@@ -1,0 +1,26 @@
+.tags-nav {
+  @include flex(row, wrap);
+  @include flex-align();
+
+  .tag {
+    @include flex();
+    @include flex-align();
+    padding: 8px 12px;
+    border-radius: 4px;
+
+    .value {
+      font-size: 14px;
+      margin: 0;
+      color: $white;
+    }
+
+    .count {
+      font-size: 12px;
+      margin: 0 0 0 4px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      color: $white;
+    }
+  }
+}
