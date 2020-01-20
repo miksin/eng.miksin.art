@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { graphql, useStaticQuery } from "gatsby"
+import { useBottomScrollListener } from "react-bottom-scroll-listener"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -8,7 +9,7 @@ import GridView from '../components/GridView'
 import ExcerptCard from '../components/ExcerptCard'
 import GalleryItem from '../components/GalleryItem'
 
-const IndexPage = ({ location }) => {
+const IndexPage = ({ location, displayPerTime }) => {
   const data = useStaticQuery(graphql`
     {
       posts: allMarkdownRemark(
@@ -39,7 +40,14 @@ const IndexPage = ({ location }) => {
     }
   `)
 
-  const posts = data.posts.edges.map(edge => {
+  // extend display length when detect scroll to bottom
+  const newDisplayNum = now => Math.min(data.posts.edges.length, now + displayPerTime)
+  const [display, setDisplay] = useState(newDisplayNum(0))
+  useBottomScrollListener(() => {
+    setDisplay(newDisplayNum(display))
+  })
+
+  const posts = data.posts.edges.slice(0, display).map(edge => {
     const { frontmatter } = edge.node
     const category = frontmatter.path.match(/^\/(.*?)\//)[1]
     const viewType = category === 'gallery' ? GalleryItem : ExcerptCard
@@ -74,7 +82,12 @@ const IndexPage = ({ location }) => {
 }
 
 IndexPage.propTypes = {
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
+  displayPerTime: PropTypes.number
+}
+
+IndexPage.defaultProps = {
+  displayPerTime: 20
 }
 
 export default IndexPage
