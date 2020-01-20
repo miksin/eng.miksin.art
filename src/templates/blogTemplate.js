@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { graphql, Link } from "gatsby"
+import { Disqus, CommentCount } from "gatsby-plugin-disqus"
 import Seo from '../components/seo'
 import Layout from "../components/layout"
 
@@ -13,6 +14,10 @@ function Template({
 }) {
   const { page } = data // data.markdownRemark
   const { frontmatter, html } = page
+  let disqusConfig = {
+    identifier: frontmatter.path,
+    title: frontmatter.title,
+  }
 
   return (
     <Layout location={{ pathname: frontmatter.path }}>
@@ -46,6 +51,10 @@ function Template({
                 </Link> : '(none)'
             }
           </h4>
+        </div>
+        <div className="comment">
+          <CommentCount config={disqusConfig} placeholder={`...`} />
+          <Disqus config={disqusConfig} />
         </div>
       </div>
     </Layout>
