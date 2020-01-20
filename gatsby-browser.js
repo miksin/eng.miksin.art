@@ -13,3 +13,11 @@
 import("prismjs/themes/prism-solarizedlight.css")
 
 import("./src/styles/index.scss")
+
+/* eslint-disable no-undef */
+import("react-loader-spinner/dist/loader/css/react-spinner-loader.css")
+export const onClientEntry = () => {
+  window.onload = () => {
+    document.getElementById('___loader').style.display = 'none'
+  }
+}
