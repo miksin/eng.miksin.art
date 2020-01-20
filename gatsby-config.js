@@ -9,17 +9,14 @@ module.exports = {
       {
         name: `github`,
         link: `https://github.com/miksin`,
-        icon: `/GitHub-Mark-120px-plus.png`,
       },
       {
         name: `twitter`,
         link: `https://twitter.com/miksin_`,
-        icon: `/Twitter_Social_Icon_Rounded_Square_Color.png`,
       },
       {
         name: `pixiv`,
         link: `https://www.pixiv.net/member.php?id=3774481`,
-        icon: `/logo_icon_r.png`,
       },
     ],
   },

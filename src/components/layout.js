@@ -23,7 +23,6 @@ const Layout = ({ children, location }) => {
           links {
             name
             link
-            icon
           }
         }
       }
@@ -33,6 +32,30 @@ const Layout = ({ children, location }) => {
           fluid {
             src
             aspectRatio
+          }
+        }
+      }
+
+      githubIcon: file(relativePath: {eq: "github-icon.png"}){
+        childImageSharp {
+          fluid {
+            src
+          }
+        }
+      }
+
+      pixivIcon: file(relativePath: {eq: "pixiv-icon.png"}){
+        childImageSharp {
+          fluid {
+            src
+          }
+        }
+      }
+
+      twitterIcon: file(relativePath: {eq: "twitter-icon.png"}){
+        childImageSharp {
+          fluid {
+            src
           }
         }
       }
@@ -66,8 +89,17 @@ const Layout = ({ children, location }) => {
     }
   }, [])
 
-  const { title, description, links } = data.site.siteMetadata
+  const { title, description } = data.site.siteMetadata
   const { fluid } = data.banner.childImageSharp
+  const icons = {
+    github: data.githubIcon.childImageSharp.fluid.src,
+    pixiv: data.pixivIcon.childImageSharp.fluid.src,
+    twitter: data.twitterIcon.childImageSharp.fluid.src,
+  }
+  const links = data.site.siteMetadata.links.map(l => ({
+    ...l,
+    icon: icons[l.name]
+  }))
 
   return (
     <LayoutContext.Provider value={{ windowSize }}>
