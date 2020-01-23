@@ -1,8 +1,9 @@
-// @import './_typography.scss';
+@import './_typography.scss';
 @import './_variables.scss';
 @import './mixin';
 
 @import './layout.scss';
+@import './loader.scss';
 @import './grid-view.scss';
 @import './post.scss';
 @import "./paper.scss";

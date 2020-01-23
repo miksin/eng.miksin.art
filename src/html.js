@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Loader from "react-loader-spinner"
+import Loader from "./components/Loader"
 
 export default function HTML(props) {
   return (
@@ -34,15 +34,10 @@ export default function HTML(props) {
             top: 0,
             right: 0,
             bottom: 0,
-            zIndex: 10,
+            zIndex: 15,
           }}
         >
-          <Loader
-            type="CradleLoader"
-            color="#e91e63"
-            height={80}
-            width={80}
-          />
+          <Loader />
         </div>
         <div
           key={`body`}
