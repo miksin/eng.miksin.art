@@ -38,7 +38,7 @@ const Layout = ({ children, location }) => {
 
       githubIcon: file(relativePath: {eq: "github-icon.png"}){
         childImageSharp {
-          fluid {
+          fluid(maxWidth: 32) {
             src
           }
         }
@@ -46,7 +46,7 @@ const Layout = ({ children, location }) => {
 
       pixivIcon: file(relativePath: {eq: "pixiv-icon.png"}){
         childImageSharp {
-          fluid {
+          fluid(maxWidth: 32) {
             src
           }
         }
@@ -54,7 +54,7 @@ const Layout = ({ children, location }) => {
 
       twitterIcon: file(relativePath: {eq: "twitter-icon.png"}){
         childImageSharp {
-          fluid {
+          fluid(maxWidth: 32) {
             src
           }
         }

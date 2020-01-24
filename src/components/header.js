@@ -30,7 +30,7 @@ const Header = ({
             socialLinks.map(l => (
               <div key={l.name}>
                 <a href={l.link} target="__blank">
-                  <img src={l.icon} />
+                  <img src={l.icon} alt={l.name} />
                 </a>
               </div>
             ))

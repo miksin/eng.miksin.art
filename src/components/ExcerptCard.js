@@ -25,7 +25,7 @@ export default class ExcerptCard extends Component {
     const { featuredImage } = this.props.frontmatter
     if (!featuredImage) return null
     const { src } = featuredImage.childImageSharp.fluid
-    return <img src={src} />
+    return <img src={src} loading="lazy" />
   }
 
   render() {

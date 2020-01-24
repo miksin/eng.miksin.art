@@ -20,6 +20,7 @@ function GalleryItem ({
           className="gallery-item-bg"
           src={src}
           alt={title}
+          loading="lazy"
         />
         <div
           className="gallery-item-info"
