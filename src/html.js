@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Loader from "./components/Loader"
 
 export default function HTML(props) {
   return (
@@ -14,31 +13,18 @@ export default function HTML(props) {
         />
         {props.headComponents}
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,700&display=swap" rel="stylesheet"></link>
+        <link href="/loader.css" rel="stylesheet"></link>
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
         <noscript key="noscript" id="gatsby-noscript">
           This app works best with JavaScript enabled.
         </noscript>
-        <div
-          key={`loader`}
-          id="___loader"
-          style={{
-            backgroundColor: '#FFFFFF',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            position: 'fixed',
-            width: '100vw',
-            height: '100vh',
-            left: 0,
-            top: 0,
-            right: 0,
-            bottom: 0,
-            zIndex: 15,
-          }}
-        >
-          <Loader />
+        <div key={`loader`} id="___loader">
+          <div className="typewriter">
+            <h1 className="text"></h1>
+            <h1 className="cursor"></h1>
+          </div>
         </div>
         <div
           key={`body`}

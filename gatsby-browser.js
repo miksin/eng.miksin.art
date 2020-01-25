@@ -15,8 +15,16 @@ import("prismjs/themes/prism-solarizedlight.css")
 import("./src/styles/index.scss")
 
 /* eslint-disable no-undef */
-export const onClientEntry = () => {
-  window.onload = () => {
-    document.getElementById('___loader').style.display = 'none'
-  }
+export const onClientEntry = async () => {
+  const leastLoaderTime = 3000
+  const timeoutPromise = new Promise((resolve) => {
+    setTimeout(() => resolve(), leastLoaderTime)
+  })
+  const onloadPromise = new Promise((resolve) => {
+    window.addEventListener('load', () => resolve())
+  })
+  await Promise.all([timeoutPromise, onloadPromise])
+  const loader = document.getElementById('___loader')
+  loader.style.opacity = 0
+  loader.style.pointerEvents = 'none'
 }
