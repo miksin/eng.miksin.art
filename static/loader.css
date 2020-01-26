@@ -1,7 +1,13 @@
 #___loader {
   background-color: #616161;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   position: fixed;
   width: 100vw;
@@ -11,9 +17,13 @@
   right: 0;
   bottom: 0;
   z-index: 15;
+  -webkit-transition: opacity .75s ease-out;
+  -o-transition: opacity .75s ease-out;
   transition: opacity .75s ease-out;
 }
 .typewriter {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 .typewriter .text {
@@ -22,6 +32,7 @@
   margin-left: auto;
   margin-right: 0;
   text-transform: capitalize;
+  -webkit-animation: typing 2s steps(20, end);
   animation: typing 2s steps(20, end);
 }
 .typewriter .text::before {
@@ -30,6 +41,7 @@
 .typewriter .cursor {
   margin-left: 0;
   margin-right: auto;
+  -webkit-animation: blink-caret 0.75s step-end infinite;
   animation: blink-caret 0.75s step-end infinite;
 }
 .typewriter .cursor::before {
@@ -42,6 +54,23 @@
   margin-top: 0;
   margin-bottom: 0;
   letter-spacing: 0.15em;
+}
+@-webkit-keyframes typing {
+  0% {
+    width: 0;
+    text-transform: none;
+    border-width: 0;
+ }
+  85% {
+    width: 100%;
+    text-transform: none;
+    border-width: 0;
+ }
+  100% {
+    width: 100%;
+    text-transform: capitalize;
+    border-width: 3px;
+ }
 }
 @keyframes typing {
   0% {
@@ -58,6 +87,14 @@
     width: 100%;
     text-transform: capitalize;
     border-width: 3px;
+ }
+}
+@-webkit-keyframes blink-caret {
+  from, to {
+    opacity: 0;
+ }
+  50% {
+    opacity: 1;
  }
 }
 @keyframes blink-caret {
