@@ -25,6 +25,8 @@ export const onClientEntry = async () => {
   })
   await Promise.all([timeoutPromise, onloadPromise])
   const loader = document.getElementById('___loader')
-  loader.style.opacity = 0
-  loader.style.pointerEvents = 'none'
+  if (loader) {
+    loader.style.opacity = 0
+    loader.style.pointerEvents = 'none'
+  }
 }

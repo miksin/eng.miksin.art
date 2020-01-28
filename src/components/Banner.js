@@ -11,16 +11,21 @@ const Wrapper = styled.div`
   align-items: center;
 `
 
-const Banner = ({ children }) => {
+const Banner = ({ children, styles }) => {
   return (
-    <Wrapper>
+    <Wrapper style={styles}>
       {children}
     </Wrapper>
   )
 }
 
 Banner.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  styles: PropTypes.object
+}
+
+Banner.defaultProps = {
+  styles: {}
 }
 
 export default Banner
