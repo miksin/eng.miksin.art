@@ -18,9 +18,18 @@ const IndexPage = () => {
 
   return (
     <Banner styles={bannerStyles}>
-      <TypingDisplay size={32} words={['Title']} />
-      <TypingDisplay size={24} words={['Sub Title', 'typing title']} />
-      <EntryLink direction="down" size={homeConst.ENTRY_LINK_SIZE} />
+      <TypingDisplay
+        size={homeConst.TITLE_SIZE}
+        words={['Title']}
+      />
+      <TypingDisplay
+        size={homeConst.SUBTITLE_SIZE}
+        words={['Sub Title', 'typing title']}
+      />
+      <EntryLink
+        direction="down"
+        size={homeConst.ENTRY_LINK_SIZE}
+      />
     </Banner>
   )
 }
