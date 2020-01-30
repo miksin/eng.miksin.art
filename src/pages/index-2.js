@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 
+import Nav from "../components/Nav"
 import Banner from "../components/Banner"
 import TypingDisplay from "../components/TypingDisplay"
 import EntryLink from "../components/EntryLink"
@@ -28,8 +29,17 @@ const IndexPage = () => {
   const bannerStyles = {}
   if (vh) bannerStyles.minHeight = vh
 
+  const links = [
+    { name: 'Home', link: '' },
+    { name: 'About', link: '' },
+  ]
+
   return (
     <>
+      <Nav
+        height={sizes.nav}
+        links={links}
+      />
       <Banner styles={bannerStyles}>
         <TypingDisplay
           size={sizes.title}

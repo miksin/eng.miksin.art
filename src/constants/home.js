@@ -8,7 +8,8 @@ export const sizes = {
   subtitle: 28,
   entryLink: 42,
   scrollTitle: 64,
-  scrollTitleMobile: 36
+  scrollTitleMobile: 36,
+  nav: 72,
 }
 
 export const colors = {
