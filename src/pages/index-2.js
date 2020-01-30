@@ -7,13 +7,11 @@ import EntryLink from "../components/EntryLink"
 import ScrollTitleWrapper from "../components/ScrollTitleWrapper"
 
 import { scrollToAnchor } from "../helpers"
-import { sizes } from "../constants/home"
+import { sizes, colors } from "../constants/home"
 
 const Block = styled.div`
   min-height: 600px;
   min-width: 600px;
-  border-style: solid;
-  border-width: 2px;
 `
 
 const IndexPage = () => {
@@ -47,8 +45,19 @@ const IndexPage = () => {
           onClick={() => scrollToAnchor('test-1')}
         />
       </Banner>
-      <ScrollTitleWrapper title="Title" >
+      <ScrollTitleWrapper
+        title="Title"
+        direction={'left'}
+        bgColor={colors.pink}
+      >
         <Block id="test-1" />
+      </ScrollTitleWrapper>
+      <ScrollTitleWrapper
+        title="Title"
+        direction={'right'}
+        bgColor={colors.indigo}
+      >
+        <Block id="test-2" />
       </ScrollTitleWrapper>
     </>
   )

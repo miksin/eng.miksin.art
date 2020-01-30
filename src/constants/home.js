@@ -2,6 +2,7 @@ export const sizes = {
   title: 36,
   subtitle: 28,
   entryLink: 42,
+  scrollTitle: 64,
 }
 
 export const colors = {

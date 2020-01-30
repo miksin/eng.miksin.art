@@ -14,11 +14,11 @@ const blink = keyframes`
 `
 
 const Text = styled.h1`
-  margin-right: 0;
+  margin: 0 0 0 auto;
 `
 
 const Cursor = styled.h1`
-  margin-left: 0;
+  margin: 0 auto 0 0;
   animation: ${blink} 0.75s step-end infinite;  
 `
 
@@ -33,6 +33,7 @@ const TypingDisplay = ({
   size,
   color,
   isWrap,
+  cursor,
   typeInterval,
   delInterval
 }) => {
@@ -60,7 +61,9 @@ const TypingDisplay = ({
         fontSize: size,
         whiteSpace: isWrap ? 'normal' : 'nowrap'
         }}>{typed}</Text>
-      <Cursor style={{ color: color, fontSize: size }}>_</Cursor>
+        <Cursor style={{ color: color, fontSize: size }}>
+          {cursor}
+        </Cursor>
     </Wrapper>
   )
 }
@@ -70,6 +73,7 @@ TypingDisplay.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   color: PropTypes.string,
   isWrap: PropTypes.bool,
+  cursor: PropTypes.string,
   typeInterval: PropTypes.number,
   delInterval: PropTypes.number
 }
@@ -79,6 +83,7 @@ TypingDisplay.defaultProps = {
   size: 14,
   color: `#424242`,
   isWrap: false,
+  cursor: '_',
   typeInterval: 300,
   delInterval: 100
 }
