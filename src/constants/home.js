@@ -1,8 +1,14 @@
+export const devices = {
+  mobile: 480,
+  tablet: 1080
+}
+
 export const sizes = {
   title: 36,
   subtitle: 28,
   entryLink: 42,
   scrollTitle: 64,
+  scrollTitleMobile: 36
 }
 
 export const colors = {

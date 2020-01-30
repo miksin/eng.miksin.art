@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import VisibilitySensor from "react-visibility-sensor"
@@ -6,17 +6,22 @@ import VisibilitySensor from "react-visibility-sensor"
 import TypingDisplay from "../components/TypingDisplay"
 import EntryLink from "../components/EntryLink"
 
-import { colors, sizes } from "../constants/home"
+import { colors, sizes, devices } from "../constants/home"
 
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: ${(props) => props.flexDirection};
   flex-wrap: nowrap;
+
+  @media screen and (max-width: ${devices.mobile}px) {
+    flex-direction: column;
+  }
 `
 
 const GrowPad = styled.div`
   flex-grow: 1;
+  position: relative;
 `
 
 const TitleWrapper = styled.div`
@@ -27,10 +32,16 @@ const TitleWrapper = styled.div`
   margin-top: 24px;
   padding: 24px 12px;
   background-color: ${(props) => props.bgColor};
+  position: absolute;
+  ${(props) => props.align}
+
+  @media screen and (max-width: ${devices.mobile}px) {
+    width: 80%;
+  }
 `
 
 const ChildrenWrapper = styled.div`
-  padding
+  padding: 24px;
 `
 
 const ScrollTitleWrapper = ({
@@ -41,8 +52,19 @@ const ScrollTitleWrapper = ({
   textColor
 }) => {
   const [visible, setVisible] = useState(false)
+  const [size, setSize] = useState(sizes.scrollTitle)
+
+  useEffect(() => {
+    /* eslint-disable no-undef */
+    if (window && window.innerWidth <= devices.mobile) {
+      setSize(sizes.scrollTitleMobile)
+    }
+    /* eslint-enable no-undef */
+  }, [])
+
   const flexDirection = direction === 'right' ? 'row-reverse' : 'row'
   const linkDirection = direction === 'right' ? 'left' : 'right'
+  const titleAlign = direction === 'right' ? 'right: 0;' : 'left: 0;'
 
   return (
     <VisibilitySensor
@@ -55,12 +77,13 @@ const ScrollTitleWrapper = ({
           <TitleWrapper
             flexDirection={flexDirection}
             bgColor={bgColor}
+            align={titleAlign}
           >
             <GrowPad />
             <TypingDisplay
               words={visible ? [title] : []}
               color={textColor}
-              size={sizes.scrollTitle}
+              size={size}
               typeInterval={200}
               cursor={''}
             />
@@ -71,7 +94,7 @@ const ScrollTitleWrapper = ({
         </ChildrenWrapper>
         <EntryLink
           direction={linkDirection}
-          color={colors.pink}
+          color={bgColor}
           size={sizes.entryLink}
           onClick={() => {}}
         />
