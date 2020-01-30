@@ -3,7 +3,7 @@ export default class TypeWriter {
   constructor (words, options = {}) {
     this.typed = ''
     this.currentIndex = 0
-    this.words = words.length > 0 ? words : ['TypeWriter']
+    this.words = words.length > 0 ? words : ['']
     this.typeInterval = options.typeInterval || 300
     this.delInterval = options.delInterval || 100
     this.timer = null

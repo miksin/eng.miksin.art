@@ -32,14 +32,19 @@ const TypingDisplay = ({
   words,
   size,
   color,
-  isWrap
+  isWrap,
+  typeInterval,
+  delInterval
 }) => {
   const [typed, setTyped] = useState('')
   const [typeWriter, setTypeWriter] = useState(null)
   
   useEffect(() => {
-    setTypeWriter(new ModelTypeWriter(words))
-  }, [words])
+    setTypeWriter(new ModelTypeWriter(words, {
+      typeInterval,
+      delInterval
+    }))
+  }, [words, typeInterval, delInterval])
 
   useEffect(() => {
     if (typeWriter) typeWriter.update(setTyped)
@@ -65,13 +70,17 @@ TypingDisplay.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   color: PropTypes.string,
   isWrap: PropTypes.bool,
+  typeInterval: PropTypes.number,
+  delInterval: PropTypes.number
 }
 
 TypingDisplay.defaultProps = {
-  words: ['Example Title'],
+  words: [''],
   size: 14,
   color: `#424242`,
-  isWrap: false
+  isWrap: false,
+  typeInterval: 300,
+  delInterval: 100
 }
 
 export default TypingDisplay
