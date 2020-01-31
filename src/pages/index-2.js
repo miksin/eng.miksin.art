@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 import Nav from "../components/Nav"
 import Banner from "../components/Banner"
+import Footer from "../components/footer"
 import TypingDisplay from "../components/TypingDisplay"
 import EntryLink from "../components/EntryLink"
 import ScrollTitleWrapper from "../components/ScrollTitleWrapper"
@@ -52,7 +53,7 @@ const IndexPage = () => {
         <EntryLink
           direction="down"
           size={sizes.entryLink}
-          onClick={() => scrollToAnchor('test-1')}
+          onClick={() => scrollToAnchor('test-1', sizes.nav)}
         />
       </Banner>
       <ScrollTitleWrapper
@@ -69,6 +70,7 @@ const IndexPage = () => {
       >
         <Block id="test-2" />
       </ScrollTitleWrapper>
+      <Footer siteAuthor={'Person'} />
     </>
   )
 }

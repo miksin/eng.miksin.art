@@ -1,16 +1,18 @@
-export const scrollToAnchor = (id) => {
+export const scrollToAnchor = (id, offset = 0) => {
   /* eslint-disable no-undef */
   if (!window) return
 
   const target = document.getElementById(id)
   if (!target) return
 
-  const offset = (target.getBoundingClientRect().top
+  const top = (target.getBoundingClientRect().top
     - document.body.getBoundingClientRect().top)
+
+  console.log(top, offset, top + offset)
 
   window.scrollTo({
     left: 0,
-    top: offset,
+    top: top - offset,
     behavior: 'smooth'
   })  
   /* eslint-enable no-undef */
