@@ -7,9 +7,9 @@ module.exports = {
     subtitles: [
       `Hello! I am Miksin`,
       `I'm a Software Engineer`,
-      `I'm Illustrating`,
-      `I 'm Programming`,
-      `I Come from TAIWAN`
+      `I'm Painting`,
+      `I'm Programming`,
+      `I come from TAIWAN`
     ],
     description: `Software Engineer`,
     author: `Miksin`,

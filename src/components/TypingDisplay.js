@@ -46,6 +46,7 @@ const TypingDisplay = ({
   cursor,
   typeInterval,
   delInterval,
+  goalInterval,
   animation
 }) => {
   const [typed, setTyped] = useState('')
@@ -54,7 +55,8 @@ const TypingDisplay = ({
   useEffect(() => {
     setTypeWriter(new ModelTypeWriter(words, {
       typeInterval,
-      delInterval
+      delInterval,
+      goalInterval
     }))
   }, [words, typeInterval, delInterval])
 
@@ -73,7 +75,11 @@ const TypingDisplay = ({
         whiteSpace: isWrap ? 'normal' : 'nowrap'
         }}>{typed}</Text>
         <Cursor
-          style={{ color: color, fontSize: size }}
+          style={{
+            color: color,
+            fontSize: size,
+            marginLeft: animation === 'roll' ? size / 2 : 0
+          }}
           animation={animation === 'roll' ? roll : blink}
           options={animation === 'roll' ? '1s linear infinite' : '0.75s step-end infinite'}
         >
@@ -91,6 +97,7 @@ TypingDisplay.propTypes = {
   cursor: PropTypes.string,
   typeInterval: PropTypes.number,
   delInterval: PropTypes.number,
+  goalInterval: PropTypes.number,
   animation: PropTypes.oneOf(['blink', 'roll'])
 }
 
@@ -102,6 +109,7 @@ TypingDisplay.defaultProps = {
   cursor: '_',
   typeInterval: 300,
   delInterval: 100,
+  goalInterval: 1000,
   animation: 'blink'
 }
 

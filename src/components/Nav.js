@@ -40,7 +40,7 @@ const Nav = ({
       {
         links.map(link => (
           <NavLink key={link.name} to={link.path}>
-            <LinkName size={height / 2} color={color}>{link.name}</LinkName>
+            <LinkName size={Math.max(height / 3, 20)} color={color}>{link.name}</LinkName>
           </NavLink>
         ))
       }

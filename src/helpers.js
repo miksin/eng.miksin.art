@@ -8,8 +8,6 @@ export const scrollToAnchor = (id, offset = 0) => {
   const top = (target.getBoundingClientRect().top
     - document.body.getBoundingClientRect().top)
 
-  console.log(top, offset, top + offset)
-
   window.scrollTo({
     left: 0,
     top: top - offset,

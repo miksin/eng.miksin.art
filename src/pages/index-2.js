@@ -67,26 +67,35 @@ const IndexPage = () => {
       />
       <Banner
         styles={bannerStyles}
-        onEntry={() => scrollToAnchor('test-1', sizes.nav)}
+        onEntry={() => scrollToAnchor('scroll-content', sizes.nav)}
         words={{
           title: [title],
           subtitle: subtitles
         }}
       />
-      <ScrollTitleWrapper
-        title="Title"
-        direction={'left'}
-        bgColor={colors.pink}
-      >
-        <Block id="test-1" />
-      </ScrollTitleWrapper>
-      <ScrollTitleWrapper
-        title="Title"
-        direction={'right'}
-        bgColor={colors.indigo}
-      >
-        <Block id="test-2" />
-      </ScrollTitleWrapper>
+      <div id="scroll-content">
+        <ScrollTitleWrapper
+          title="About"
+          direction={'left'}
+          bgColor={colors.deepOrange}
+        >
+          <Block />
+        </ScrollTitleWrapper>
+        <ScrollTitleWrapper
+          title="Blog"
+          direction={'right'}
+          bgColor={colors.pink}
+        >
+          <Block />
+        </ScrollTitleWrapper>
+        <ScrollTitleWrapper
+          title="Gallery"
+          direction={'left'}
+          bgColor={colors.teal}
+        >
+          <Block />
+        </ScrollTitleWrapper>
+      </div>
       <Footer
         siteAuthor={author}
       />

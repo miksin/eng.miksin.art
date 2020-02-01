@@ -6,6 +6,7 @@ export default class TypeWriter {
     this.words = words.length > 0 ? words : ['']
     this.typeInterval = options.typeInterval || 300
     this.delInterval = options.delInterval || 100
+    this.goalInterval = options.goalInterval || 1000
     this.timer = null
   }
 
@@ -43,6 +44,7 @@ export default class TypeWriter {
         break
       default:
         this.currentIndex = (this.currentIndex + 1) % this.words.length
+        delay = this.goalInterval
         break
     }
 

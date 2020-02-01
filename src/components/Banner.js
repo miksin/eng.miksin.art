@@ -30,7 +30,7 @@ const Container = styled.div`
 
 const LinkWrapper = styled.div`
   position: absolute;
-  bottom: 32px;
+  bottom: ${sizes.nav}px;
 `
 
 const PaddingWrapper = styled.div`
@@ -65,8 +65,10 @@ const Banner = ({
           <TypingDisplay
             size={sizes.subtitle}
             words={subtitle}
-            cursor={'#'}
+            cursor={'□'}
             animation={'roll'}
+            typeInterval={100}
+            delInterval={60}
           />
         </PaddingWrapper>
       </Container>
@@ -75,6 +77,7 @@ const Banner = ({
           direction="down"
           size={sizes.entryLink}
           onClick={onEntry}
+          shadow
         />
       </LinkWrapper>
     </Wrapper>
