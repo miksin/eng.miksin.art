@@ -1,9 +1,15 @@
-export const devices = {
-  mobile: 480,
-  tablet: 1080
-}
+import * as common from "./common"
+
+export const devices = common.devices
+
+// material-ui
+// https://material-ui.com/customization/color/
+export const colors = common.colors
+
+export const icons = common.featherIcons
 
 export const sizes = {
+  ...common.sizes,
   title: 48,
   subtitle: 28,
   entryLink: 42,
@@ -12,25 +18,10 @@ export const sizes = {
   nav: 72,
 }
 
-// material-ui
-// https://material-ui.com/customization/color/
-export const colors = {
-  grey: '#424242',
-  red: '#f44336',
-  pink: '#e91e63',
-  indigo: '#3f51b5',
-  blue: '#2196f3',
-  purple: '#9c27b0',
-  deepPurple: '#673ab7',
-  lightBlue: '#03a9f4',
-  cyan: '#00bcd4',
-  teal: '#009688',
-  green: '#4caf50',
-  lightGreen: '#8bc34a',
-  yellow: '#ffeb3b',
-  amber: '#ffc107',
-  orange: '#ff9800',
-  deepOrange: '#ff5722',
-  brown: '#795548',
-  lime: '#cddc39'
+export const about = {
+  'tw': `
+台灣人，現居於日本東京擔任軟體工程師。
+軟體技能以web為中心，主要專攻前端網頁，但對於後端系統、資料庫、雲端領域等皆有涉獵。
+最擅長JavaScript/TypeScript, HTML, CSS/SCSS等。其他興趣為繪圖、遊戲、卡拉OK等。
+`
 }

@@ -15,3 +15,7 @@ export const scrollToAnchor = (id, offset = 0) => {
   })  
   /* eslint-enable no-undef */
 }
+
+export const formatText = (text) => {
+  return text.trim().replace(/\s*(\r)?\n\s*/g, '<br />').replace(/\s+/g, ' ')
+}

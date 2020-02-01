@@ -4,19 +4,16 @@ import styled from "styled-components"
 import VisibilitySensor from "react-visibility-sensor"
 
 import TypingDisplay from "../components/TypingDisplay"
-import EntryLink from "../components/EntryLink"
 
 import { colors, sizes, devices } from "../constants/home"
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   width: 100%;
   display: flex;
-  flex-direction: ${(props) => props.flexDirection};
+  flex-direction: column;
   flex-wrap: nowrap;
-
-  @media screen and (max-width: ${devices.mobile}px) {
-    flex-direction: column;
-  }
+  align-items: center;
+  margin: 24px 0px;
 `
 
 const GrowPad = styled.div`
@@ -29,11 +26,15 @@ const TitleWrapper = styled.div`
   flex-direction: ${(props) => props.flexDirection};
   flex-wrap: nowrap;
   width: 100%;
-  margin-top: 24px;
+`
+
+const Title = styled.div`
+  display: flex;
+  flex-direction: ${(props) => props.flexDirection};
+  flex-wrap: nowrap;
+  width: 60%;
   padding: 24px 12px;
   background-color: ${(props) => props.bgColor};
-  position: absolute;
-  ${(props) => props.align}
 
   @media screen and (max-width: ${devices.mobile}px) {
     width: 80%;
@@ -41,7 +42,14 @@ const TitleWrapper = styled.div`
 `
 
 const ChildrenWrapper = styled.div`
-  padding: 24px;
+  padding: 24px 12px;
+  margin: 0 auto;
+  width: 100%;
+  max-width: ${devices.tablet}px;
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const ScrollTitleWrapper = ({
@@ -63,7 +71,6 @@ const ScrollTitleWrapper = ({
   }, [])
 
   const flexDirection = direction === 'right' ? 'row-reverse' : 'row'
-  const linkDirection = direction === 'right' ? 'left' : 'right'
   const titleAlign = direction === 'right' ? 'right: 0;' : 'left: 0;'
 
   return (
@@ -73,8 +80,8 @@ const ScrollTitleWrapper = ({
       onChange={setVisible}
     >
       <Wrapper flexDirection={flexDirection}>
-        <GrowPad>
-          <TitleWrapper
+        <TitleWrapper flexDirection={flexDirection}>
+          <Title
             flexDirection={flexDirection}
             bgColor={bgColor}
             align={titleAlign}
@@ -87,17 +94,12 @@ const ScrollTitleWrapper = ({
               typeInterval={200}
               cursor={''}
             />
-          </TitleWrapper>
-        </GrowPad>
+          </Title>
+          <GrowPad />
+        </TitleWrapper>
         <ChildrenWrapper>
           {children}
         </ChildrenWrapper>
-        <EntryLink
-          direction={linkDirection}
-          color={bgColor}
-          size={sizes.entryLink}
-          onClick={() => {}}
-        />
       </Wrapper>
     </VisibilitySensor>
   )

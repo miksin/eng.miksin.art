@@ -9,7 +9,7 @@ module.exports = {
       `I'm a Software Engineer`,
       `I'm Painting`,
       `I'm Programming`,
-      `I come from TAIWAN`
+      `I Come from TAIWAN`
     ],
     description: `Software Engineer`,
     author: `Miksin`,

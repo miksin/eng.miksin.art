@@ -65,7 +65,7 @@ const Banner = ({
           <TypingDisplay
             size={sizes.subtitle}
             words={subtitle}
-            cursor={'□'}
+            cursor={'/'}
             animation={'roll'}
             typeInterval={100}
             delInterval={60}

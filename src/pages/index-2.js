@@ -5,33 +5,23 @@ import styled from "styled-components"
 import Nav from "../components/Nav"
 import Banner from "../components/Banner"
 import Footer from "../components/footer"
-import TypingDisplay from "../components/TypingDisplay"
+import IntroCard from "../components/home/IntroCard"
 import ScrollTitleWrapper from "../components/ScrollTitleWrapper"
 
 import { scrollToAnchor } from "../helpers"
-import { sizes, colors } from "../constants/home"
-
-const Block = styled.div`
-  min-height: 600px;
-  min-width: 600px;
-`
+import { sizes, colors, about } from "../constants/home"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
     query IndexQuery {
       site {
-        siteMetadata {
-          title
-          subtitles
-          description
-          author
-          links {
-            name
-            path
-          }
-          socialLinks {
-            name
-            link
+        ...SiteMetaFragment
+      }
+
+      avatar: file(relativePath: {eq: "miksin-avatar.jpeg"}) {
+        childImageSharp {
+          fluid {
+            src
           }
         }
       }
@@ -56,7 +46,8 @@ const IndexPage = () => {
     subtitles,
     description,
     author,
-    links
+    links,
+    socialLinks,
   } = data.site.siteMetadata
 
   return (
@@ -77,23 +68,27 @@ const IndexPage = () => {
         <ScrollTitleWrapper
           title="About"
           direction={'left'}
-          bgColor={colors.deepOrange}
+          bgColor={colors.cyan}
         >
-          <Block />
+          <IntroCard
+            avatar={data.avatar.childImageSharp.fluid.src}
+            contents={about.tw}
+            socialLinks={socialLinks}
+          />
         </ScrollTitleWrapper>
         <ScrollTitleWrapper
           title="Blog"
           direction={'right'}
           bgColor={colors.pink}
         >
-          <Block />
+          <div></div>
         </ScrollTitleWrapper>
         <ScrollTitleWrapper
           title="Gallery"
           direction={'left'}
           bgColor={colors.teal}
         >
-          <Block />
+          <div></div>
         </ScrollTitleWrapper>
       </div>
       <Footer
