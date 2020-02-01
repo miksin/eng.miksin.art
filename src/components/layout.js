@@ -20,7 +20,7 @@ const Layout = ({ children, location }) => {
           title
           description
           author
-          links {
+          socialLinks {
             name
             link
           }
@@ -96,7 +96,7 @@ const Layout = ({ children, location }) => {
     pixiv: data.pixivIcon.childImageSharp.fluid.src,
     twitter: data.twitterIcon.childImageSharp.fluid.src,
   }
-  const links = data.site.siteMetadata.links.map(l => ({
+  const links = data.site.siteMetadata.socialLinks.map(l => ({
     ...l,
     icon: icons[l.name]
   }))

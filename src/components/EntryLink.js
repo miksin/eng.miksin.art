@@ -12,6 +12,7 @@ const Wrapper = styled.button`
   background: inherit;
   border-style: none;
   outline: none;
+  cursor: pointer;
 `
 
 const icons = {

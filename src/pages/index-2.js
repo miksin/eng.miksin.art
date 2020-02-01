@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react"
+import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 
 import Nav from "../components/Nav"
 import Banner from "../components/Banner"
 import Footer from "../components/footer"
 import TypingDisplay from "../components/TypingDisplay"
-import EntryLink from "../components/EntryLink"
 import ScrollTitleWrapper from "../components/ScrollTitleWrapper"
 
 import { scrollToAnchor } from "../helpers"
@@ -17,6 +17,27 @@ const Block = styled.div`
 `
 
 const IndexPage = () => {
+  const data = useStaticQuery(graphql`
+    query IndexQuery {
+      site {
+        siteMetadata {
+          title
+          subtitles
+          description
+          author
+          links {
+            name
+            path
+          }
+          socialLinks {
+            name
+            link
+          }
+        }
+      }
+    }
+  `)
+
   const [vh, setVh] = useState(undefined)
   useEffect(() => {
     /* eslint-disable no-undef */
@@ -30,10 +51,13 @@ const IndexPage = () => {
   const bannerStyles = {}
   if (vh) bannerStyles.minHeight = vh
 
-  const links = [
-    { name: 'Home', link: '' },
-    { name: 'About', link: '' },
-  ]
+  const {
+    title,
+    subtitles,
+    description,
+    author,
+    links
+  } = data.site.siteMetadata
 
   return (
     <>
@@ -41,21 +65,14 @@ const IndexPage = () => {
         height={sizes.nav}
         links={links}
       />
-      <Banner styles={bannerStyles}>
-        <TypingDisplay
-          size={sizes.title}
-          words={['Title']}
-        />
-        <TypingDisplay
-          size={sizes.subtitle}
-          words={['Sub Title', 'typing title']}
-        />
-        <EntryLink
-          direction="down"
-          size={sizes.entryLink}
-          onClick={() => scrollToAnchor('test-1', sizes.nav)}
-        />
-      </Banner>
+      <Banner
+        styles={bannerStyles}
+        onEntry={() => scrollToAnchor('test-1', sizes.nav)}
+        words={{
+          title: [title],
+          subtitle: subtitles
+        }}
+      />
       <ScrollTitleWrapper
         title="Title"
         direction={'left'}
@@ -70,7 +87,9 @@ const IndexPage = () => {
       >
         <Block id="test-2" />
       </ScrollTitleWrapper>
-      <Footer siteAuthor={'Person'} />
+      <Footer
+        siteAuthor={author}
+      />
     </>
   )
 }

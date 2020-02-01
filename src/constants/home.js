@@ -4,7 +4,7 @@ export const devices = {
 }
 
 export const sizes = {
-  title: 36,
+  title: 48,
   subtitle: 28,
   entryLink: 42,
   scrollTitle: 64,

@@ -39,7 +39,7 @@ const Nav = ({
     <Wrapper height={height}>
       {
         links.map(link => (
-          <NavLink key={link.name} to={link.url}>
+          <NavLink key={link.name} to={link.path}>
             <LinkName size={height / 2} color={color}>{link.name}</LinkName>
           </NavLink>
         ))
@@ -51,7 +51,7 @@ const Nav = ({
 Nav.propTypes = {
   links: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired
+    path: PropTypes.string.isRequired
   })),
   height: PropTypes.number.isRequired,
   color: PropTypes.string,

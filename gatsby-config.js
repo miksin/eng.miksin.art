@@ -4,9 +4,22 @@ module.exports = {
   siteMetadata: {
     siteUrl: `https://miksin.github.io`,
     title: `Miksin`,
+    subtitles: [
+      `Hello! I am Miksin`,
+      `I'm a Software Engineer`,
+      `I'm Illustrating`,
+      `I 'm Programming`,
+      `I Come from TAIWAN`
+    ],
     description: `Software Engineer`,
     author: `Miksin`,
     links: [
+      { path: '/', name: 'Home' },
+      { path: '/about', name: 'About' },
+      { path: '/blog', name: 'Blog' },
+      { path: '/gallery', name: 'Gallery' },
+    ],
+    socialLinks: [
       {
         name: `github`,
         link: `https://github.com/miksin`,
@@ -14,6 +27,10 @@ module.exports = {
       {
         name: `twitter`,
         link: `https://twitter.com/miksin_`,
+      },
+      {
+        name: `instagram`,
+        link: `https://www.instagram.com/miksin_/`,
       },
       {
         name: `pixiv`,

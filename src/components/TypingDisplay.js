@@ -13,13 +13,23 @@ const blink = keyframes`
   }
 `
 
+const roll = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`
+
 const Text = styled.h1`
   margin: 0 0 0 auto;
 `
 
 const Cursor = styled.h1`
   margin: 0 auto 0 0;
-  animation: ${blink} 0.75s step-end infinite;  
+  transform-origin: center;
+  animation: ${props => props.animation} ${props => props.options};
 `
 
 const Wrapper = styled.div`
@@ -35,7 +45,8 @@ const TypingDisplay = ({
   isWrap,
   cursor,
   typeInterval,
-  delInterval
+  delInterval,
+  animation
 }) => {
   const [typed, setTyped] = useState('')
   const [typeWriter, setTypeWriter] = useState(null)
@@ -61,7 +72,11 @@ const TypingDisplay = ({
         fontSize: size,
         whiteSpace: isWrap ? 'normal' : 'nowrap'
         }}>{typed}</Text>
-        <Cursor style={{ color: color, fontSize: size }}>
+        <Cursor
+          style={{ color: color, fontSize: size }}
+          animation={animation === 'roll' ? roll : blink}
+          options={animation === 'roll' ? '1s linear infinite' : '0.75s step-end infinite'}
+        >
           {cursor}
         </Cursor>
     </Wrapper>
@@ -75,7 +90,8 @@ TypingDisplay.propTypes = {
   isWrap: PropTypes.bool,
   cursor: PropTypes.string,
   typeInterval: PropTypes.number,
-  delInterval: PropTypes.number
+  delInterval: PropTypes.number,
+  animation: PropTypes.oneOf(['blink', 'roll'])
 }
 
 TypingDisplay.defaultProps = {
@@ -85,7 +101,8 @@ TypingDisplay.defaultProps = {
   isWrap: false,
   cursor: '_',
   typeInterval: 300,
-  delInterval: 100
+  delInterval: 100,
+  animation: 'blink'
 }
 
 export default TypingDisplay
