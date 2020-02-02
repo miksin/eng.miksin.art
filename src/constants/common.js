@@ -19,6 +19,8 @@ export const devices = {
 
 export const sizes = {
   icon: 28,
+  nav: 72,
+  navMobile: 54,
 }
 
 // material-ui

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import styled from "styled-components"
 
-import Nav from "../components/Nav"
+import Nav from "../components/common/Nav"
 import Banner from "../components/Banner"
 import Footer from "../components/footer"
 import IntroCard from "../components/home/IntroCard"
@@ -52,10 +51,7 @@ const IndexPage = () => {
 
   return (
     <>
-      <Nav
-        height={sizes.nav}
-        links={links}
-      />
+      <Nav links={links}/>
       <Banner
         styles={bannerStyles}
         onEntry={() => scrollToAnchor('scroll-content', sizes.nav)}

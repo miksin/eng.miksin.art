@@ -10,8 +10,8 @@ export const icons = common.featherIcons
 
 export const sizes = {
   ...common.sizes,
-  title: 48,
-  subtitle: 28,
+  title: 36,
+  subtitle: 24,
   entryLink: 42,
   scrollTitle: 64,
   scrollTitleMobile: 36,

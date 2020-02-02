@@ -34,8 +34,7 @@ const LinkWrapper = styled.div`
 `
 
 const PaddingWrapper = styled.div`
-  margin-top: ${sizes.subtitle}px;
-  padding-left: ${props => props.paddingLeft}px;
+  margin-top: ${sizes.subtitle * 0.75}px;
 `
 
 const Banner = ({

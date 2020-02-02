@@ -32,11 +32,6 @@ const ContentWrapper = styled.div`
 `
 
 const Content = styled.p`
-  font-size: 1.2em;
-
-  @media screen and (max-width: ${devices.mobile}px) {
-    font-size: 1em;
-  }
 `
 
 const LinkWraper = styled.div`
@@ -100,7 +95,7 @@ IntroCard.propTypes = {
   contents: PropTypes.string,
   socialLinks: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
   })),
 }
 
