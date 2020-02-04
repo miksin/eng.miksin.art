@@ -25,11 +25,12 @@ export const about = {
   其他興趣為繪圖、遊戲、卡拉OK等。偶爾也會在Twitter, Instagram等SNS上分享自己的創作。
   `,
   'en': `
-  Taiwanese and being a software engineer in Tokyo.
+  Taiwanese, and being a software engineer in Tokyo.
+  Having multiple software skills, especially in front-end web developing.
   `,
   'jp': `
   台湾出身、東京にソフトウェアエンジニアとして働いている。
-  web中心に様々なスキルを身につけた。フロントエンド専攻ですが、バックエンド、データベース、及びクラウドなどことも渉猟した。得意分野はJavascript(React/Vue)、HTML、CSS/SCSSなど。
+  web中心に様々なスキルを身につける。フロントエンド専攻ですが、バックエンド、データベース、及びクラウドなどことも渉猟した。得意分野はJavascript(React/Vue)、HTML、CSS/SCSSなど。
   趣味は絵描く、ゲーム、カラオケなど。たまにTwitter、InstagramなどSNSで自分の作品をシェアする。
   `,
 }
