@@ -45,3 +45,9 @@ export const colors = {
   brown: '#795548',
   lime: '#cddc39'
 }
+
+export const languagues = [
+  'en',
+  'zh',
+  'ja',
+]

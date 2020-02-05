@@ -7,7 +7,7 @@ import Footer from "../components/footer"
 import IntroCard from "../components/home/IntroCard"
 import ScrollTitleWrapper from "../components/ScrollTitleWrapper"
 
-import { scrollToAnchor } from "../helpers"
+import { scrollToAnchor, assignLanguages } from "../helpers"
 import { sizes, colors, about } from "../constants/home"
 
 const IndexPage = () => {
@@ -28,11 +28,15 @@ const IndexPage = () => {
   `)
 
   const [vh, setVh] = useState(undefined)
+  const [lang, setLang] = useState('en')
   useEffect(() => {
     /* eslint-disable no-undef */
 
     // set window height (prevent url bar problems in mobile)
-    if (window) setVh(window.innerHeight)
+    if (window) {
+      setLang(assignLanguages())
+      setVh(window.innerHeight)
+    }
 
     /* eslint-enable no-undef */
   }, [])
@@ -68,7 +72,7 @@ const IndexPage = () => {
         >
           <IntroCard
             avatar={data.avatar.childImageSharp.fluid.src}
-            contents={about.tw}
+            contents={about[lang] || about.en}
             socialLinks={socialLinks}
           />
         </ScrollTitleWrapper>
