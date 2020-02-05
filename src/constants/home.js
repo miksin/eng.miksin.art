@@ -27,7 +27,7 @@ export const about = {
   'en': `
   Taiwanese, and being a software engineer in Tokyo.
   Having multiple software skills mainly in web development. Knowing about backend, database, cloud computing, etc., but more accomplished in frontend. Being proficient in develping with JavaScript(React/Vue), HTML, CSS/SCSS, etc..
-  Intrested in painting, games and karaoke and sometimes sharing creations on SNS, such as Twitter and Instagram.
+  Intrested in painting, games and karaoke. And sometimes sharing creations on SNS, such as Twitter and Instagram.
   `,
   'ja': `
   台湾出身、東京にソフトウェアエンジニアとして働いている。
