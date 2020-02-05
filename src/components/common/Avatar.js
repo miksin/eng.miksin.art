@@ -8,6 +8,8 @@ const Wrapper = styled.div`
   display: flex;
   width: ${props => props.size}px;
   height: ${props => props.size}px;
+  min-width: ${props => props.size}px;
+  min-height: ${props => props.size}px;
   overflow: hidden;
   border-style: solid;
   border-width: ${props => props.border.size}px;
