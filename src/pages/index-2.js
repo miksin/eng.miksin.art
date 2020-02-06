@@ -24,6 +24,22 @@ const IndexPage = () => {
           }
         }
       }
+
+      blogs: allMarkdownRemark (
+        filter: {frontmatter: {path: {regex: "/\/blog\/.*/"}}}
+        sort: { order: DESC, fields: [frontmatter___date] }
+        limit: 3
+      ) {
+        ...ArticlePreviewFragment
+      }
+
+      gallery: allMarkdownRemark (
+        filter: {frontmatter: {path: {regex: "/\/gallery\/.*/"}}}
+        sort: { order: DESC, fields: [frontmatter___date] }
+        limit: 5
+      ) {
+        ...ArticlePreviewFragment
+      }
     }
   `)
 
