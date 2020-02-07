@@ -1,8 +1,10 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import { ChevronRight } from "react-feather"
 
 import Avatar from "../common/Avatar"
+import TextButton from "../common/TextButton"
 
 import { sizes, devices, icons } from "../../constants/home"
 import { formatText } from "../../helpers"
@@ -85,6 +87,7 @@ const IntroCard = ({
         <Content
           dangerouslySetInnerHTML={{ __html: formatText(contents) }}
         />
+        <TextButton icon={{ Element: ChevronRight }} text={'Profile'} />
       </ContentWrapper>
     </Wrapper>
   )

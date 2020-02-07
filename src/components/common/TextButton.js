@@ -5,9 +5,11 @@ import styled from "styled-components"
 import { colors, sizes } from "../../constants/common"
 
 const Btn = styled.button`
+  font-size: 1rem;
   background: ${props => props.bgColor};
   outline: none;
   display: flex;
+  flex-direction: ${props => props.flexDirection};
   justify-content: center;
   align-item: center;
   border-width: ${props => props.bdWidth}px;
@@ -21,6 +23,7 @@ const TextButton = ({
   color,
   size,
   isOutlined,
+  icon,
   onClick,
 }) => {
   const padding = sizes.buttonPadding[size] || 'normal'
@@ -34,7 +37,11 @@ const TextButton = ({
       bdWidth={borderWidth}
       bgColor={bgColor}
       onClick={onClick}
-    >{text}</Btn> 
+      flexDirection={icon.isLeft ? 'row-reverse' : 'row'}
+    >
+      {text}
+      {icon.Element ? <icon.Element color={color} size={16} /> : null}
+    </Btn> 
   )
 }
 
@@ -43,6 +50,10 @@ TextButton.propTypes = {
   color: PropTypes.string,
   size: PropTypes.oneOf(['small', 'normal', 'large']),
   isOutlined: PropTypes.bool,
+  icon: PropTypes.shape({
+    Element: PropTypes.elementType,
+    isLeft: PropTypes.bool,
+  }),
   onClick: PropTypes.func,
 }
 
@@ -50,6 +61,10 @@ TextButton.defaultProps = {
   color: colors.lightBlue,
   size: 'normal',
   isOutlined: false,
+  icon: {
+    Element: null,
+    isLeft: false,
+  },
   onClick: () => {},
 }
 
