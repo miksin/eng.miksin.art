@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import { navigate } from "gatsby"
 import { ChevronRight } from "react-feather"
 
 import Avatar from "../common/Avatar"
@@ -88,7 +89,14 @@ const IntroCard = ({
         <Content
           dangerouslySetInnerHTML={{ __html: formatText(contents) }}
         />
-        <TextButton icon={{ Element: ChevronRight }} text={'Profile'} />
+        <TextButton
+          icon={{ Element: ChevronRight }}
+          text={'Profile'}
+          color={colors.cyan}
+          isOutlined
+          isRounded
+          onClick={() => navigate('/about')}
+        />
       </ContentWrapper>
     </Wrapper>
   )

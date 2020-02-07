@@ -31,6 +31,8 @@ export const sizes = {
 // material-ui
 // https://material-ui.com/customization/color/
 export const colors = {
+  white: '#FFFFFF',
+  black: '#000000',
   grey: '#424242',
   red: '#f44336',
   pink: '#e91e63',
