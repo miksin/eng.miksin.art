@@ -70,6 +70,7 @@ const IndexPage = () => {
   } = data.site.siteMetadata
 
   const blogArticles = data.blogs.edges.map(edge => edge.node.frontmatter)
+  const galleryArticles = data.gallery.edges.map(edge => edge.node.frontmatter)
 
   return (
     <>
@@ -106,7 +107,7 @@ const IndexPage = () => {
           direction={'left'}
           bgColor={colors.teal}
         >
-          <div></div>
+          <ListPreview articles={galleryArticles} />
         </ScrollTitleWrapper>
       </div>
       <Footer
