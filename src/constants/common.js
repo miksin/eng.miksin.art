@@ -21,6 +21,11 @@ export const sizes = {
   icon: 28,
   nav: 72,
   navMobile: 54,
+  buttonPadding: {
+    small: '4px 10px',
+    normal: '6px 16px',
+    large: '8px 22px',
+  },
 }
 
 // material-ui
