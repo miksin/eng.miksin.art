@@ -34,6 +34,7 @@ const ContentWrapper = styled.div`
 `
 
 const Content = styled.p`
+  word-break: break-all;
 `
 
 const LinkWraper = styled.div`

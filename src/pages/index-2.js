@@ -5,6 +5,7 @@ import Nav from "../components/common/Nav"
 import Banner from "../components/Banner"
 import Footer from "../components/footer"
 import IntroCard from "../components/home/IntroCard"
+import ListPreview from "../components/home/ListPreview"
 import ScrollTitleWrapper from "../components/ScrollTitleWrapper"
 
 import { scrollToAnchor, assignLanguages } from "../helpers"
@@ -63,11 +64,12 @@ const IndexPage = () => {
   const {
     title,
     subtitles,
-    description,
     author,
     links,
     socialLinks,
   } = data.site.siteMetadata
+
+  const blogArticles = data.blogs.edges.map(edge => edge.node.frontmatter)
 
   return (
     <>
@@ -97,7 +99,7 @@ const IndexPage = () => {
           direction={'right'}
           bgColor={colors.pink}
         >
-          <div></div>
+          <ListPreview articles={blogArticles} />
         </ScrollTitleWrapper>
         <ScrollTitleWrapper
           title="Gallery"
