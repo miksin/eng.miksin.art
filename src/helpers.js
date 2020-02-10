@@ -39,3 +39,12 @@ export const assignLanguages = () => {
 
   return lang
 }
+
+export const toDualColors = (stringOrArray) => {
+  if (Array.isArray(stringOrArray)) {
+    if (stringOrArray.length > 1)
+      return stringOrArray
+    return [stringOrArray[0], stringOrArray[0]]
+  }
+  return [stringOrArray, stringOrArray]
+}

@@ -41,7 +41,7 @@ const FixedAspectRatioBox = ({ ratio, children }) => {
 
 FixedAspectRatioBox.propTypes = {
   ratio: PropTypes.number,
-  children: PropTypes.elementType
+  children: PropTypes.node,
 }
 
 FixedAspectRatioBox.defaultProps = {

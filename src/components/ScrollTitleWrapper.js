@@ -6,6 +6,7 @@ import VisibilitySensor from "react-visibility-sensor"
 import TypingDisplay from "../components/TypingDisplay"
 
 import { colors, sizes, devices } from "../constants/home"
+import { toDualColors } from "../helpers"
 
 const Wrapper = styled.section`
   width: 100%;
@@ -34,7 +35,7 @@ const Title = styled.div`
   flex-wrap: nowrap;
   width: 60%;
   padding: 24px 12px;
-  background-color: ${(props) => props.bgColor};
+  background: linear-gradient(to right, ${props => props.bgColors[0]}, ${props => props.bgColors[1]});
 
   @media screen and (max-width: ${devices.mobile}px) {
     width: 80%;
@@ -42,14 +43,18 @@ const Title = styled.div`
 `
 
 const ChildrenWrapper = styled.div`
-  padding: 24px 12px;
+  padding: 24px 24px;
   margin: 0 auto;
   width: 100%;
   max-width: ${devices.tablet}px;
-  min-height: 300px;
+  min-height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: ${devices.mobile}px) {
+    min-height: 300px;
+  }
 `
 
 const ScrollTitleWrapper = ({
@@ -73,6 +78,8 @@ const ScrollTitleWrapper = ({
   const flexDirection = direction === 'right' ? 'row-reverse' : 'row'
   const titleAlign = direction === 'right' ? 'right: 0;' : 'left: 0;'
 
+  const bgColors = toDualColors(bgColor)
+
   return (
     <VisibilitySensor
       partialVisibility={['top', 'bottom', 'left', 'right']}
@@ -83,7 +90,7 @@ const ScrollTitleWrapper = ({
         <TitleWrapper flexDirection={flexDirection}>
           <Title
             flexDirection={flexDirection}
-            bgColor={bgColor}
+            bgColors={bgColors}
             align={titleAlign}
           >
             <GrowPad />
@@ -109,7 +116,10 @@ ScrollTitleWrapper.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
   direction: PropTypes.oneOf(['left', 'right']),
-  bgColor: PropTypes.string,
+  bgColor: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string),
+  ]),
   textColor: PropTypes.string
 }
 

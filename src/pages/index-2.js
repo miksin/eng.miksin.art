@@ -87,7 +87,7 @@ const IndexPage = () => {
         <ScrollTitleWrapper
           title="About"
           direction={'left'}
-          bgColor={colors.cyan}
+          bgColor={['#80cbc4', colors.cyan]}
         >
           <IntroCard
             avatar={data.avatar.childImageSharp.fluid.src}
@@ -98,14 +98,14 @@ const IndexPage = () => {
         <ScrollTitleWrapper
           title="Blog"
           direction={'right'}
-          bgColor={colors.pink}
+          bgColor={[colors.teal, '#80cbc4']}
         >
           <ListPreview articles={blogArticles} />
         </ScrollTitleWrapper>
         <ScrollTitleWrapper
           title="Gallery"
           direction={'left'}
-          bgColor={colors.teal}
+          bgColor={['#81d4fa', colors.lightBlue]}
         >
           <ListPreview articles={galleryArticles} />
         </ScrollTitleWrapper>

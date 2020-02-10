@@ -5,7 +5,7 @@ import styled from "styled-components"
 import EntryLink from "../components/EntryLink"
 import TypingDisplay from "../components/TypingDisplay"
 
-import { sizes, devices } from "../constants/home"
+import { sizes, devices, colors } from "../constants/home"
 
 const Wrapper = styled.div`
   width: 100%;
@@ -59,6 +59,7 @@ const Banner = ({
           size={sizes.title}
           words={title}
           typeInterval={100}
+          color={[colors.lime, colors.lightBlue]}
         />
         <PaddingWrapper paddingLeft={vw <= devices.mobile ? 0 : sizes.title}>
           <TypingDisplay
@@ -68,6 +69,7 @@ const Banner = ({
             animation={'roll'}
             typeInterval={100}
             delInterval={60}
+            color={[colors.lightBlue, colors.lime]}
           />
         </PaddingWrapper>
       </Container>
@@ -77,6 +79,7 @@ const Banner = ({
           size={sizes.entryLink}
           onClick={onEntry}
           shadow
+          color={[colors.lightBlue, colors.lightGreen]}
         />
       </LinkWrapper>
     </Wrapper>

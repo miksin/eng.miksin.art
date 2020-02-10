@@ -8,6 +8,8 @@ import {
   ChevronDown
 } from "react-feather"
 
+import { toDualColors } from "../helpers"
+
 const moves = {
   down: keyframes`
     from { transform: translate(0, 0); opacity: .5; }
@@ -64,18 +66,19 @@ const EntryLink = ({
 }) => {
   const Icon = icons[direction] || ChevronDown
   const animation = shadow ? moves[direction] : null
+  const iconColors = toDualColors(color)
 
   return (
     <Wrapper onClick={onClick} size={size}>
       {
         shadow ? (
           <IconWrapper size={size} animation={animation}>
-            <Icon color={color} size={size} />
+            <Icon color={iconColors[1]} size={size} />
           </IconWrapper>
         ) : null
       }
       <IconWrapper size={size}>
-        <Icon color={color} size={size} />
+        <Icon color={iconColors[0]} size={size} />
       </IconWrapper>
     </Wrapper>
   )
@@ -83,7 +86,10 @@ const EntryLink = ({
 
 EntryLink.propTypes = {
   direction: PropTypes.oneOf(['up', 'left', 'right', 'down']),
-  color: PropTypes.string,
+  color: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string)
+  ]),
   size: PropTypes.number,
   shadow: PropTypes.bool,
   onClick: PropTypes.func
