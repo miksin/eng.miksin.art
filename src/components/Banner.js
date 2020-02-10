@@ -4,6 +4,8 @@ import styled from "styled-components"
 
 import EntryLink from "../components/EntryLink"
 import TypingDisplay from "../components/TypingDisplay"
+import LinearGradient from "./common/LinearGradient"
+import LogoSvg from "../images/logo-2.svg"
 
 import { sizes, devices, colors } from "../constants/home"
 
@@ -21,7 +23,7 @@ const Container = styled.div`
   width: 350px;
   display:flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 
   @media screen and (max-width: ${devices.mobile}px) {
     width: 95%;
@@ -37,8 +39,17 @@ const PaddingWrapper = styled.div`
   margin-top: ${sizes.subtitle * 0.75}px;
 `
 
+const gradientId = 'logo-gradient'
+const Logo = styled(LogoSvg)`
+  width: 70%;
+
+  & path {
+    fill: url(#${gradientId});
+  }
+`
+
 const Banner = ({
-  words: { title, subtitle },
+  words: { subtitle },
   styles,
   onEntry
 }) => {
@@ -55,12 +66,8 @@ const Banner = ({
   return (
     <Wrapper style={styles}>
       <Container>
-        <TypingDisplay
-          size={sizes.title}
-          words={title}
-          typeInterval={100}
-          color={[colors.lime, colors.lightBlue]}
-        />
+        <LinearGradient id={gradientId} colors={[colors.lime, colors.lightBlue]} />
+        <Logo />
         <PaddingWrapper paddingLeft={vw <= devices.mobile ? 0 : sizes.title}>
           <TypingDisplay
             size={sizes.subtitle}

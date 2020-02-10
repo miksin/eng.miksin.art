@@ -123,5 +123,13 @@ module.exports = {
         shortname: process.env.DISQUS_SHORTNAME || ``,
       },
     },
+    {
+      resolve: `gatsby-plugin-react-svg`,
+      options: {
+        rule: {
+          include: /\.svg$/
+        }
+      }
+    },
   ],
 }
