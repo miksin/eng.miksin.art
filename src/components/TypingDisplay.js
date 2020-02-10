@@ -32,6 +32,7 @@ const Text = styled.h1`
   white-space: ${props => props.whiteSpace};
   color: transparent;
   font-size: ${props => props.size}px;
+  line-height: normal;
 `
 
 const Cursor = styled.h1`
@@ -40,6 +41,7 @@ const Cursor = styled.h1`
   animation: ${props => props.animation} ${props => props.options};
   color: ${props => props.color};
   font-size: ${props => props.size}px;
+  line-height: normal;
 `
 
 const Wrapper = styled.div`
