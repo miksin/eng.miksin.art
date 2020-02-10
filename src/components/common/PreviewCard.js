@@ -5,10 +5,8 @@ import styled from "styled-components"
 import { devices } from "../../constants/common"
 
 const Wrapper = styled.div`
-  width: ${props => props.size}px;
-  height: ${props => props.size}px;
-  min-width: ${props => props.size}px;
-  min-height: ${props => props.size}px;
+  width: 100%;
+  height: 100%;
   padding: 12px;
 `
 

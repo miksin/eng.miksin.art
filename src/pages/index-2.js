@@ -29,7 +29,7 @@ const IndexPage = () => {
       blogs: allMarkdownRemark (
         filter: {frontmatter: {path: {regex: "/\/blog\/.*/"}}}
         sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 4
+        limit: 3
       ) {
         ...ArticlePreviewFragment
       }
@@ -37,7 +37,7 @@ const IndexPage = () => {
       gallery: allMarkdownRemark (
         filter: {frontmatter: {path: {regex: "/\/gallery\/.*/"}}}
         sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 4
+        limit: 3
       ) {
         ...ArticlePreviewFragment
       }
