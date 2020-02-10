@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 
 import PreviewCard from "../common/PreviewCard"
+import FixedAspectRatioBox from "../common/FixedAspectRatioBox"
 
 import { colors, devices } from "../../constants/common"
 
@@ -20,21 +21,19 @@ const Wrapper = styled.div`
 `
 
 const LinkItem = styled(Link)`
-  &:before {
-    content: "";
-    width: 100%;
-    padding-top: 100%;
-  }
-
   display: block;
   color: ${colors.grey};
   text-decoration: none;
-  margin-bottom: 24px;
   width: 33%;
+  &:last-child:nth-child(3n+1),
+   :last-child:nth-child(3n+2),
+   :nth-last-child(2):nth-child(3n+1) {
+     display: none;
+   }
 
   @media screen and (max-width: ${(devices.tablet + devices.mobile) / 2}px) {
     width: 50%;
-    &:last-child {
+    &:last-child:nth-child(odd) {
       display: none;
     }
   }
@@ -52,7 +51,9 @@ const ListPreview = ({
       {
         articles.map((article) => (
           <LinkItem key={article.path} to={article.path}>
-            <PreviewCard frontmatter={article} />
+            <FixedAspectRatioBox>
+              <PreviewCard frontmatter={article} />
+            </FixedAspectRatioBox>
           </LinkItem>
         ))
       }
