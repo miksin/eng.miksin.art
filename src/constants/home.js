@@ -13,7 +13,7 @@ export const sizes = {
   title: 36,
   subtitle: 24,
   entryLink: 42,
-  scrollTitle: 64,
+  scrollTitle: 56,
   scrollTitleMobile: 36,
   nav: 72,
 }

@@ -30,7 +30,7 @@ LinearGradient.propTypes = {
   isVertical: PropTypes.bool,
 }
 
-LinearGradient.propTypes = {
+LinearGradient.defaultTypes = {
   isVertical: false,
 }
 

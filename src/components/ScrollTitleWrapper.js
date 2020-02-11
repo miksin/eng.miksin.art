@@ -34,7 +34,7 @@ const Title = styled.div`
   flex-direction: ${(props) => props.flexDirection};
   flex-wrap: nowrap;
   width: 60%;
-  padding: 24px 12px;
+  padding: 12px 12px;
   background: linear-gradient(to right, ${props => props.bgColors[0]}, ${props => props.bgColors[1]});
 
   @media screen and (max-width: ${devices.mobile}px) {
