@@ -8,7 +8,6 @@ const LinearGradient = ({
   colors,
   axisDeg,
 }) => {
-  const unit = 100 / (colors.length - 1)
   const vector = ModelVector2d.fromPCS(1, axisDeg / 180 * Math.PI)
   const axisSettings = {
     x1: 0,
@@ -17,13 +16,19 @@ const LinearGradient = ({
     y2: vector.y,
   }
 
+  const stops = colors.slice().sort((a, b) => a.offset - b.offset).map(color => ({
+    stopColor: color.code,
+    offset: `${color.offset * 100}%`,
+    key: `${color.code}-${color.offset}`,
+  }))
+
   return (
     <svg width="0" height="0" style={{ width: 0, height: 0 }}>
       <defs>
         <linearGradient id={id} spreadMethod="pad" {...axisSettings}>
           {
-            colors.map((color, i) => (
-              <stop key={color} offset={`${unit * i}%`} stopColor={color} stopOpacity="1"/>
+            stops.map(s => (
+              <stop key={s.key} offset={s.offset} stopColor={s.stopColor} stopOpacity="1"/>
             ))
           }
         </linearGradient>
@@ -34,11 +39,14 @@ const LinearGradient = ({
 
 LinearGradient.propTypes = {
   id: PropTypes.string.isRequired,
-  colors: PropTypes.arrayOf(PropTypes.string).isRequired,
+  colors: PropTypes.arrayOf(PropTypes.shape({
+    code: PropTypes.string,
+    offset: PropTypes.number,
+  })).isRequired,
   axisDeg: PropTypes.number,
 }
 
-LinearGradient.defaultTypes = {
+LinearGradient.defaultProps = {
   axisDeg: 0,
 }
 

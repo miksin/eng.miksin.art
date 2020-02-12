@@ -7,11 +7,11 @@ class Vector2d {
   static fromPCS (length, radian) {
     const x = Math.cos(radian) * length
     const y = Math.sin(radian) * length
-    return Vector2d(x, y)
+    return new Vector2d(x, y)
   }
 
   clone () {
-    return Vector2d(this.x, this.y)
+    return new Vector2d(this.x, this.y)
   }
 
   scale (ratio) {

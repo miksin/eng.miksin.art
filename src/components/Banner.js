@@ -66,7 +66,13 @@ const Banner = ({
   return (
     <Wrapper style={styles}>
       <Container>
-        <LinearGradient id={gradientId} colors={[colors.lime, colors.lightBlue]} />
+        <LinearGradient
+          id={gradientId}
+          colors={[
+            { code: colors.lime, offset: 0 },
+            { code: colors.lightBlue, offset: 1 },
+          ]}
+        />
         <Logo />
         <PaddingWrapper paddingLeft={vw <= devices.mobile ? 0 : sizes.title}>
           <TypingDisplay
