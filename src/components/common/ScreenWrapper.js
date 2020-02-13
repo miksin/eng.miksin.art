@@ -13,6 +13,12 @@ const Wrapper = styled.div`
   position: fixed;
   z-index: 25;
   background: ${props => props.background};
+  transform: translateY(-100%);
+  transition: transform 0.25s ease;
+
+  &.active {
+    transform: translateY(0);
+  }
 `
 
 const ScreenWrapper = ({ children, isActive, onClick, bgColors }) => {
@@ -20,7 +26,7 @@ const ScreenWrapper = ({ children, isActive, onClick, bgColors }) => {
 
   return (
     <Wrapper
-      style={{ display: isActive ? 'block' : 'none' }}
+      className={isActive ? ['active'] : []}
       background={background}
       onClick={onClick}
     >

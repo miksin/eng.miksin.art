@@ -92,7 +92,7 @@ const Nav = ({
         }
       </Wrapper>
       <NavMenu
-        isActive={true}
+        isActive={isActive}
         links={links}
         onBlur={() => setIsActive(false)}
       />

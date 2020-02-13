@@ -13,13 +13,15 @@ const Btn = styled.button`
   outline: none;
   border-radius: 50%;
   border-width: 0;
-  box-shadow: 1px 1px 15px 0px rgba(0, 0, 0, .2);
+  ${props => props.isShadow ?
+    'box-shadow: 1px 1px 15px 0px rgba(0, 0, 0, .2);' : ''}
 `
 
-const FloatButton = ({
+const IconButton = ({
   children,
   color,
   size,
+  isShadow,
   onClick,
 }) => {
   return (
@@ -27,6 +29,7 @@ const FloatButton = ({
       bdColor={color}
       padding={size * 0.1}
       bgColor={color}
+      isShadow={isShadow}
       onClick={onClick}
     >
       {children}
@@ -34,19 +37,21 @@ const FloatButton = ({
   )
 }
 
-FloatButton.propTypes = {
+IconButton.propTypes = {
   children: PropTypes.node,
   color: PropTypes.string,
   size: PropTypes.number,
+  isShadow: PropTypes.bool,
   onClick: PropTypes.func,
 }
 
-FloatButton.defaultProps = {
+IconButton.defaultProps = {
   children: null,
   color: colors.lightBlue,
   size: 56,
+  isShadow: false,
   onClick: () => {},
 }
 
-export default FloatButton
+export default IconButton
 

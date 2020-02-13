@@ -2,10 +2,30 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import styled, { keyframes, css } from "styled-components"
+import { Power } from "react-feather"
 
 import ScreenWrapper from "./ScreenWrapper"
+import IconButton from "./IconButton"
 
 import { colors, sizes, devices } from "../../constants/common"
+
+const Wrapper = styled.div`
+  max-width: ${devices.mobile}px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+`
+
+const RestPadding = styled.div`
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 const expand = keyframes`
   from {
@@ -19,7 +39,6 @@ const expand = keyframes`
 const MenuList = styled.div`
   margin: auto;
   padding-top: ${sizes.navMobile}px;
-  max-width: ${devices.mobile}px;
   width: 100%;
   position: relative;
   display: flex;
@@ -37,6 +56,7 @@ const MenuList = styled.div`
 `
 
 const MenuItem = styled.div`
+  display: flex;
   width: 0%;
   overflow: hidden;
   &:hover {
@@ -45,9 +65,8 @@ const MenuItem = styled.div`
 `
 
 const MenuLink = styled(Link)`
-  display: block;
   padding: 8px 0;
-  width: 100%;
+  margin: auto;
   text-align: center;
   font-size: ${sizes.navMobile / 2}px;
   text-decoration: none;
@@ -64,17 +83,23 @@ const NavMenu = ({ isActive, links, onBlur }) => {
   return (
     <ScreenWrapper
       isActive={isActive}
-      onClick={onBlur}
     >
-      <MenuList delays={delays} className={isActive ? ['active']: []}>
-        {
-          links.map(l => (
-            <MenuItem key={l.name}>
-              <MenuLink to={l.path}>{l.name}</MenuLink>
-            </MenuItem>
-          ))
-        }
-      </MenuList>
+      <Wrapper>
+        <MenuList delays={delays} className={isActive ? ['active']: []}>
+          {
+            links.map(l => (
+              <MenuItem key={l.name}>
+                <MenuLink to={l.path}>{l.name}</MenuLink>
+              </MenuItem>
+            ))
+          }
+        </MenuList>
+        <RestPadding>
+          <IconButton color="transparent" onClick={onBlur}>
+            <Power color={colors.white} size={sizes.navButton} />
+          </IconButton>
+        </RestPadding>
+      </Wrapper>
     </ScreenWrapper>
   )
 }
