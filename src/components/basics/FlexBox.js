@@ -11,6 +11,7 @@ const Wrapper = styled.div`
 
 const FlexBox = ({
   children,
+  className,
   column,
   reverse,
   wrap,
@@ -23,6 +24,7 @@ const FlexBox = ({
 
   return (
     <Wrapper
+      className={className}
       dir={`${column ? 'column' : 'row'} ${reverse ? 'reverse' : ''}`} 
       wrap={wrap ? 'wrap' : 'nowrap'}
       ext={css`${ext}`}
@@ -34,6 +36,7 @@ const FlexBox = ({
 
 FlexBox.propTypes = {
   children: PropTypes.node,
+  className: PropTypes.string,
   column: PropTypes.bool,
   reverse: PropTypes.bool,
   wrap: PropTypes.bool,
@@ -42,6 +45,7 @@ FlexBox.propTypes = {
 
 FlexBox.defaultProps = {
   children: null,
+  className: '',
   column: false,
   reverse: false,
   wrap: false,

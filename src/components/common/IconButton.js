@@ -6,8 +6,6 @@ import { colors } from "../../constants/common"
 
 const Btn = styled.button`
   cursor: pointer;
-  width: ${props => props.size}px;
-  height: ${props => props.size}px;
   padding: ${props => props.padding}px;
   background: ${props => props.bgColor};
   outline: none;

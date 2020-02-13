@@ -4,27 +4,22 @@ import { Link } from "gatsby"
 import styled, { keyframes, css } from "styled-components"
 import { Power } from "react-feather"
 
+import FlexBox from "../basics/FlexBox"
 import ScreenWrapper from "./ScreenWrapper"
 import IconButton from "./IconButton"
 
 import { colors, sizes, devices } from "../../constants/common"
 
-const Wrapper = styled.div`
+const Wrapper = styled(FlexBox)`
   max-width: ${devices.mobile}px;
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin: auto;
 `
 
-const RestPadding = styled.div`
+const RestPadding = styled(FlexBox)`
   flex-grow: 1;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `
 
 const expand = keyframes`
@@ -36,14 +31,11 @@ const expand = keyframes`
   }
 `
 
-const MenuList = styled.div`
+const MenuList = styled(FlexBox)`
   margin: auto;
   padding-top: ${sizes.navMobile}px;
   width: 100%;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
   &.active > div {
     animation-name: ${expand};
@@ -55,7 +47,7 @@ const MenuList = styled.div`
   }
 `
 
-const MenuItem = styled.div`
+const MenuItem = styled(FlexBox)`
   display: flex;
   width: 0%;
   overflow: hidden;
@@ -84,8 +76,13 @@ const NavMenu = ({ isActive, links, onBlur }) => {
     <ScreenWrapper
       isActive={isActive}
     >
-      <Wrapper>
-        <MenuList delays={delays} className={isActive ? ['active']: []}>
+      <Wrapper column center>
+        <MenuList
+          delays={delays}
+          className={isActive ? 'active': ''}
+          column
+          center
+        >
           {
             links.map(l => (
               <MenuItem key={l.name}>
@@ -94,7 +91,7 @@ const NavMenu = ({ isActive, links, onBlur }) => {
             ))
           }
         </MenuList>
-        <RestPadding>
+        <RestPadding center>
           <IconButton color="transparent" onClick={onBlur}>
             <Power color={colors.white} size={sizes.navButton} />
           </IconButton>
