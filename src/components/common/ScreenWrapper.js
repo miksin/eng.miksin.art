@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import { colors } from "../../constants/common"
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -11,31 +12,34 @@ const Wrapper = styled.div`
   bottom: 0;
   position: fixed;
   z-index: 25;
+  background: ${props => props.background};
 `
 
-const ScreenWrapper = ({ children, isActive, onClick, bgColor }) => (
-  <Wrapper
-    style={{
-      display: isActive ? 'block' : 'none',
-      backgroundColor: bgColor,
-    }}
-    onClick={onClick}
-  >
-    {children}
-  </Wrapper>
-)
+const ScreenWrapper = ({ children, isActive, onClick, bgColors }) => {
+  const background = `linear-gradient(to left, ${bgColors[0]}, ${bgColors[1]})`
+
+  return (
+    <Wrapper
+      style={{ display: isActive ? 'block' : 'none' }}
+      background={background}
+      onClick={onClick}
+    >
+      {children}
+    </Wrapper>
+  )
+}
 
 ScreenWrapper.propTypes = {
   children: PropTypes.node.isRequired,
   isActive: PropTypes.bool,
   onClick: PropTypes.func,
-  bgColor: PropTypes.string,
+  bgColors: PropTypes.arrayOf(PropTypes.string),
 }
 
 ScreenWrapper.defaultProps = {
   isActive: false,
   onClick: () => {},
-  bgColor: 'rgba(255, 255, 255, .9)',
+  bgColors: [colors.lightBlue, colors.lightBlue],
 }
 
 export default ScreenWrapper

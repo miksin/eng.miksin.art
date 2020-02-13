@@ -4,11 +4,14 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 import ScreenWrapper from "./ScreenWrapper"
+import TypingDisplay from "../TypingDisplay"
 
-import { colors, sizes } from "../../constants/common"
+import { colors, sizes, devices } from "../../constants/common"
 
 const MenuList = styled.div`
+  margin: auto;
   padding-top: ${sizes.navMobile}px;
+  max-width: ${devices.mobile}px;
   width: 100%;
   position: relative;
   display: flex;
@@ -18,6 +21,9 @@ const MenuList = styled.div`
 
 const MenuItem = styled.div`
   width: 100%;
+  &:hover {
+    background: linear-gradient(to left, transparent, rgba(255, 255, 255, .2), transparent);
+  }
 `
 
 const MenuLink = styled(Link)`
@@ -27,7 +33,7 @@ const MenuLink = styled(Link)`
   text-align: center;
   font-size: ${sizes.navMobile / 2}px;
   text-decoration: none;
-  color: ${colors.grey};
+  color: ${colors.white};
 `
 
 const NavMenu = ({ isActive, links, onBlur }) => {
@@ -40,7 +46,15 @@ const NavMenu = ({ isActive, links, onBlur }) => {
         {
           links.map(l => (
             <MenuItem key={l.name}>
-              <MenuLink to={l.path}>{l.name}</MenuLink>
+              <MenuLink to={l.path}>
+                <TypingDisplay
+                  words={[l.name]}
+                  color={colors.white}
+                  size={sizes.navMobile / 2}
+                  cursor={''}
+                  typeInterval={150}
+                />
+              </MenuLink>
             </MenuItem>
           ))
         }
