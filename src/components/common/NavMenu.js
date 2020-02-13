@@ -10,18 +10,6 @@ import IconButton from "./IconButton"
 
 import { colors, sizes, devices } from "../../constants/common"
 
-const Wrapper = styled(FlexBox)`
-  max-width: ${devices.mobile}px;
-  width: 100%;
-  height: 100%;
-  margin: auto;
-`
-
-const RestPadding = styled(FlexBox)`
-  flex-grow: 1;
-  width: 100%;
-`
-
 const expand = keyframes`
   from {
     width: 0%;
@@ -41,6 +29,18 @@ const ready = keyframes`
   100% {
     transform: rotate(360deg) scale(1) translateY(0);
   }
+`
+
+const Wrapper = styled(FlexBox)`
+  max-width: ${devices.mobile}px;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+`
+
+const RestPadding = styled(FlexBox)`
+  flex-grow: 1;
+  width: 100%;
 `
 
 const MenuList = styled(FlexBox)`
