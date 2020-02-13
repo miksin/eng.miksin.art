@@ -17,6 +17,7 @@ const Btn = styled.button`
 
 const IconButton = ({
   children,
+  className,
   color,
   size,
   isShadow,
@@ -24,6 +25,7 @@ const IconButton = ({
 }) => {
   return (
     <Btn
+      className={className}
       bdColor={color}
       padding={size * 0.1}
       bgColor={color}
@@ -37,6 +39,7 @@ const IconButton = ({
 
 IconButton.propTypes = {
   children: PropTypes.node,
+  className: PropTypes.string,
   color: PropTypes.string,
   size: PropTypes.number,
   isShadow: PropTypes.bool,
@@ -45,6 +48,7 @@ IconButton.propTypes = {
 
 IconButton.defaultProps = {
   children: null,
+  className: '',
   color: colors.lightBlue,
   size: 56,
   isShadow: false,

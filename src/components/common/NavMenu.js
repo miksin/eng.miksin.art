@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import styled, { keyframes, css } from "styled-components"
-import { Power } from "react-feather"
+import { XCircle } from "react-feather"
 
 import FlexBox from "../basics/FlexBox"
 import ScreenWrapper from "./ScreenWrapper"
@@ -28,6 +28,18 @@ const expand = keyframes`
   }
   to {
     width: 100%;
+  }
+`
+
+const ready = keyframes`
+  0% {
+    transform: rotate(0deg) scale(1) translateY(0);
+  }
+  50% {
+    transform: rotate(180deg) scale(0.9) translateY(10%);
+  }
+  100% {
+    transform: rotate(360deg) scale(1) translateY(0);
   }
 `
 
@@ -66,6 +78,15 @@ const MenuLink = styled(Link)`
   white-space: nowrap;
 `
 
+const CloseButton = styled(IconButton)`
+  &.active {
+    animation-name: ${ready};
+    animation-duration: 1s;
+    animation-timing-function: cubic-bezier(0,.68,1,.59);
+    animation-fill-mode: forwards;
+  }
+`
+
 const NavMenu = ({ isActive, links, onBlur }) => {
   const delayCss = links
     .map((_, i) => `&:nth-child(${i+1}) { animation-delay: ${i * 0.25}s; }`)
@@ -92,9 +113,13 @@ const NavMenu = ({ isActive, links, onBlur }) => {
           }
         </MenuList>
         <RestPadding center>
-          <IconButton color="transparent" onClick={onBlur}>
-            <Power color={colors.white} size={sizes.navButton} />
-          </IconButton>
+          <CloseButton
+            className={isActive ? 'active' : ''}
+            color="transparent"
+            onClick={onBlur}
+          >
+            <XCircle color={colors.white} size={sizes.navButton} />
+          </CloseButton>
         </RestPadding>
       </Wrapper>
     </ScreenWrapper>
