@@ -1,20 +1,18 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
-import { Link } from "gatsby"
 import styled from "styled-components"
-import { Menu, X } from "react-feather"
+import { Menu } from "react-feather"
 
 import NavMenu from "./NavMenu"
+import IconButton from "./IconButton"
+import FlexBox from "../basics/FlexBox"
+import FlexPad from "../basics/FlexPad"
 
 import { colors, sizes, devices } from "../../constants/common"
 
-const Wrapper = styled.div`
+const Fixed = styled(FlexBox)`
   position: fixed;
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
   height: ${sizes.nav}px;
   background-color: rgba(255, 255, 255, .7);
   z-index: 20;
@@ -24,73 +22,45 @@ const Wrapper = styled.div`
   }
 `
 
-const NavLink = styled(Link)`
-  display: block;
-  text-decoration: none;
-  padding: 0 12px;
-  height: 100%;
-  display: flex;
-
-  @media screen and (max-width: ${devices.mobile}px) {
-    display: none;
-  }
-`
-
-const LinkName = styled.h1`
+const Wrapper = styled(FlexBox)`
   margin: auto;
-  font-size: ${props => props.size}px;
-  color: ${props => props.color};
+  width: 100%;
+  height: 100%;
+  max-width: ${devices.tablet}px;
 `
 
-const MenuButton = styled.div`
-  cursor: pointer;
+const MenuButton = styled(IconButton)`
   margin: auto 8px;
-  width: ${props => props.size}px;
-  height: ${props => props.size}px;
-  display: none;
+
+  width: ${sizes.navButton}px;
+  height: ${sizes.navButton}px;
 
   @media screen and (max-width: ${devices.mobile}px) {
-    display: block;
+    width: ${sizes.navButtonMobile}px;
+    height: ${sizes.navButtonMobile}px;
   }
 `
-
-const GrowPad = styled.div`
-  flex-grow: 1;
-  display: none;
-
-  @media screen and (max-width: ${devices.mobile}px) {
-    display: block;
-  }
-`
-
 const Nav = ({
   links,
-  color,
 }) => {
   const [isActive, setIsActive] = useState(false)
 
-  const fontSize = Math.max(sizes.nav / 3, 20)
-
   return (
     <>
-      <Wrapper>
-        <MenuButton
-          size={fontSize}
-          onClick={() => setIsActive(true)}
-        >
-          {isActive ? <X size={fontSize} /> : <Menu size={fontSize} />}
-        </MenuButton>
-        <GrowPad />
-        {
-          links.map(link => (
-            <NavLink key={link.name} to={link.path}>
-              <LinkName size={fontSize} color={color}>
-                {link.name}
-              </LinkName>
-            </NavLink>
-          ))
-        }
-      </Wrapper>
+      <Fixed center>
+        <Wrapper center>
+          <FlexPad />
+          <MenuButton
+            color="transparent"
+            onClick={() => setIsActive(true)}
+          >
+            <Menu
+              size="100%"
+              color={colors.lightBlue}
+            />
+          </MenuButton>
+        </Wrapper>
+      </Fixed>
       <NavMenu
         isActive={isActive}
         links={links}
@@ -105,12 +75,10 @@ Nav.propTypes = {
     name: PropTypes.string.isRequired,
     path: PropTypes.string.isRequired
   })),
-  color: PropTypes.string,
 }
 
 Nav.defaultProps = {
   links: [],
-  color: colors.grey
 }
 
 export default Nav

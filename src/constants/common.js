@@ -22,6 +22,7 @@ export const sizes = {
   nav: 72,
   navMobile: 54,
   navButton: 54,
+  navButtonMobile: 42,
   buttonPadding: {
     small: '4px 10px',
     normal: '6px 16px',
