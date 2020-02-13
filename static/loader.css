@@ -1,5 +1,5 @@
 #___loader {
-  background-color: #616161;
+  background-color: #03a9f4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -28,7 +28,7 @@
 }
 .typewriter .text {
   overflow: hidden;
-  border-left: 0 solid orange;
+  border-left: 0 solid #cddc39;
   margin-left: auto;
   margin-right: 0;
   text-transform: capitalize;
