@@ -1,12 +1,20 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
-import styled from "styled-components"
+import styled, { keyframes, css } from "styled-components"
 
 import ScreenWrapper from "./ScreenWrapper"
-import TypingDisplay from "../TypingDisplay"
 
 import { colors, sizes, devices } from "../../constants/common"
+
+const expand = keyframes`
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+`
 
 const MenuList = styled.div`
   margin: auto;
@@ -17,10 +25,20 @@ const MenuList = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  &.active > div {
+    animation-name: ${expand};
+    animation-duration: 1s;
+    animation-timing-function: steps(20, end);
+    animation-fill-mode: forwards;
+
+    ${props => props.delays}
+  }
 `
 
 const MenuItem = styled.div`
-  width: 100%;
+  width: 0%;
+  overflow: hidden;
   &:hover {
     background: linear-gradient(to left, transparent, rgba(255, 255, 255, .2), transparent);
   }
@@ -34,27 +52,25 @@ const MenuLink = styled(Link)`
   font-size: ${sizes.navMobile / 2}px;
   text-decoration: none;
   color: ${colors.white};
+  white-space: nowrap;
 `
 
 const NavMenu = ({ isActive, links, onBlur }) => {
+  const delayCss = links
+    .map((_, i) => `&:nth-child(${i+1}) { animation-delay: ${i * 0.25}s; }`)
+    .join(' ')
+  const delays = css`${delayCss}`
+
   return (
     <ScreenWrapper
       isActive={isActive}
       onClick={onBlur}
     >
-      <MenuList>
+      <MenuList delays={delays} className={isActive ? ['active']: []}>
         {
           links.map(l => (
             <MenuItem key={l.name}>
-              <MenuLink to={l.path}>
-                <TypingDisplay
-                  words={[l.name]}
-                  color={colors.white}
-                  size={sizes.navMobile / 2}
-                  cursor={''}
-                  typeInterval={150}
-                />
-              </MenuLink>
+              <MenuLink to={l.path}>{l.name}</MenuLink>
             </MenuItem>
           ))
         }
