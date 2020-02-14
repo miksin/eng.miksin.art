@@ -2,15 +2,13 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
+import BaseButton from "../basics/BaseButton"
 import { colors } from "../../constants/common"
 
-const Btn = styled.button`
-  cursor: pointer;
+const Btn = styled(BaseButton)`
   padding: ${props => props.padding}px;
   background: ${props => props.bgColor};
-  outline: none;
   border-radius: 50%;
-  border-width: 0;
   ${props => props.isShadow ?
     'box-shadow: 1px 1px 15px 0px rgba(0, 0, 0, .2);' : ''}
 `

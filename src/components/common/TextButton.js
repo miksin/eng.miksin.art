@@ -2,14 +2,13 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
+import BaseButton from "../basics/BaseButton"
 import { colors, sizes } from "../../constants/common"
 
-const Btn = styled.button`
-  cursor: pointer;
+const Btn = styled(BaseButton)`
   font-size: 1rem;
   color: ${props => props.textColor};
   background: ${props => props.bgColor};
-  outline: none;
   display: flex;
   flex-direction: ${props => props.flexDirection};
   justify-content: center;
