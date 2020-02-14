@@ -8,7 +8,7 @@ import {
   ChevronDown
 } from "react-feather"
 
-import { toDualColors } from "../helpers"
+import { toDualColors } from "../../helpers"
 
 const moves = {
   down: keyframes`

@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
-import EntryLink from "../components/EntryLink"
-import TypingDisplay from "../components/TypingDisplay"
-import LinearGradient from "./common/LinearGradient"
-import LogoSvg from "../images/logo-2.svg"
+import EntryLink from "./EntryLink"
+import TypingDisplay from "../common/TypingDisplay"
+import LinearGradient from "../common/LinearGradient"
+import LogoSvg from "../../images/logo-2.svg"
 
-import { sizes, devices, colors } from "../constants/home"
+import { sizes, devices, colors } from "../../constants/home"
 
 const Wrapper = styled.div`
   width: 100%;

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import Nav from "../components/common/Nav"
-import Banner from "../components/Banner"
+import Banner from "../components/home/Banner"
 import Footer from "../components/footer"
 import IntroCard from "../components/home/IntroCard"
 import ListPreview from "../components/home/ListPreview"
-import ScrollTitleWrapper from "../components/ScrollTitleWrapper"
+import ScrollTitleWrapper from "../components/home/ScrollTitleWrapper"
 
 import { scrollToAnchor, assignLanguages } from "../helpers"
 import { sizes, colors, about } from "../constants/home"
