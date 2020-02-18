@@ -1,6 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+
+import FlexPad from "../basics/FlexPad"
 import { colors } from "../../constants/common"
 
 const Wrapper = styled.div`
@@ -21,18 +23,7 @@ const Container = styled.div`
   margin: 0;
   padding: 12px;
   overflow: hidden;
-  background-color: ${props => props.color};
-`
-
-const CoverGradient = styled.div`
-  position: absolute;
-  width: calc(100% - 24px);
-  height: calc(100% - 24px);
-  left: 12px;
-  top: 12px;
-  right: 12px;
-  bottom: 12px;
-  background: linear-gradient(${colors.lime}, transparent, ${colors.grey});
+  background: linear-gradient(transparent, ${props => props.color});
 `
 
 const Title = styled.h4`
@@ -49,9 +40,9 @@ const PreviewCard = ({
   return (
     <Wrapper>
       <Container color={bgColor}>
+        <FlexPad />
         <Title color={textColor}>{frontmatter.title}</Title>
       </Container>
-      <CoverGradient />
     </Wrapper>
   )
 }
@@ -67,7 +58,7 @@ PreviewCard.propTypes = {
 }
 
 PreviewCard.defaultProps = {
-  bgColor: colors.indigo,
+  bgColor: colors.grey,
   textColor: colors.white,
 }
 
