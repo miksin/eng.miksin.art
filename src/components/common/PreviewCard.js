@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { colors } from "../../constants/common"
 
 const Wrapper = styled.div`
+  position: relative;
   width: 100%;
   height: 100%;
   padding: 12px;
@@ -23,6 +24,17 @@ const Container = styled.div`
   background-color: ${props => props.color};
 `
 
+const CoverGradient = styled.div`
+  position: absolute;
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
+  left: 12px;
+  top: 12px;
+  right: 12px;
+  bottom: 12px;
+  background: linear-gradient(${colors.lime}, transparent, ${colors.grey});
+`
+
 const Title = styled.h4`
   margin: auto;
   word-break: break-all;
@@ -39,6 +51,7 @@ const PreviewCard = ({
       <Container color={bgColor}>
         <Title color={textColor}>{frontmatter.title}</Title>
       </Container>
+      <CoverGradient />
     </Wrapper>
   )
 }
