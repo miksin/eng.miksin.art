@@ -131,5 +131,17 @@ module.exports = {
         }
       }
     },
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@src": "src",
+          "@components": "src/components",
+        },
+        extensions: [
+          "js",
+        ],
+      },
+    },
   ],
 }
