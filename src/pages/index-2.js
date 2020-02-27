@@ -79,14 +79,17 @@ const IndexPage = () => {
       <Nav links={links}/>
       <Banner
         styles={bannerStyles}
-        onEntry={() => scrollToAnchor('scroll-content', sizes.nav)}
+        onEntry={() => scrollToAnchor('scroll-block-1', sizes.nav)}
         words={{
           title: [title],
           subtitle: subtitles
         }}
       />
       <FlexBox column center>
-        <ResponsiveBlock id="scroll-block-1">
+        <ResponsiveBlock
+          id="scroll-block-1"
+          bgColors={colors.lightBlue}
+        >
           <IntroCard
             avatar={data.avatar.childImageSharp.fluid.src}
             contents={about[lang] || about.en}

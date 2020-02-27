@@ -17,6 +17,7 @@ const Wrapper = styled.div`
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+  background: #FFFFFF;
 
   @media screen and (max-width: ${devices.tablet}px) {
     flex-direction: column;
