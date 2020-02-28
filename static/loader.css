@@ -21,6 +21,10 @@
   -o-transition: opacity .75s ease-out;
   transition: opacity .75s ease-out;
 }
+body.pageLoaded #___loader {
+  opacity: 0;
+  pointer-events: none;
+}
 .typewriter {
   display: -webkit-box;
   display: -ms-flexbox;

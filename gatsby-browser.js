@@ -23,10 +23,9 @@ export const onClientEntry = async () => {
   const onloadPromise = new Promise((resolve) => {
     window.addEventListener('load', () => resolve())
   })
+
+  // Add `pageLoaded` class to body when page loaded at least 3 seconds ago
   await Promise.all([timeoutPromise, onloadPromise])
-  const loader = document.getElementById('___loader')
-  if (loader) {
-    loader.style.opacity = 0
-    loader.style.pointerEvents = 'none'
-  }
+  document.body.classList.add('pageLoaded')
 }
+/* eslint-enable no-undef */
