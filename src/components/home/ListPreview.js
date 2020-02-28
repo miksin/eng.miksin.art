@@ -4,7 +4,7 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 
 import PreviewCard from "../common/PreviewCard"
-import FixedAspectRatioBox from "../basics/FixedAspectRatioBox"
+import FixedAspectRatioBox from "../basic/FixedAspectRatioBox"
 
 import { colors, devices } from "../../constants/common"
 

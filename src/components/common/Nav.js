@@ -5,8 +5,8 @@ import { Menu } from "react-feather"
 
 import NavMenu from "./NavMenu"
 import IconButton from "./IconButton"
-import FlexBox from "../basics/FlexBox"
-import FlexPad from "../basics/FlexPad"
+import FlexBox from "../basic/FlexBox"
+import FlexPad from "../basic/FlexPad"
 
 import { colors, sizes, devices } from "../../constants/common"
 

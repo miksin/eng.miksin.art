@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
-import BaseButton from "../basics/BaseButton"
+import BaseButton from "../basic/BaseButton"
 import { colors } from "../../constants/common"
 
 const Btn = styled(BaseButton)`

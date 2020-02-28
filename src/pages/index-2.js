@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
-import FlexBox from "@components/basics/FlexBox"
+import FlexBox from "@components/basic/FlexBox"
 import Nav from "@components/common/Nav"
 import Banner from "@components/home/Banner"
 import Footer from "@components/footer"

@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
-import FlexBox from "../basics/FlexBox"
+import FlexBox from "../basic/FlexBox"
 import { toDualColors } from "../../helpers"
 import { devices, sizes, colors } from "../../constants/home"
 

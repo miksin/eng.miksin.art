@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import styled, { keyframes, css } from "styled-components"
 import { XCircle } from "react-feather"
 
-import FlexBox from "../basics/FlexBox"
+import FlexBox from "../basic/FlexBox"
 import ScreenWrapper from "./ScreenWrapper"
 import IconButton from "./IconButton"
 
