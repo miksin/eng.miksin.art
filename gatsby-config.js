@@ -137,6 +137,9 @@ module.exports = {
         alias: {
           "@src": "src",
           "@components": "src/components",
+          "@pages": "src/pages",
+          "@constants": "src/constants",
+          "@models": "src/models",
         },
         extensions: [
           "js",

@@ -9,14 +9,16 @@ const Wrapper = styled.div`
   ${props => props.ext}
 `
 
-const FlexBox = ({
-  children,
-  className,
-  column,
-  reverse,
-  wrap,
-  center,
-}) => {
+const FlexBox = (props) => {
+  const {
+    children,
+    className,
+    column,
+    reverse,
+    wrap,
+    center,
+  } = props
+
   const ext = `
     ${center ? 'justify-content: center;' : ''}
     ${center ? 'align-items: center;' : ''}
@@ -24,6 +26,7 @@ const FlexBox = ({
 
   return (
     <Wrapper
+      {...props}
       className={className}
       dir={`${column ? 'column' : 'row'} ${reverse ? 'reverse' : ''}`} 
       wrap={wrap ? 'wrap' : 'nowrap'}
