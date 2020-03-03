@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import ModelVector2d from "../../models/Vector2d"
+import ModelVector2d from "@models/Vector2d"
 
 const LinearGradient = ({
   id,

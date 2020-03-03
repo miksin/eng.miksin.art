@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import styled, { keyframes } from "styled-components"
 
-import ModelTypeWriter from "../../models/TypeWriter"
-import { colors } from "../../constants/common"
-import { toDualColors } from "../../helpers"
+import ModelTypeWriter from "@models/TypeWriter"
+import { colors } from "@constants/common"
+import { toDualColors } from "@src/helpers"
 
 const blink = keyframes`
   from, to {

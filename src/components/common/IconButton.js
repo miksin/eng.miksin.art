@@ -2,8 +2,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
-import BaseButton from "../basic/BaseButton"
-import { colors } from "../../constants/common"
+import BaseButton from "@components/basic/BaseButton"
+import { colors } from "@constants/common"
 
 const Btn = styled(BaseButton)`
   padding: ${props => props.padding}px;

@@ -3,12 +3,12 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { Menu } from "react-feather"
 
-import NavMenu from "./NavMenu"
-import IconButton from "./IconButton"
-import FlexBox from "../basic/FlexBox"
-import FlexPad from "../basic/FlexPad"
+import NavMenu from "@components/common/NavMenu"
+import IconButton from "@components/common/IconButton"
+import FlexBox from "@components/basic/FlexBox"
+import FlexPad from "@components/basic/FlexPad"
 
-import { colors, sizes, devices } from "../../constants/common"
+import { colors, sizes, devices } from "@constants/common"
 
 const Fixed = styled(FlexBox)`
   position: fixed;

@@ -4,11 +4,11 @@ import { Link } from "gatsby"
 import styled, { keyframes, css } from "styled-components"
 import { XCircle } from "react-feather"
 
-import FlexBox from "../basic/FlexBox"
-import ScreenWrapper from "./ScreenWrapper"
-import IconButton from "./IconButton"
+import FlexBox from "@components/basic/FlexBox"
+import ScreenWrapper from "@components/common/ScreenWrapper"
+import IconButton from "@components/common/IconButton"
 
-import { colors, sizes, devices } from "../../constants/common"
+import { colors, sizes, devices } from "@constants/common"
 
 const expand = keyframes`
   from {

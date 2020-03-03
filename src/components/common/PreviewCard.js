@@ -2,8 +2,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
-import FlexPad from "../basic/FlexPad"
-import { colors } from "../../constants/common"
+import FlexPad from "@components/basic/FlexPad"
+import { colors } from "@constants/common"
 
 const Wrapper = styled.div`
   position: relative;
