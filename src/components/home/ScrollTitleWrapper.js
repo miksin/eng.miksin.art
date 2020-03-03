@@ -3,10 +3,10 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import VisibilitySensor from "react-visibility-sensor"
 
-import TypingDisplay from "../common/TypingDisplay"
+import TypingDisplay from "@components/common/TypingDisplay"
 
-import { colors, sizes, devices } from "../../constants/home"
-import { toDualColors } from "../../helpers"
+import { colors, sizes, devices } from "@constants/home"
+import { toDualColors } from "@src/helpers"
 
 const Wrapper = styled.section`
   width: 100%;

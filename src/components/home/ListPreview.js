@@ -3,10 +3,10 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
-import PreviewCard from "../common/PreviewCard"
-import FixedAspectRatioBox from "../basic/FixedAspectRatioBox"
+import PreviewCard from "@components/common/PreviewCard"
+import FixedAspectRatioBox from "@components/basic/FixedAspectRatioBox"
 
-import { colors, devices } from "../../constants/common"
+import { colors, devices } from "@constants/common"
 
 const Wrapper = styled.div`
   width: 100%;

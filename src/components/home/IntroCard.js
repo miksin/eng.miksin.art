@@ -4,12 +4,10 @@ import styled from "styled-components"
 import { navigate } from "gatsby"
 import { ChevronRight } from "react-feather"
 
-import Avatar from "../common/Avatar"
-import TextButton from "../common/TextButton"
-
-import { sizes, devices, icons } from "../../constants/home"
-import { formatText } from "../../helpers"
-import { colors } from "../../constants/common"
+import Avatar from "@components/common/Avatar"
+import TextButton from "@components/common/TextButton"
+import { sizes, devices, icons, colors } from "@constants/home"
+import { formatText } from "@src/helpers"
 
 const Wrapper = styled.div`
   display: flex;

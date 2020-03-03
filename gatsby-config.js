@@ -140,6 +140,7 @@ module.exports = {
           "@pages": "src/pages",
           "@constants": "src/constants",
           "@models": "src/models",
+          "@images": "src/images",
         },
         extensions: [
           "js",
