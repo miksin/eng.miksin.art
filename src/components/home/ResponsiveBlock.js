@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
@@ -9,7 +9,7 @@ import { devices, sizes, colors } from "@constants/home"
 const Wrapper = styled(FlexBox)`
   margin: 0;
   width: 100%;
-  min-height: 100vh;
+  min-height: ${props => props.minHeight};
   padding 12px;
   padding-top: ${sizes.nav}px !important;
   background: linear-gradient(to right, ${props => props.bgColors[0]}, ${props => props.bgColors[1]});
@@ -27,11 +27,24 @@ const Inner = styled.div`
 `
 
 const ResponsiveBlock = ({ children, id, bgColors }) => {
+  const [vh, setVh] = useState(undefined)
+  useEffect(() => {
+    /* eslint-disable no-undef */
+    // set window height (prevent url bar problems in mobile)
+    if (window) {
+      setVh(window.innerHeight)
+    }
+    /* eslint-enable no-undef */
+  }, [])
+
+  const minHeight = vh ? `${vh - sizes.nav}px` : `calc(100vh - ${sizes.nav}px)`
+
   return (
     <Wrapper
       center
       id={id}
       bgColors={toDualColors(bgColors)}
+      minHeight={minHeight}
     >
       <Inner>{children}</Inner>
     </Wrapper>

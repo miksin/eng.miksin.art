@@ -51,7 +51,7 @@ const Logo = styled(LogoSvg)`
 const Banner = ({
   words: { subtitle },
   styles,
-  onEntry
+  onEntry,
 }) => {
   const [vw, setVw] = useState(undefined)
   useEffect(() => {
@@ -102,15 +102,15 @@ const Banner = ({
 Banner.propTypes = {
   words: PropTypes.shape({
     title: PropTypes.arrayOf(PropTypes.string).isRequired,
-    subtitle: PropTypes.arrayOf(PropTypes.string).isRequired
+    subtitle: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
   styles: PropTypes.object,
-  onEntry: PropTypes.func
+  onEntry: PropTypes.func,
 }
 
 Banner.defaultProps = {
   styles: {},
-  onEntry: () => {}
+  onEntry: () => {},
 }
 
 export default Banner

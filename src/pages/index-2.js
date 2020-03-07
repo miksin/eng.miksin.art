@@ -8,7 +8,7 @@ import Footer from "@components/footer"
 import IntroCard from "@components/home/IntroCard"
 import ListPreview from "@components/home/ListPreview"
 import ScrollTitleWrapper from "@components/home/ScrollTitleWrapper"
-import ResponsiveBlock from "@components/common/ResponsiveBlock"
+import ResponsiveBlock from "@components/home/ResponsiveBlock"
 
 import { scrollToAnchor, assignLanguages } from "@src/helpers"
 import { sizes, colors, about } from "@constants/home"
@@ -82,7 +82,7 @@ const IndexPage = () => {
         onEntry={() => scrollToAnchor('scroll-block-1', sizes.nav)}
         words={{
           title: [title],
-          subtitle: subtitles
+          subtitle: subtitles,
         }}
       />
       <FlexBox column center>
