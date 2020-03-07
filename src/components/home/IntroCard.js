@@ -4,33 +4,17 @@ import styled from "styled-components"
 import { navigate } from "gatsby"
 import { ChevronRight } from "react-feather"
 
+import FlexBox from "@components/basic/FlexBox"
 import Avatar from "@components/common/Avatar"
 import TextButton from "@components/common/TextButton"
 import { sizes, devices, icons, colors } from "@constants/home"
 import { formatText } from "@src/helpers"
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
+const Wrapper = styled(FlexBox)`
   background: #FFFFFF;
-
-  @media screen and (max-width: ${devices.tablet}px) {
-    flex-direction: column;
-  }
 `
 
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-
-  @media screen and (max-width: ${devices.tablet}px) {
-    align-items: center;
-  }
+const ContentWrapper = styled(FlexBox)`
 `
 
 const Content = styled.p`
@@ -59,14 +43,14 @@ const IntroCard = ({
   socialLinks,
 }) => {
   return (
-    <Wrapper>
+    <Wrapper column center>
       <Avatar
         src={avatar}
         size={200}
         alt={''}
         border={{ size: 0 }}
       />
-      <ContentWrapper>
+      <ContentWrapper column center>
         <LinkWraper>
           {
             socialLinks.map(l => {
