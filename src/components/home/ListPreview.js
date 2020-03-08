@@ -5,9 +5,10 @@ import { Link } from "gatsby"
 
 import PreviewCard from "@components/home/PreviewCard"
 
-import { colors, devices } from "@constants/common"
+import { colors, devices } from "@constants/home"
 
 const Wrapper = styled.div`
+  margin-bottom: 24px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -61,8 +62,6 @@ const ListPreview = ({
 ListPreview.propTypes = {
   articles: PropTypes.arrayOf(PropTypes.shape({
     path: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    fromNow: PropTypes.string.isRequired,
   })),
 }
 

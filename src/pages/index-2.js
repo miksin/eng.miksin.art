@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery, navigate } from "gatsby"
+import { ChevronRight } from "react-feather"
 
 import FlexBox from "@components/basic/FlexBox"
+import TextButton from "@components/common/TextButton"
 import Nav from "@components/common/Nav"
 import Banner from "@components/home/Banner"
 import Footer from "@components/footer"
 import IntroCard from "@components/home/IntroCard"
 import ListPreview from "@components/home/ListPreview"
+import PlayListPreview from "@components/home/PlayListPreview"
 import ResponsiveBlock from "@components/home/ResponsiveBlock"
 
 import { scrollToAnchor, assignLanguages } from "@src/helpers"
@@ -116,11 +119,21 @@ const IndexPage = () => {
           }}
           onEntry={() => scrollToAnchor('scroll-block-3', sizes.nav)}
         >
-          <ListPreview articles={blogArticles.map(frontmatter => ({
-            ...frontmatter,
-            thumbnailSrc: frontmatter.featuredImage ? frontmatter.featuredImage.childImageSharp.fluid.src : null,
-            thumbnailAlt: 'blog',
-          }))} />
+          <FlexBox column center>
+            <ListPreview articles={blogArticles.map(frontmatter => ({
+              ...frontmatter,
+              thumbnailSrc: frontmatter.featuredImage ? frontmatter.featuredImage.childImageSharp.fluid.src : null,
+              thumbnailAlt: 'blog',
+            }))} />
+            <TextButton
+              icon={{ Element: ChevronRight }}
+              text={'Blog'}
+              color={colors.indigo}
+              isOutlined
+              isRounded
+              onClick={() => navigate('/blog')}
+            />
+          </FlexBox>
         </ResponsiveBlock>
         <ResponsiveBlock
           id="scroll-block-3"
@@ -132,6 +145,7 @@ const IndexPage = () => {
             size: blockTitleSize,
           }}
         >
+          <PlayListPreview articles={galleryArticles} />
         </ResponsiveBlock>
       </FlexBox>
       <Footer
