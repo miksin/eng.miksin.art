@@ -1,24 +1,12 @@
-import React from "react"
+import React, { useState, useEffect, useRef } from "react"
 import PropTypes from "prop-types"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 // https://css-tricks.com/aspect-ratio-boxes/
 const Wrapper = styled.div`
-  position: relative;
-
-  &:before {
-    content: "";
-    width: 1px;
-    margin-left: -1px;
-    float: left;
-    height: 0;
-    padding-top: ${props => props.ratio * 100}%;
-  }
-  &:after { /* to clear float */
-    content: "";
-    display: table;
-    clear: both;
-}
+  width: 100%;
+  min-height: ${props => props.minHeight}px;
+  ${props => props.extCss}
 `
 
 const Container = styled.div`
@@ -32,9 +20,40 @@ const Container = styled.div`
 `
 
 const FixedAspectRatioBox = ({ ratio, children }) => {
+  const extCss = css`
+    position: relative;
+    &:before {
+      content: "";
+      width: 1px;
+      margin-left: -1px;
+      float: left;
+      height: 0;
+      padding-top: ${ratio * 100}%;
+    }
+    &:after { /* to clear float */
+      content: "";
+      display: table;
+      clear: both;
+    }
+  `
+
+  const wrapperRef = useRef(null)
+  const [cw, setCw] = useState(0)
+  const [isStatic, setIsStatic] = useState(true)
+  useEffect(() => {
+    if (wrapperRef.current) {
+      setCw(wrapperRef.current.clientWidth)
+      setIsStatic(false)
+    }
+  }, [])
+
   return (
-    <Wrapper ratio={ratio}>
-      <Container>{children}</Container>
+    <Wrapper
+      ref={wrapperRef}
+      minHeight={cw * ratio}
+      extCss={isStatic ? extCss : css``}
+    >
+      {isStatic ? <Container>{children}</Container> : children}
     </Wrapper>
   )
 }

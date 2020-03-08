@@ -55,7 +55,7 @@ Avatar.propTypes = {
   border: PropTypes.shape({
     size: PropTypes.number,
     color: PropTypes.string,
-  })
+  }),
 }
 
 Avatar.defaultProps = {

@@ -20,7 +20,7 @@ const IndexPage = () => {
         ...SiteMetaFragment
       }
 
-      avatar: file(relativePath: {eq: "miksin-avatar.jpeg"}) {
+      avatar: file(relativePath: {eq: "miksin-avatar.jpg"}) {
         childImageSharp {
           fluid {
             src

@@ -19,7 +19,7 @@ const Wrapper = styled(FlexBox)`
   }
 `
 
-const Inner = styled.div`
+const Inner = styled(FlexBox)`
   margin: 0 auto;
   width: 100%;
   max-width: ${devices.tablet}px;
@@ -46,7 +46,7 @@ const ResponsiveBlock = ({ children, id, bgColors }) => {
       bgColors={toDualColors(bgColors)}
       minHeight={minHeight}
     >
-      <Inner>{children}</Inner>
+      <Inner column center>{children}</Inner>
     </Wrapper>
   )
 }
