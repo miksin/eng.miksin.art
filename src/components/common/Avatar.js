@@ -15,7 +15,6 @@ const Wrapper = styled.div`
   border-width: ${props => props.border.size}px;
   border-color: ${props => props.border.color};
   border-radius: ${props => props.borderRadius};
-  margin: 12px;
 `
 
 const Img = styled.img`

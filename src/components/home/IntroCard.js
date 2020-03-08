@@ -11,13 +11,17 @@ import { devices, sizes, icons, colors } from "@constants/home"
 import { formatText } from "@src/helpers"
 
 const Wrapper = styled.div`
+  position: relative;
   max-width: ${sizes.introCardMaxSize}px;
   width: 100%;
+  padding-top: ${props => props.paddingTop}px;
 `
 
 const AvatarWrapper = styled(FlexBox)`
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
-  transform: translateY(${props => props.offsetY}px);
 `
 
 const ContentWrapper = styled(FlexBox)`
@@ -59,16 +63,7 @@ const IntroCard = ({
   socialLinks,
 }) => {
   return (
-    <Wrapper column center>
-      <AvatarWrapper center offsetY={sizes.introCardAvatarSize / 2}>
-        <Avatar
-          src={avatar}
-          size={sizes.introCardAvatarSize}
-          alt="avatar"
-          mode={'circle'}
-          border={{ size: 2, color: colors.white }}
-        />
-      </AvatarWrapper>
+    <Wrapper column center paddingTop={sizes.introCardAvatarSize / 2}>
       <ContentWrapper column center paddingTop={sizes.introCardAvatarSize / 2}>
         <LinkWraper>
           {
@@ -100,6 +95,15 @@ const IntroCard = ({
           onClick={() => navigate('/about')}
         />
       </ContentWrapper>
+      <AvatarWrapper center>
+        <Avatar
+          src={avatar}
+          size={sizes.introCardAvatarSize}
+          alt="avatar"
+          mode={'circle'}
+          border={{ size: 2, color: colors.white }}
+        />
+      </AvatarWrapper>
     </Wrapper>
   )
 }

@@ -4,6 +4,7 @@ import styled, { css } from "styled-components"
 
 // https://css-tricks.com/aspect-ratio-boxes/
 const Wrapper = styled.div`
+  position: relative;
   width: 100%;
   min-height: ${props => props.minHeight}px;
   ${props => props.extCss}
@@ -21,7 +22,6 @@ const Container = styled.div`
 
 const FixedAspectRatioBox = ({ ratio, children }) => {
   const extCss = css`
-    position: relative;
     &:before {
       content: "";
       width: 1px;

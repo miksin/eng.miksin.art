@@ -69,7 +69,7 @@ const Banner = ({
         <LinearGradient
           id={gradientId}
           colors={[
-            { code: colors.lime, offset: 0 },
+            { code: colors.lightBlue, offset: 0 },
             { code: colors.lightBlue, offset: 1 },
           ]}
         />
@@ -82,7 +82,7 @@ const Banner = ({
             animation={'roll'}
             typeInterval={100}
             delInterval={60}
-            color={[colors.lightBlue, colors.lime]}
+            color={[colors.lightBlue, colors.lightBlue]}
           />
         </PaddingWrapper>
       </Container>
@@ -92,7 +92,7 @@ const Banner = ({
           size={sizes.entryLink}
           onClick={onEntry}
           shadow
-          color={[colors.lightBlue, colors.lightGreen]}
+          color={[colors.lightBlue, colors.indigo]}
         />
       </LinkWrapper>
     </Wrapper>

@@ -18,6 +18,7 @@ export const sizes = {
   nav: 72,
   introCardMaxSize: 600,
   introCardAvatarSize: 130,
+  altTextSize: 24,
 }
 
 export const about = {

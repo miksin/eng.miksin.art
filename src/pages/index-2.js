@@ -89,6 +89,13 @@ const IndexPage = () => {
         <ResponsiveBlock
           id="scroll-block-1"
           bgColors={colors.lightBlue}
+          title={{
+            show: true,
+            text: 'ABOUT',
+            color: colors.white,
+            size: sizes.scrollTitle,
+          }}
+          onEntry={() => scrollToAnchor('scroll-block-2', sizes.nav)}
         >
           <IntroCard
             avatar={data.avatar.childImageSharp.fluid.src}
@@ -96,34 +103,35 @@ const IndexPage = () => {
             socialLinks={socialLinks}
           />
         </ResponsiveBlock>
+        <ResponsiveBlock
+          id="scroll-block-2"
+          bgColors={colors.white}
+          title={{
+            show: true,
+            text: 'Recent Posts',
+            color: colors.indigo,
+            size: sizes.scrollTitle,
+          }}
+          onEntry={() => scrollToAnchor('scroll-block-3', sizes.nav)}
+        >
+          <ListPreview articles={blogArticles.map(frontmatter => ({
+            ...frontmatter,
+            thumbnailSrc: frontmatter.featuredImage ? frontmatter.featuredImage.childImageSharp.fluid.src : null,
+            thumbnailAlt: 'blog',
+          }))} />
+        </ResponsiveBlock>
+        <ResponsiveBlock
+          id="scroll-block-3"
+          bgColors={colors.lightBlue}
+          title={{
+            show: true,
+            text: 'Gallery',
+            color: colors.white,
+            size: sizes.scrollTitle,
+          }}
+        >
+        </ResponsiveBlock>
       </FlexBox>
-      <div id="scroll-content">
-        <ScrollTitleWrapper
-          title="About"
-          direction={'left'}
-          bgColor={['#80cbc4', colors.cyan]}
-        >
-          <IntroCard
-            avatar={data.avatar.childImageSharp.fluid.src}
-            contents={about[lang] || about.en}
-            socialLinks={socialLinks}
-          />
-        </ScrollTitleWrapper>
-        <ScrollTitleWrapper
-          title="Blog"
-          direction={'right'}
-          bgColor={[colors.teal, '#80cbc4']}
-        >
-          <ListPreview articles={blogArticles} />
-        </ScrollTitleWrapper>
-        <ScrollTitleWrapper
-          title="Gallery"
-          direction={'left'}
-          bgColor={['#81d4fa', colors.lightBlue]}
-        >
-          <ListPreview articles={galleryArticles} />
-        </ScrollTitleWrapper>
-      </div>
       <Footer
         siteAuthor={author}
       />

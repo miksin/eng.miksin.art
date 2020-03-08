@@ -36,6 +36,7 @@ export const colors = {
   white: '#FFFFFF',
   black: '#000000',
   grey: '#424242',
+  lightGrey: '#eeeeee',
   red: '#f44336',
   pink: '#e91e63',
   indigo: '#3f51b5',
@@ -52,7 +53,7 @@ export const colors = {
   orange: '#ff9800',
   deepOrange: '#ff5722',
   brown: '#795548',
-  lime: '#cddc39'
+  lime: '#cddc39',
 }
 
 export const languagues = [

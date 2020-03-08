@@ -3,8 +3,7 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
-import PreviewCard from "@components/common/PreviewCard"
-import FixedAspectRatioBox from "@components/basic/FixedAspectRatioBox"
+import PreviewCard from "@components/home/PreviewCard"
 
 import { colors, devices } from "@constants/common"
 
@@ -51,9 +50,7 @@ const ListPreview = ({
       {
         articles.map((article) => (
           <LinkItem key={article.path} to={article.path}>
-            <FixedAspectRatioBox>
-              <PreviewCard frontmatter={article} />
-            </FixedAspectRatioBox>
+            <PreviewCard {...article} />
           </LinkItem>
         ))
       }
