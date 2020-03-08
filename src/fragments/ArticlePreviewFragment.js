@@ -9,7 +9,7 @@ export const ArticlePreviewFragment = graphql`
           title
           excerpt
           fromNow: date(fromNow: true)
-          date: date(formatString: "YYYY-MM-DD")
+          date: date(formatString: "MMM DD, YYYY")
           featuredImage {
             childImageSharp {
               fluid (maxWidth: 300) {

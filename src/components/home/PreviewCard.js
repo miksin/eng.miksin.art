@@ -3,20 +3,23 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import FlexBox from "@components/basic/FlexBox"
+import FlexPad from "@components/basic/FlexPad"
 import FixedAspectRatioBox from "@components/basic/FixedAspectRatioBox"
 import { colors, sizes } from "@constants/home"
 
 const Wrapper = styled.div`
   width: 100%;
+  height: 100%;
   padding: 12px;
 `
 
 const Card = styled(FlexBox)`
   width: 100%;
+  height: 100%;
   padding: 8px;
   background: #FFF;
   border-radius: 3px;
-  box-shadow: 1px 1px 7px 3px rgba(0, 0, 0, .3);
+  box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, .3);
 `
 
 const ThumbnailAlt = styled(FlexBox)`
@@ -33,7 +36,12 @@ const ThumbnailAlt = styled(FlexBox)`
   background: linear-gradient(45deg, ${props => props.bgColors[0]}, ${props => props.bgColors[1]});
 `
 
-const Title = styled.h3`
+const Content = styled(FlexBox)`
+  padding: 0 8px;
+  flex-grow: 1;
+`
+
+const Title = styled.h4`
   margin: 8px 0;
   word-break: break-all;
 `
@@ -74,11 +82,14 @@ const PreviewCard = ({
             </ThumbnailAlt>
           }
         </FixedAspectRatioBox>
-        <Title>{title}</Title>
+        <Content column center>
+          <Title>{title}</Title>
           <Excerpt>{excerpt} ...</Excerpt>
-        <Footer>
-          <DateInspector>{date}</DateInspector>
-        </Footer>
+          <FlexPad />
+          <Footer>
+            <DateInspector>{date}</DateInspector>
+          </Footer>
+        </Content>
       </Card>
     </Wrapper>
   )

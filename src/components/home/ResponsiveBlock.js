@@ -16,6 +16,7 @@ const Wrapper = styled(FlexBox)`
   min-height: ${props => props.minHeight};
   padding 12px;
   padding-top: ${sizes.nav}px !important;
+  overflow: hidden;
   background: linear-gradient(to right, ${props => props.bgColors[0]}, ${props => props.bgColors[1]});
 
   @media screen and (max-width: ${devices.mobile}px) {
@@ -31,6 +32,18 @@ const Inner = styled(FlexBox)`
 `
 
 const Title = styled(FlexBox)`
+  margin: 16px auto;
+
+  &:after {
+    content: " ";
+    display: block;
+    width: 55px;
+    height: 1px;
+    margin-top: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    background: ${props => props.color};
+  }
 `
 
 const TransparentWrapper = styled.div`
@@ -66,7 +79,7 @@ const ResponsiveBlock = ({ children, id, bgColors, title, onEntry }) => {
         minHeight={minHeight}
       >
         {
-          title.show ? <Title>
+          title.show ? <Title column color={title.color}>
             <TypingDisplay
               words={visible ? [title.text] : []}
               color={title.color}

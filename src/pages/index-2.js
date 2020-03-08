@@ -7,11 +7,10 @@ import Banner from "@components/home/Banner"
 import Footer from "@components/footer"
 import IntroCard from "@components/home/IntroCard"
 import ListPreview from "@components/home/ListPreview"
-import ScrollTitleWrapper from "@components/home/ScrollTitleWrapper"
 import ResponsiveBlock from "@components/home/ResponsiveBlock"
 
 import { scrollToAnchor, assignLanguages } from "@src/helpers"
-import { sizes, colors, about } from "@constants/home"
+import { devices, sizes, colors, about } from "@constants/home"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -46,6 +45,7 @@ const IndexPage = () => {
     }
   `)
 
+  const [vw, setVw] = useState(undefined)
   const [vh, setVh] = useState(undefined)
   const [lang, setLang] = useState('en')
   useEffect(() => {
@@ -54,6 +54,7 @@ const IndexPage = () => {
     // set window height (prevent url bar problems in mobile)
     if (window) {
       setLang(assignLanguages())
+      setVw(window.innerWidth)
       setVh(window.innerHeight)
     }
 
@@ -73,6 +74,7 @@ const IndexPage = () => {
 
   const blogArticles = data.blogs.edges.map(edge => edge.node.frontmatter)
   const galleryArticles = data.gallery.edges.map(edge => edge.node.frontmatter)
+  const blockTitleSize = vw && vw <= devices.mobile ? sizes.scrollTitleMobile : sizes.scrollTitle
 
   return (
     <>
@@ -93,7 +95,7 @@ const IndexPage = () => {
             show: true,
             text: 'ABOUT',
             color: colors.white,
-            size: sizes.scrollTitle,
+            size: blockTitleSize,
           }}
           onEntry={() => scrollToAnchor('scroll-block-2', sizes.nav)}
         >
@@ -109,8 +111,8 @@ const IndexPage = () => {
           title={{
             show: true,
             text: 'Recent Posts',
-            color: colors.indigo,
-            size: sizes.scrollTitle,
+            color: colors.lightBlue,
+            size: blockTitleSize,
           }}
           onEntry={() => scrollToAnchor('scroll-block-3', sizes.nav)}
         >
@@ -127,7 +129,7 @@ const IndexPage = () => {
             show: true,
             text: 'Gallery',
             color: colors.white,
-            size: sizes.scrollTitle,
+            size: blockTitleSize,
           }}
         >
         </ResponsiveBlock>
