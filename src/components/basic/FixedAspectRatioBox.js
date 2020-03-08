@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   position: relative;
   width: 100%;
   min-height: ${props => props.minHeight}px;
+  ${props => props.overflow ? null : `overflow: hidden;`}
   ${props => props.extCss}
 `
 
@@ -20,7 +21,7 @@ const Container = styled.div`
   bottom: 0;
 `
 
-const FixedAspectRatioBox = ({ ratio, children }) => {
+const FixedAspectRatioBox = ({ ratio, overflow, children }) => {
   const extCss = css`
     &:before {
       content: "";
@@ -51,6 +52,7 @@ const FixedAspectRatioBox = ({ ratio, children }) => {
     <Wrapper
       ref={wrapperRef}
       minHeight={cw * ratio}
+      overflow={overflow}
       extCss={isStatic ? extCss : css``}
     >
       {isStatic ? <Container>{children}</Container> : children}
@@ -60,11 +62,13 @@ const FixedAspectRatioBox = ({ ratio, children }) => {
 
 FixedAspectRatioBox.propTypes = {
   ratio: PropTypes.number,
+  overflow: PropTypes.bool,
   children: PropTypes.node,
 }
 
 FixedAspectRatioBox.defaultProps = {
   ratio: 1,
+  overflow: false,
   children: null,
 }
 
