@@ -3,22 +3,22 @@ path: /blog/2019-12-27-shell-array-and-loop
 title: Array and Loop in Shell Script
 date: 2019-12-27
 excerpt: 在shell script中，我們可以像其他程式語言一樣使用array，也可以使用for loop來走訪array的每個元素。
-featuredImage: bash-logo.png
+featuredImage: ../images/bash.png
 category:
-- notes
+  - notes
 tags:
-- shell
-- programming
+  - shell
+  - programming
 ---
 
-在shell script中，我們可以像其他程式語言一樣使用array，也可以使用for loop來走訪array的每個元素。
+在 shell script 中，我們可以像其他程式語言一樣使用 array，也可以使用 for loop 來走訪 array 的每個元素。
 
-## Array的基本用法
+## Array 的基本用法
 
 ### 宣告與存取
 
-shell中array的宣告與存取元素並沒有什麼特別之處，
-值得注意的是在shell中存取變數時要加上`${}`，
+shell 中 array 的宣告與存取元素並沒有什麼特別之處，
+值得注意的是在 shell 中存取變數時要加上`${}`，
 例如：
 
 ```sh
@@ -26,15 +26,16 @@ animals=(cat dog bird tiger lion)
 echo ${animals[2]} # bird
 ```
 
-而當我們直接存取宣告的變數時，會是存取到array的第一個元素：
+而當我們直接存取宣告的變數時，會是存取到 array 的第一個元素：
 
 ```sh
 echo $animals # cat
 echo ${animals[0]} # cat
 ```
 
-若想要存取array中的所有內容的話，可以使用`@`或是`*`，
+若想要存取 array 中的所有內容的話，可以使用`@`或是`*`，
 但一般來說建議寫`@`，理由後面會說明：
+
 ```sh
 echo ${animals[@]} # cat dog bird tiger lion
 echo ${animals[*]} # cat dog bird tiger lion
@@ -42,9 +43,9 @@ echo ${animals[*]} # cat dog bird tiger lion
 
 ### 範圍存取
 
-如果有寫過python應該可以明白，
-在python中對list選擇範圍是很容易的事，
-其實在shell中也是能用類似的語法簡單做到的：
+如果有寫過 python 應該可以明白，
+在 python 中對 list 選擇範圍是很容易的事，
+其實在 shell 中也是能用類似的語法簡單做到的：
 
 ```sh
 echo ${animals[@]:1} # dog bird tiger lion
@@ -56,22 +57,23 @@ echo ${animals[1]:1:3} # og
 
 ### 計算長度
 
-計算array的數量非常簡單，在變數名前面加上`#`即可，這個方法在字串上也是可以用的：
+計算 array 的數量非常簡單，在變數名前面加上`#`即可，這個方法在字串上也是可以用的：
 
 ```sh
 echo ${#array[@]} # 5
 echo ${#array[0]} # 3
 ```
 
-## 在for loop使用array
+## 在 for loop 使用 array
 
-結合剛剛提過的存取元素的語法就可以簡單在for loop中使用：
+結合剛剛提過的存取元素的語法就可以簡單在 for loop 中使用：
 
 ```sh
 for animal in ${animals[@]}; do
     echo $animal
 done
 ```
+
 ```sh
 # result
 cat
@@ -81,8 +83,8 @@ tiger
 lion
 ```
 
-但是這麼寫會有一個重大缺陷，當array元素出現空白等元素時，
-會造成結果不如預期，例如我們稍微換一下array中的元素：
+但是這麼寫會有一個重大缺陷，當 array 元素出現空白等元素時，
+會造成結果不如預期，例如我們稍微換一下 array 中的元素：
 
 ```sh
 animals=("cat" "dog" "bird tiger")

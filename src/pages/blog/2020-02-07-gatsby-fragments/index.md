@@ -3,7 +3,7 @@ path: /blog/2020-02-07-gatsby-fragments
 title: 在Gatsby.js中使用fragments讓程式碼更簡潔
 date: 2020-02-07
 excerpt: 使用 Gatsby.js 來產生靜態網頁非常方便，它的賣點就是可以透過 graphQL 以動態網頁的邏輯來撰寫程式碼。
-featuredImage:
+featuredImage: ../images/gatsby.png
 category:
   - notes
 tags:
