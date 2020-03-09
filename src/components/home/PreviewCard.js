@@ -22,6 +22,9 @@ const Card = styled(FlexBox)`
   box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, .3);
 `
 
+const Thumbnail = styled.img`
+`
+
 const ThumbnailAlt = styled(FlexBox)`
   position: absolute;
   top: 0;
@@ -72,7 +75,10 @@ const PreviewCard = ({
       <Card column center>
         <FixedAspectRatioBox ratio={9 / 16}>
           {
-            thumbnailSrc ? <div></div> :
+            thumbnailSrc ? <Thumbnail
+              src={thumbnailSrc}
+              alt={thumbnailAlt}
+            /> :
             <ThumbnailAlt center
               size={sizes.altTextSize}
               color={colors.white}
