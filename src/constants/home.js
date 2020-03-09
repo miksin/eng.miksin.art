@@ -32,8 +32,8 @@ export const about = {
   Intrested in painting, games and karaoke. And sometimes sharing creations on SNS, such as Twitter and Instagram.
   `,
   'ja': `
-  台湾出身、東京にソフトウェアエンジニアとして働いている。
-  web中心に様々なスキルを身につける。フロントエンド専攻ですが、バックエンド、データベース、及びクラウドなどことも渉猟した。得意分野はJavascript(React/Vue)、HTML、CSS/SCSSなど。
-  趣味は絵描く、ゲーム、カラオケなど。たまにTwitter、InstagramなどSNSで自分の作品をシェアする。
+  台湾出身、東京にソフトウェアエンジニアとして働いています。
+  web中心に様々なスキルを身につけて、フロントエンド専攻ですが、バックエンド、データベース、及びクラウドなど技術も渉猟します。得意分野はJavascript(React/Vue)、HTML、CSS/SCSSなど。
+  趣味は絵描く、ゲーム、カラオケなど。たまにTwitter、InstagramなどSNSで自分の作品をシェアします。
   `,
 }
