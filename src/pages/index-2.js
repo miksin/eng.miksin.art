@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { graphql, useStaticQuery, navigate } from "gatsby"
 import { ChevronRight } from "react-feather"
+import _ from "lodash"
 
 import FlexBox from "@components/basic/FlexBox"
 import TextButton from "@components/common/TextButton"
@@ -45,6 +46,14 @@ const IndexPage = () => {
       ) {
         ...ArticlePreviewFragment
       }
+
+      nonSenseImages: allFile(filter: {extension: {regex: "/(jpg)|(png)|(jpeg)/"}, relativeDirectory: {eq: "nonsense"}}) {
+        edges {
+          node {
+            ...FeaturedImageFragment
+          }
+        }
+      }
     }
   `)
 
@@ -77,6 +86,7 @@ const IndexPage = () => {
 
   const blogArticles = data.blogs.edges.map(edge => edge.node.frontmatter)
   const galleryArticles = data.gallery.edges.map(edge => edge.node.frontmatter)
+  const nonSenseImages = _.shuffle(data.nonSenseImages.edges.map(edge => edge.node.childImageSharp.fluid.src))
   const blockTitleSize = vw && vw <= devices.mobile ? sizes.scrollTitleMobile : sizes.scrollTitle
 
   return (
@@ -120,9 +130,9 @@ const IndexPage = () => {
           onEntry={() => scrollToAnchor('scroll-block-3', sizes.nav)}
         >
           <FlexBox column center>
-            <ListPreview articles={blogArticles.map(frontmatter => ({
+            <ListPreview articles={blogArticles.map((frontmatter, index) => ({
               ...frontmatter,
-              thumbnailSrc: frontmatter.featuredImage ? frontmatter.featuredImage.childImageSharp.fluid.src : null,
+              thumbnailSrc: nonSenseImages[index % nonSenseImages.length],
               thumbnailAlt: 'blog',
             }))} />
             <TextButton

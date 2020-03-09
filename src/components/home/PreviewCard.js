@@ -24,6 +24,8 @@ const Card = styled(FlexBox)`
 
 const Thumbnail = styled.img`
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 `
 
 const ThumbnailAlt = styled(FlexBox)`
@@ -74,7 +76,7 @@ const PreviewCard = ({
   return (
     <Wrapper>
       <Card column center>
-        <FixedAspectRatioBox ratio={9 / 16}>
+        <FixedAspectRatioBox ratio={210 / 297}>
           {
             thumbnailSrc ? <Thumbnail
               src={thumbnailSrc}
