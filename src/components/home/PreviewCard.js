@@ -23,6 +23,7 @@ const Card = styled(FlexBox)`
 `
 
 const Thumbnail = styled.img`
+  width: 100%;
 `
 
 const ThumbnailAlt = styled(FlexBox)`
