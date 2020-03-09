@@ -3,7 +3,7 @@ path: /blog/2020-02-10-ruby-solargraph
 title: 在VSCode安裝Ruby Solargraph開發Rails專案
 date: 2020-02-10
 excerpt: 對於一個語言或框架的初學者來說，有一個強大的編輯器會要效率很多。這裏推薦給像我一樣開發 Rails 專案的新手們一個 VSCode 的 extension Ruby Solargraph
-featuredImage:
+featuredImage: ../images/rails.png
 category:
   - notes
 tags:
