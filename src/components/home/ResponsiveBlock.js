@@ -29,6 +29,14 @@ const Inner = styled(FlexBox)`
   width: 100%;
   max-width: ${devices.tablet}px;
   height: 100%;
+  transition: all 0.75s ease-out 0.25s;
+  opacity: 0;
+  transform: translateY(-30%);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 `
 
 const Title = styled(FlexBox)`
@@ -51,7 +59,13 @@ const TransparentWrapper = styled.div`
   ${props => props.visible ? null : `pointer-event: none;`}
 `
 
-const ResponsiveBlock = ({ children, id, bgColors, title, onEntry }) => {
+const ResponsiveBlock = ({
+  children,
+  id,
+  bgColors,
+  title,
+  onEntry,
+}) => {
   const [vh, setVh] = useState(undefined)
   useEffect(() => {
     /* eslint-disable no-undef */
@@ -89,7 +103,11 @@ const ResponsiveBlock = ({ children, id, bgColors, title, onEntry }) => {
             />
           </Title> : null
         }
-        <Inner column center>{children}</Inner>
+        <Inner column center
+          className={visible ? 'visible' : ''}
+        >
+          {children}
+        </Inner>
         <TransparentWrapper visible={!!onEntry}>
           <EntryLink
             direction="down"
