@@ -20,12 +20,17 @@ export default function HTML(props) {
         <noscript key="noscript" id="gatsby-noscript">
           This app works best with JavaScript enabled.
         </noscript>
-        <div key={`loader`} id="___loader">
-          <div className="typewriter">
-            <h1 className="text"></h1>
-            <h1 className="cursor"></h1>
-          </div>
-        </div>
+        {
+          /* eslint-disable no-undef */
+          process.env.GATSBY_MODE === 'simple' ? null : (
+          <div key={`loader`} id="___loader">
+            <div className="typewriter">
+              <h1 className="text"></h1>
+              <h1 className="cursor"></h1>
+            </div>
+          </div>)
+          /* eslint-enable no-undef */
+        }
         <div
           key={`body`}
           id="___gatsby"

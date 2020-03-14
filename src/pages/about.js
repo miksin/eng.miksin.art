@@ -12,7 +12,7 @@ const About = ({
 }) => {
   const data = useStaticQuery(graphql`
     query AboutPageQuery {
-      avatar: file(relativePath: {eq: "miksin-avatar.jpeg"}){
+      avatar: file(relativePath: {eq: "miksin-avatar.jpg"}){
         childImageSharp {
           fluid {
             src

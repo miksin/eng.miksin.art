@@ -1,5 +1,5 @@
 #___loader {
-  background-color: #616161;
+  background-color: #03a9f4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,6 +21,10 @@
   -o-transition: opacity .75s ease-out;
   transition: opacity .75s ease-out;
 }
+body.pageLoaded #___loader {
+  opacity: 0;
+  pointer-events: none;
+}
 .typewriter {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -28,7 +32,7 @@
 }
 .typewriter .text {
   overflow: hidden;
-  border-left: 0 solid orange;
+  border-left: 0 solid #cddc39;
   margin-left: auto;
   margin-right: 0;
   text-transform: capitalize;
