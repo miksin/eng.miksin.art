@@ -14,7 +14,8 @@ export const featherIcons = {
 
 export const devices = {
   mobile: 480,
-  tablet: 1080
+  tablet: 1024,
+  tabletPortrait: 768,
 }
 
 export const sizes = {

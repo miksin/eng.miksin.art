@@ -31,7 +31,7 @@ const Inner = styled(FlexBox)`
   height: 100%;
   transition: all 0.75s ease-out 0.25s;
   opacity: 0;
-  transform: translateY(-30%);
+  transform: translateY(-10%);
 
   &.visible {
     opacity: 1;
@@ -41,6 +41,7 @@ const Inner = styled(FlexBox)`
 
 const Title = styled(FlexBox)`
   margin: 16px auto;
+  cursor: pointer;
 
   &:after {
     content: " ";
@@ -65,6 +66,7 @@ const ResponsiveBlock = ({
   bgColors,
   title,
   onEntry,
+  onTitle,
 }) => {
   const [vh, setVh] = useState(undefined)
   useEffect(() => {
@@ -93,7 +95,7 @@ const ResponsiveBlock = ({
         minHeight={minHeight}
       >
         {
-          title.show ? <Title column color={title.color}>
+          title.show ? <Title column color={title.color} onClick={onTitle}>
             <TypingDisplay
               words={visible ? [title.text] : []}
               color={title.color}
@@ -136,6 +138,7 @@ ResponsiveBlock.propTypes = {
     size: PropTypes.number,
   }),
   onEntry: PropTypes.func,
+  onTitle: PropTypes.func,
 }
 
 ResponsiveBlock.defaultProps = {
@@ -149,6 +152,7 @@ ResponsiveBlock.defaultProps = {
     size: sizes.scrollTitle,
   },
   onEntry: null,
+  onTitle: () => {},
 }
 
 export default ResponsiveBlock

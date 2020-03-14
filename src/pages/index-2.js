@@ -42,9 +42,9 @@ const IndexPage = () => {
       gallery: allMarkdownRemark (
         filter: {frontmatter: {path: {regex: "/\/gallery\/.*/"}}}
         sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 3
+        limit: 5
       ) {
-        ...ArticlePreviewFragment
+        ...GalleryPreviewFragment
       }
 
       nonSenseImages: allFile(filter: {extension: {regex: "/(jpg)|(png)|(jpeg)/"}, relativeDirectory: {eq: "nonsense"}}) {
@@ -111,6 +111,7 @@ const IndexPage = () => {
             size: blockTitleSize,
           }}
           onEntry={() => scrollToAnchor('scroll-block-2', sizes.nav)}
+          onTitle={() => navigate('/about')}
         >
           <IntroCard
             avatar={data.avatar.childImageSharp.fluid.src}
@@ -128,22 +129,13 @@ const IndexPage = () => {
             size: blockTitleSize,
           }}
           onEntry={() => scrollToAnchor('scroll-block-3', sizes.nav)}
+          onTitle={() => navigate('/blog')}
         >
-          <FlexBox column center>
-            <ListPreview articles={blogArticles.map((frontmatter, index) => ({
-              ...frontmatter,
-              thumbnailSrc: nonSenseImages[index % nonSenseImages.length],
-              thumbnailAlt: 'blog',
-            }))} />
-            <TextButton
-              icon={{ Element: ChevronRight }}
-              text={'Blog'}
-              color={colors.indigo}
-              isOutlined
-              isRounded
-              onClick={() => navigate('/blog')}
-            />
-          </FlexBox>
+          <ListPreview articles={blogArticles.map((frontmatter, index) => ({
+            ...frontmatter,
+            thumbnailSrc: nonSenseImages[index % nonSenseImages.length],
+            thumbnailAlt: 'blog',
+          }))} />
         </ResponsiveBlock>
         <ResponsiveBlock
           id="scroll-block-3"
@@ -154,8 +146,13 @@ const IndexPage = () => {
             color: colors.white,
             size: blockTitleSize,
           }}
+          onTitle={() => navigate('/gallery')}
         >
-          <PlayListPreview articles={galleryArticles} />
+          <PlayListPreview articles={galleryArticles.map(frontmatter => ({
+            ...frontmatter,
+            src: frontmatter.featuredImage.childImageSharp.fluid.src,
+            aspectRatio: frontmatter.featuredImage.childImageSharp.fluid.aspectRatio,
+          }))} color={colors.white} />
         </ResponsiveBlock>
       </FlexBox>
       <Footer

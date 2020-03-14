@@ -19,6 +19,8 @@ export const sizes = {
   introCardMaxSize: 600,
   introCardAvatarSize: 130,
   altTextSize: 24,
+  playlistHeight: 480,
+  playlistPanelBtnSize: 32,
 }
 
 export const about = {
