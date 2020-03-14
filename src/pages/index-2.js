@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { graphql, useStaticQuery, navigate } from "gatsby"
-import { ChevronRight } from "react-feather"
 import _ from "lodash"
 
+import Seo from "@components/seo"
 import FlexBox from "@components/basic/FlexBox"
-import TextButton from "@components/common/TextButton"
 import Nav from "@components/common/Nav"
 import Banner from "@components/home/Banner"
 import Footer from "@components/footer"
@@ -91,6 +90,7 @@ const IndexPage = () => {
 
   return (
     <>
+      <Seo title="Home" />
       <Nav links={links}/>
       <Banner
         styles={bannerStyles}
