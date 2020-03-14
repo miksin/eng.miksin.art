@@ -16,7 +16,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 15;
+  z-index: 9999;
   -webkit-transition: opacity .75s ease-out;
   -o-transition: opacity .75s ease-out;
   transition: opacity .75s ease-out;
