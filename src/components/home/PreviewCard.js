@@ -53,6 +53,7 @@ const Title = styled.h4`
 `
 
 const Excerpt = styled.p`
+  word-break: break-all;
 `
 
 const DateInspector = styled.h6`
@@ -92,8 +93,8 @@ const PreviewCard = ({
           }
         </FixedAspectRatioBox>
         <Content column center>
-          <Title>{title}</Title>
-          <Excerpt>{excerpt} ...</Excerpt>
+          <Title>{`${title}`.slice(0, 50)}</Title>
+          <Excerpt>{`${excerpt}`.slice(0, 100)} ...</Excerpt>
           <FlexPad />
           <Footer>
             <DateInspector>{date}</DateInspector>
