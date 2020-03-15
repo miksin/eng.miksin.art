@@ -4,7 +4,8 @@ import styled from "styled-components"
 
 import FlexBox from "@components/basic/FlexBox"
 import Avatar from "@components/common/Avatar"
-import { devices, sizes, icons, colors } from "@constants/home"
+import SocialLink from "@components/common/SocialLink"
+import { devices, sizes, colors } from "@constants/home"
 import { formatText } from "@src/helpers"
 
 const Wrapper = styled.div`
@@ -38,22 +39,6 @@ const Content = styled.p`
   word-break: break-all;
 `
 
-const LinkWraper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  margin: 8px 0;
-`
-
-const SocialLink = styled.a`
-  margin: 4px;
-  width: ${sizes.icon}px;
-  height: ${sizes.icon}px;
-  color: ${colors.grey};
-`
-
 const IntroCard = ({
   avatar,
   contents,
@@ -62,24 +47,7 @@ const IntroCard = ({
   return (
     <Wrapper column center paddingTop={sizes.introCardAvatarSize / 2}>
       <ContentWrapper column center paddingTop={sizes.introCardAvatarSize / 2}>
-        <LinkWraper>
-          {
-            socialLinks.map(l => {
-              const Icon = icons[l.name] || null
-              return (
-                <SocialLink
-                  title={l.name}
-                  key={l.name}
-                  href={l.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Icon size={sizes.icon} color={colors.indigo} />
-                </SocialLink>
-              )
-            })
-          }
-        </LinkWraper>
+        <SocialLink socialLinks={socialLinks} color={colors.indigo} />
         <Content
           dangerouslySetInnerHTML={{ __html: formatText(contents) }}
         />
