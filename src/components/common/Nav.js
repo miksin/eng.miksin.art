@@ -14,7 +14,7 @@ const Fixed = styled(FlexBox)`
   position: fixed;
   width: 100%;
   height: ${sizes.nav}px;
-  background-color: rgba(255, 255, 255, .7);
+  background-color: ${props => props.color};
   z-index: 20;
 
   @media screen and (max-width: ${devices.mobile}px) {
@@ -42,12 +42,14 @@ const MenuButton = styled(IconButton)`
 `
 const Nav = ({
   links,
+  bgColor,
+  iconColor,
 }) => {
   const [isActive, setIsActive] = useState(false)
 
   return (
     <>
-      <Fixed center>
+      <Fixed center color={bgColor}>
         <Wrapper center>
           <FlexPad />
           <MenuButton
@@ -56,7 +58,7 @@ const Nav = ({
           >
             <Menu
               size="100%"
-              color={colors.lightBlue}
+              color={iconColor}
             />
           </MenuButton>
         </Wrapper>
@@ -73,12 +75,16 @@ const Nav = ({
 Nav.propTypes = {
   links: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
-    path: PropTypes.string.isRequired
+    path: PropTypes.string.isRequired,
   })),
+  bgColor: PropTypes.string,
+  iconColor: PropTypes.string,
 }
 
 Nav.defaultProps = {
   links: [],
+  bgColor: 'rgba(255, 255, 255, .7)',
+  iconColor: colors.lightBlue,
 }
 
 export default Nav

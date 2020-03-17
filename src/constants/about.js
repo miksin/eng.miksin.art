@@ -7,6 +7,7 @@ export const icons = common.featherIcons
 export const sizes = {
   ...common.sizes,
   title: 56,
+  description: 500,
 }
 
 export const about = common.about

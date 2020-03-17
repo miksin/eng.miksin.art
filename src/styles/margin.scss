@@ -1,0 +1,17 @@
+@for $i from 2 through 32 {
+  @if $i % 2 == 0 {
+    .mg-tb-#{$i} {
+      margin-top: #{$i}px;
+      margin-bottom: #{$i}px;
+    }
+  }
+}
+
+@for $i from 2 through 32 {
+  @if $i % 2 == 0 {
+    .mg-lr-#{$i} {
+      margin-left: #{$i}px;
+      margin-right: #{$i}px;
+    }
+  }
+}

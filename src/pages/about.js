@@ -9,15 +9,20 @@ import TopPad from "@components/common/TopPad"
 import Avatar from "@components/common/Avatar"
 import TypingDisplay from "@components/common/TypingDisplay"
 import SocialLink from "@components/common/SocialLink"
-import { colors, sizes, devices } from "@constants/about"
+import { colors, sizes, devices, about } from "@constants/about"
 
 const Base = styled(FlexBox)`
+  background-color: ${colors.lightBlue};
+  min-height: 100vh;
 `
 
 const Wrapper = styled(FlexBox)`
   width: 100%;
   max-width: ${devices.tablet}px;
   margin: 0 auto;
+  padding: 12px;
+  border-radius: 5px;
+  background-color: ${colors.white};
 `
 
 const Title = styled.div`
@@ -35,8 +40,27 @@ const Title = styled.div`
   }
 `
 
+const IdentityCard = styled(FlexBox)`
+  width: 100%;
+  max-width: ${sizes.description}px;
+  justify-content: space-around;
+
+  @media screen and (max-width: ${sizes.description}px) {
+    flex-direction: column !important;
+  }
+`
+
 const IntroCard = styled(FlexBox)`
   padding: 24px 0;
+`
+
+const Author = styled.h1`
+  color: ${colors.indigo};
+`
+
+const Description = styled.div`
+  width: 100%;
+  max-width: ${sizes.description}px;
 `
 
 const About = () => {
@@ -57,8 +81,6 @@ const About = () => {
   `)
 
   const {
-    title,
-    subtitles,
     author,
     links,
     socialLinks,
@@ -67,7 +89,11 @@ const About = () => {
   return (
     <>
       <Seo title="About" />
-      <Nav links={links}/>
+      <Nav
+        links={links}
+        bgColor={colors.lightBlue}
+        iconColor={colors.white}
+      />
       <Base column center>
         <TopPad />
         <Wrapper column>
@@ -81,16 +107,23 @@ const About = () => {
             />
           </Title>
           <IntroCard column center>
-            <Avatar
-              src={data.avatar.childImageSharp.fluid.src}
-              alt="avatar"
-              size={200}
-              mode="rounded"
-              border={{ size: 0 }}
-            />
-            <SocialLink socialLinks={socialLinks} color={colors.indigo} />
+            <IdentityCard className="mg-tb-8" center>
+              <Avatar
+                src={data.avatar.childImageSharp.fluid.src}
+                alt="avatar"
+                size={200}
+                mode="rounded"
+                border={{ size: 0 }}
+              />
+              <FlexBox column center>
+                <Author className="mg-tb-8">{author}</Author>
+                <SocialLink socialLinks={socialLinks} color={colors.indigo} />
+              </FlexBox>
+            </IdentityCard>
+            <Description className="mg-tb-16">{about.zh}</Description>
           </IntroCard>
         </Wrapper>
+        <TopPad />
       </Base>
     </>
   )
