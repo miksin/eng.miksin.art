@@ -58,7 +58,7 @@ const Author = styled.h1`
   color: ${colors.indigo};
 `
 
-const Description = styled.div`
+const Description = styled.p`
   width: 100%;
   max-width: ${sizes.description}px;
 `
@@ -120,8 +120,19 @@ const About = () => {
                 <SocialLink socialLinks={socialLinks} color={colors.indigo} />
               </FlexBox>
             </IdentityCard>
-            <Description className="mg-tb-16">{about.zh}</Description>
+            <Description className="mg-tb-16">{about.en}</Description>
           </IntroCard>
+        </Wrapper>
+        <Wrapper className="mg-t-16" column>
+          <Title color={colors.lightBlue}>
+            <TypingDisplay
+              words={['SKILLS']}
+              color={colors.lightBlue}
+              size={sizes.title}
+              typeInterval={200}
+              cursor={'_'}
+            />
+          </Title>
         </Wrapper>
         <TopPad />
       </Base>
