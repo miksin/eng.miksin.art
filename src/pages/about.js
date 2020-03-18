@@ -63,6 +63,29 @@ const Description = styled.p`
   max-width: ${sizes.description}px;
 `
 
+const TwoColumnWrapper = styled(FlexBox)`
+  & > * {
+    width: 50%;
+  }
+  @media screen and (max-width: ${devices.mobile}px) {
+    & > * {
+      width: 100%;
+    }
+  }
+`
+
+const Cell = styled.div`
+  padding: 12px;
+`
+
+const MetricBox = styled.div`
+  width: 100%;
+  max-width: 300px;
+  min-height: 50px;
+  margin: auto;
+  background-color: ${colors.indigo};
+`
+
 const About = () => {
   const data = useStaticQuery(graphql`
     query AboutPageQuery {
@@ -133,6 +156,12 @@ const About = () => {
               cursor={'_'}
             />
           </Title>
+          <TwoColumnWrapper wrap>
+            <Cell><MetricBox /></Cell>
+            <Cell><MetricBox /></Cell>
+            <Cell><MetricBox /></Cell>
+            <Cell><MetricBox /></Cell>
+          </TwoColumnWrapper>
         </Wrapper>
         <TopPad />
       </Base>
