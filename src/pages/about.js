@@ -3,12 +3,14 @@ import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 
 import FlexBox from "@components/basic/FlexBox"
+import Underline from "@components/basic/Underline"
 import Seo from "@components/seo"
 import Nav from "@components/common/Nav"
 import TopPad from "@components/common/TopPad"
 import Avatar from "@components/common/Avatar"
 import TypingDisplay from "@components/common/TypingDisplay"
 import SocialLink from "@components/common/SocialLink"
+import StepBar from "@components/about/StepBar"
 import { colors, sizes, devices, about } from "@constants/about"
 
 const Base = styled(FlexBox)`
@@ -25,19 +27,12 @@ const Wrapper = styled(FlexBox)`
   background-color: ${colors.white};
 `
 
-const Title = styled.div`
+const Title = styled(Underline)`
   padding: 24px 0;
+`
 
-  &:after {
-    content: " ";
-    display: block;
-    width: 55px;
-    height: 1px;
-    margin-top: 16px;
-    margin-left: auto;
-    margin-right: auto;
-    background: ${props => props.color};
-  }
+const SubTitle = styled(Underline)`
+  padding: 16px 0;
 `
 
 const IdentityCard = styled(FlexBox)`
@@ -76,14 +71,6 @@ const TwoColumnWrapper = styled(FlexBox)`
 
 const Cell = styled.div`
   padding: 12px;
-`
-
-const MetricBox = styled.div`
-  width: 100%;
-  max-width: 300px;
-  min-height: 50px;
-  margin: auto;
-  background-color: ${colors.indigo};
 `
 
 const About = () => {
@@ -156,11 +143,20 @@ const About = () => {
               cursor={'_'}
             />
           </Title>
+          <SubTitle color={colors.indigo}>
+            <TypingDisplay
+              words={['LANGUEGES']}
+              color={colors.indigo}
+              size={sizes.subtitle}
+              typeInterval={50}
+              cursor={'_'}
+            />
+          </SubTitle>
           <TwoColumnWrapper wrap>
-            <Cell><MetricBox /></Cell>
-            <Cell><MetricBox /></Cell>
-            <Cell><MetricBox /></Cell>
-            <Cell><MetricBox /></Cell>
+            <Cell><StepBar filled={3} fillColor={colors.lime} /></Cell>
+            <Cell><StepBar filled={3} /></Cell>
+            <Cell><StepBar filled={2} /></Cell>
+            <Cell><StepBar filled={1} /></Cell>
           </TwoColumnWrapper>
         </Wrapper>
         <TopPad />

@@ -16,18 +16,19 @@ const Bar = styled(FlexBox)`
 const Cell = styled.div`
   background-color: ${props => props.color};
   height: 32px;
+  flex-grow: 1;
 `
 
 const StepBar = ({ step, filled, fillColor, baseColor }) => {
-  const cells = new Array(Math.max(step, 1)).map((_, index) => ({
+  const cells = new Array(Math.max(step, 1)).fill({}).map((_, index) => ({
     index,
-    color: filled > index ? baseColor : fillColor,
+    color: filled > index ? fillColor : baseColor,
   }))
 
   return (
     <Container>
       <Bar>
-        {cells.map(c => <Cell key={c.index} color={c.color}>{c.index}</Cell>)}
+        {cells.map(c => <Cell key={c.index} color={c.color} className="mg-lr-2" />)}
       </Bar>
     </Container>
   )
