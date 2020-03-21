@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 
@@ -11,7 +11,8 @@ import Avatar from "@components/common/Avatar"
 import TypingDisplay from "@components/common/TypingDisplay"
 import SocialLink from "@components/common/SocialLink"
 import StepBar from "@components/about/StepBar"
-import { colors, sizes, devices, about } from "@constants/about"
+import { colors, sizes, devices, about, skills } from "@constants/about"
+import { assignLanguages } from "@src/helpers"
 
 const Base = styled(FlexBox)`
   background-color: ${colors.lightBlue};
@@ -33,6 +34,11 @@ const Title = styled(Underline)`
 
 const SubTitle = styled(Underline)`
   padding: 16px 0;
+
+  & > * {
+    text-align: center;
+    color: ${props => props.color};
+  }
 `
 
 const IdentityCard = styled(FlexBox)`
@@ -90,11 +96,28 @@ const About = () => {
     }
   `)
 
+  const [lang, setLang] = useState('en')
+  useEffect(() => {
+    /* eslint-disable no-undef */
+    if (window) setLang(assignLanguages())
+    /* eslint-enable no-undef */
+  }, [])
+
   const {
     author,
     links,
     socialLinks,
   } = data.site.siteMetadata
+
+  const languages = Object.keys(skills.languages).map(name => ({
+    name,
+    ability: skills.languages[name],
+  })).sort((a, b) => b.ability - a.ability)
+
+  const frameworks = Object.keys(skills.frameworks).map(name => ({
+    name,
+    ability: skills.frameworks[name],
+  })).sort((a, b) => b.ability - a.ability)
 
   return (
     <>
@@ -130,7 +153,7 @@ const About = () => {
                 <SocialLink socialLinks={socialLinks} color={colors.indigo} />
               </FlexBox>
             </IdentityCard>
-            <Description className="mg-tb-16">{about.en}</Description>
+            <Description className="mg-tb-16">{about[lang]}</Description>
           </IntroCard>
         </Wrapper>
         <Wrapper className="mg-t-16" column>
@@ -144,19 +167,32 @@ const About = () => {
             />
           </Title>
           <SubTitle color={colors.indigo}>
-            <TypingDisplay
-              words={['LANGUEGES']}
-              color={colors.indigo}
-              size={sizes.subtitle}
-              typeInterval={50}
-              cursor={'_'}
-            />
+            <h3>Programming / Markup Languages</h3>
+          </SubTitle>
+          <TwoColumnWrapper wrap className="mg-b-32">
+            {languages.map(lang => (
+              <Cell key={lang.name}>
+                <StepBar
+                  title={lang.name}
+                  filled={lang.ability}
+                  fillColor={colors.lime}
+                />
+              </Cell>)
+            )}
+          </TwoColumnWrapper>
+          <SubTitle color={colors.indigo}>
+            <h3>Frameworks / Libraries</h3>
           </SubTitle>
           <TwoColumnWrapper wrap>
-            <Cell><StepBar filled={3} fillColor={colors.lime} /></Cell>
-            <Cell><StepBar filled={3} /></Cell>
-            <Cell><StepBar filled={2} /></Cell>
-            <Cell><StepBar filled={1} /></Cell>
+            {frameworks.map(framework => (
+              <Cell key={framework.name}>
+                <StepBar
+                  title={framework.name}
+                  filled={framework.ability}
+                  fillColor={colors.lime}
+                />
+              </Cell>)
+            )}
           </TwoColumnWrapper>
         </Wrapper>
         <TopPad />

@@ -19,7 +19,10 @@ const Cell = styled.div`
   flex-grow: 1;
 `
 
-const StepBar = ({ step, filled, fillColor, baseColor }) => {
+const Title = styled.h3`
+`
+
+const StepBar = ({ title, step, filled, fillColor, baseColor }) => {
   const cells = new Array(Math.max(step, 1)).fill({}).map((_, index) => ({
     index,
     color: filled > index ? fillColor : baseColor,
@@ -27,6 +30,7 @@ const StepBar = ({ step, filled, fillColor, baseColor }) => {
 
   return (
     <Container>
+      <Title>{title}</Title>
       <Bar>
         {cells.map(c => <Cell key={c.index} color={c.color} className="mg-lr-2" />)}
       </Bar>
@@ -35,6 +39,7 @@ const StepBar = ({ step, filled, fillColor, baseColor }) => {
 }
 
 StepBar.propTypes = {
+  title: PropTypes.string,
   step: PropTypes.number,
   filled: PropTypes.number,
   fillColor: PropTypes.string,
@@ -42,6 +47,7 @@ StepBar.propTypes = {
 }
 
 StepBar.defaultProps = {
+  title: '',
   step: 3,
   filled: 1,
   fillColor: colors.orange,
