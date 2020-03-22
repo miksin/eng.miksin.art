@@ -11,15 +11,24 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   padding: 12px;
+
+  &:hover {
+    .cover {
+      transition: transform 0.25s ease-out;
+      transform: translateY(0%);
+    }
+  }
 `
 
 const Card = styled(FlexBox)`
+  position: relative;
   width: 100%;
   height: 100%;
   padding: 8px;
   background: #FFF;
   border-radius: 3px;
   box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, .3);
+  overflow: hidden;
 `
 
 const Thumbnail = styled.img`
@@ -67,6 +76,16 @@ const Footer = styled(FlexBox)`
   border-top-style: solid;
 `
 
+const Cover = styled(FlexBox)`
+  position: absolute;
+  padding: 12px;
+  width: 100%;
+  height: 100%;
+  background-color: ${colors.lightBlue};
+  color: ${colors.white};
+  transform: translateY(-100%);
+`
+
 const PreviewCard = ({
   title,
   thumbnailSrc,
@@ -100,6 +119,9 @@ const PreviewCard = ({
             <DateInspector>{date}</DateInspector>
           </Footer>
         </Content>
+        <Cover className="cover" center column>
+          <h3>{title}</h3>
+        </Cover>
       </Card>
     </Wrapper>
   )
