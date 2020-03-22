@@ -8,7 +8,7 @@ import FlexBox from "@components/basic/FlexBox"
 import Seo from "@components/seo"
 import Nav from "@components/common/Nav"
 import TopPad from "@components/common/TopPad"
-import ListPreview from "@components/home/ListPreview"
+import ListPreview from "@components/common/ListPreview"
 import { colors, sizes, devices } from "@constants/blog"
 import { hexToRgba } from "@src/helpers"
 

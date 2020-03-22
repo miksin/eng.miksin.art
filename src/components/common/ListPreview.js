@@ -3,9 +3,8 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
-import PreviewCard from "@components/home/PreviewCard"
-
-import { colors, devices } from "@constants/home"
+import PreviewCard from "@components/common/PreviewCard"
+import { colors, devices } from "@constants/common"
 
 const Wrapper = styled.div`
   margin-bottom: 24px;
