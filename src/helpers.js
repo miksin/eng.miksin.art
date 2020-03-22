@@ -13,7 +13,7 @@ export const scrollToAnchor = (id, offset = 0) => {
   window.scrollTo({
     left: 0,
     top: top - offset,
-    behavior: 'smooth'
+    behavior: 'smooth',
   })  
   /* eslint-enable no-undef */
 }
@@ -47,4 +47,12 @@ export const toDualColors = (stringOrArray) => {
     return [stringOrArray[0], stringOrArray[0]]
   }
   return [stringOrArray, stringOrArray]
+}
+
+export const hexToRgba = (hex, alpha = 1) => {
+  // #FFFFFF -> rgba(255, 255, 255, 1)
+  const r = parseInt(hex.slice(1, 3), 16)
+  const g = parseInt(hex.slice(3, 5), 16)
+  const b = parseInt(hex.slice(5, 7), 16)
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`
 }

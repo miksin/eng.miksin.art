@@ -75,6 +75,8 @@ const IndexPage = () => {
   const bannerStyles = {}
   if (vh) bannerStyles.minHeight = vh
 
+  const scrollOffset = !vw || vw > devices.mobile ? sizes.nav : sizes.navMobile
+
   const {
     title,
     subtitles,
@@ -94,7 +96,7 @@ const IndexPage = () => {
       <Nav links={links}/>
       <Banner
         styles={bannerStyles}
-        onEntry={() => scrollToAnchor('scroll-block-1', sizes.nav)}
+        onEntry={() => scrollToAnchor('scroll-block-1', scrollOffset)}
         words={{
           title: [title],
           subtitle: subtitles,
@@ -110,7 +112,7 @@ const IndexPage = () => {
             color: colors.white,
             size: blockTitleSize,
           }}
-          onEntry={() => scrollToAnchor('scroll-block-2', sizes.nav)}
+          onEntry={() => scrollToAnchor('scroll-block-2', scrollOffset)}
           onTitle={() => navigate('/about')}
         >
           <IntroCard
@@ -128,7 +130,7 @@ const IndexPage = () => {
             color: colors.lightBlue,
             size: blockTitleSize,
           }}
-          onEntry={() => scrollToAnchor('scroll-block-3', sizes.nav)}
+          onEntry={() => scrollToAnchor('scroll-block-3', scrollOffset)}
           onTitle={() => navigate('/blog')}
         >
           <ListPreview articles={blogArticles.map((frontmatter, index) => ({
