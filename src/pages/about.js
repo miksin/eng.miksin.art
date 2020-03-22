@@ -12,7 +12,7 @@ import TypingDisplay from "@components/common/TypingDisplay"
 import SocialLink from "@components/common/SocialLink"
 import StepBar from "@components/about/StepBar"
 import { colors, sizes, devices, about, skills } from "@constants/about"
-import { assignLanguages } from "@src/helpers"
+import { assignLanguages, hexToRgba } from "@src/helpers"
 
 const Base = styled(FlexBox)`
   background-color: ${colors.lightBlue};
@@ -43,7 +43,6 @@ const SubTitle = styled(Underline)`
 
 const IdentityCard = styled(FlexBox)`
   width: 100%;
-  max-width: ${sizes.description}px;
   justify-content: space-around;
 
   @media screen and (max-width: ${sizes.description}px) {
@@ -53,6 +52,8 @@ const IdentityCard = styled(FlexBox)`
 
 const IntroCard = styled(FlexBox)`
   padding: 24px 0;
+  width: 100%;
+  max-width: ${sizes.description}px;
 `
 
 const Author = styled.h1`
@@ -61,7 +62,26 @@ const Author = styled.h1`
 
 const Description = styled.p`
   width: 100%;
-  max-width: ${sizes.description}px;
+  word-break: break-all;
+`
+
+const TabNav = styled(FlexBox)`
+  width: 100%;
+`
+
+const Tab = styled.div`
+  flex-grow: 1;
+  text-align: center;
+  padding: 4px 0;
+  background-color: ${colors.lightBlue};
+  color: ${colors.white};
+  cursor: pointer;
+
+  &.active {
+    background-color: ${colors.white};
+    color: ${colors.lightBlue};
+    cursor: default;
+  }
 `
 
 const TwoColumnWrapper = styled(FlexBox)`
@@ -124,12 +144,12 @@ const About = () => {
       <Seo title="About" />
       <Nav
         links={links}
-        bgColor={colors.lightBlue}
+        bgColor={hexToRgba(colors.lightBlue, 0.7)}
         iconColor={colors.white}
       />
       <Base column center>
         <TopPad />
-        <Wrapper column>
+        <Wrapper column center>
           <Title color={colors.lightBlue}>
             <TypingDisplay
               words={['ABOUT ME']}
@@ -154,6 +174,19 @@ const About = () => {
               </FlexBox>
             </IdentityCard>
             <Description className="mg-tb-16">{about[lang]}</Description>
+            <TabNav>
+              {
+                Object.keys(about).map(langCode => (
+                  <Tab
+                    key={langCode}
+                    className={langCode === lang ? 'active' : ''}
+                    onClick={() => setLang(langCode)}
+                  >
+                    {langCode.toUpperCase()}
+                  </Tab>
+                ))
+              }
+            </TabNav>
           </IntroCard>
         </Wrapper>
         <Wrapper className="mg-t-16" column>
