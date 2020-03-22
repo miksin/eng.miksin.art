@@ -29,6 +29,19 @@ const Title = styled(Underline)`
   padding: 24px 0;
 `
 
+const TagList = styled(FlexBox)`
+  width: 100%;
+`
+
+const Tag = styled.div`
+  background-color: ${props => props.bgColor};
+  color: ${colors.white};
+  margin: 4px 2px;
+  padding: 6px 12px;
+  border-radius: 3px;
+  text-align: center;
+`
+
 const Blog = () => {
   const data = useStaticQuery(graphql`
     query BlogPageQuery {
@@ -71,6 +84,10 @@ const Blog = () => {
   })
 
   const posts = allPosts.slice(0, displayNum)
+  const tagCounts = _.uniq(allPosts.flatMap(frontmatter => frontmatter.tags))
+    .map(tag => tag.toLowerCase())
+
+  const palatte = [colors.cyan, colors.deepPurple, colors.teal, colors.indigo, colors.blue, colors.purple]
 
   return (
     <>
@@ -82,16 +99,26 @@ const Blog = () => {
       />
       <Base column center>
         <TopPad />
-        <Title color={colors.lightBlue}>
-          <TypingDisplay
-            words={['RECENT POSTS']}
-            color={colors.lightBlue}
-            size={sizes.title}
-            typeInterval={50}
-            cursor={'_'}
-          />
-        </Title>
-        <Wrapper>
+        <Wrapper center column>
+          <Title color={colors.lightBlue}>
+            <TypingDisplay
+              words={['RECENT POSTS']}
+              color={colors.lightBlue}
+              size={sizes.title}
+              typeInterval={50}
+              cursor={'_'}
+            />
+          </Title>
+          <TagList wrap center>
+            {tagCounts.map(((tag, i) => (
+              <Tag
+                key={tag}
+                bgColor={palatte[i % palatte.length]}
+              >
+                {tag}
+              </Tag>
+            )))}
+          </TagList>
           <ListPreview articles={posts.map((frontmatter, index) => ({
             ...frontmatter,
             thumbnailSrc: nonSenseImages[index % nonSenseImages.length],

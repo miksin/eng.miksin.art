@@ -8,6 +8,7 @@ export const ArticlePreviewFragment = graphql`
           path
           title
           excerpt
+          tags
           fromNow: date(fromNow: true)
           date: date(formatString: "MMM DD, YYYY")
           featuredImage {
