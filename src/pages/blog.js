@@ -1,14 +1,16 @@
 import React, { useState } from "react"
-import { graphql, useStaticQuery, Link } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 import _ from "lodash"
 import { useBottomScrollListener } from "react-bottom-scroll-listener"
 
 import FlexBox from "@components/basic/FlexBox"
+import Underline from "@components/basic/Underline"
 import Seo from "@components/seo"
 import Nav from "@components/common/Nav"
 import TopPad from "@components/common/TopPad"
 import ListPreview from "@components/common/ListPreview"
+import TypingDisplay from "@components/common/TypingDisplay"
 import { colors, sizes, devices, displayPerTime } from "@constants/blog"
 import { hexToRgba } from "@src/helpers"
 
@@ -21,6 +23,10 @@ const Wrapper = styled(FlexBox)`
   max-width: ${devices.tablet}px;
   margin: 0 auto;
   padding: 12px;
+`
+
+const Title = styled(Underline)`
+  padding: 24px 0;
 `
 
 const Blog = () => {
@@ -53,11 +59,13 @@ const Blog = () => {
     links,
   } = data.site.siteMetadata
   const allPosts = data.posts.edges.map(edge => edge.node.frontmatter)
-  const nonSenseImages = _.shuffle(data.nonSenseImages.edges.map(edge => edge.node.childImageSharp.fluid.src))
 
   // extend display length when detect scroll to bottom
   const newDisplayNum = now => Math.min(allPosts.length, now + displayPerTime)
   const [displayNum, setDisplayNum] = useState(newDisplayNum(0))
+  const [nonSenseImages] = useState(_.shuffle(data.nonSenseImages
+    .edges.map(edge => edge.node.childImageSharp.fluid.src)))
+
   useBottomScrollListener(() => {
     setDisplayNum(newDisplayNum)
   })
@@ -74,6 +82,15 @@ const Blog = () => {
       />
       <Base column center>
         <TopPad />
+        <Title color={colors.lightBlue}>
+          <TypingDisplay
+            words={['RECENT POSTS']}
+            color={colors.lightBlue}
+            size={sizes.title}
+            typeInterval={50}
+            cursor={'_'}
+          />
+        </Title>
         <Wrapper>
           <ListPreview articles={posts.map((frontmatter, index) => ({
             ...frontmatter,

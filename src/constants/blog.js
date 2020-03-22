@@ -6,6 +6,7 @@ export const icons = common.featherIcons
 
 export const sizes = {
   ...common.sizes,
+  title: 36,
 }
 
-export const displayPerTime = 5;
+export const displayPerTime = 15;
