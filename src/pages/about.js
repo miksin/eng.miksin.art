@@ -72,10 +72,15 @@ const TabNav = styled(FlexBox)`
 const Tab = styled.div`
   flex-grow: 1;
   text-align: center;
+  margin-top: 12px;
   padding: 4px 0;
   background-color: ${colors.lightBlue};
   color: ${colors.white};
   cursor: pointer;
+
+  &:hover {
+    background-color: ${colors.lime};
+  }
 
   &.active {
     background-color: ${colors.white};
