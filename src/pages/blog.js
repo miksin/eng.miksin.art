@@ -9,7 +9,7 @@ import Seo from "@components/seo"
 import Nav from "@components/common/Nav"
 import TopPad from "@components/common/TopPad"
 import ListPreview from "@components/common/ListPreview"
-import { colors, sizes, devices } from "@constants/blog"
+import { colors, sizes, devices, displayPerTime } from "@constants/blog"
 import { hexToRgba } from "@src/helpers"
 
 const Base = styled(FlexBox)`
@@ -52,10 +52,17 @@ const Blog = () => {
   const {
     links,
   } = data.site.siteMetadata
-
-  const [displayNum, setDisplayNum] = useState(15)
-  const posts = data.posts.edges.map(edge => edge.node.frontmatter).slice(0, displayNum)
+  const allPosts = data.posts.edges.map(edge => edge.node.frontmatter)
   const nonSenseImages = _.shuffle(data.nonSenseImages.edges.map(edge => edge.node.childImageSharp.fluid.src))
+
+  // extend display length when detect scroll to bottom
+  const newDisplayNum = now => Math.min(allPosts.length, now + displayPerTime)
+  const [displayNum, setDisplayNum] = useState(newDisplayNum(0))
+  useBottomScrollListener(() => {
+    setDisplayNum(newDisplayNum)
+  })
+
+  const posts = allPosts.slice(0, displayNum)
 
   return (
     <>

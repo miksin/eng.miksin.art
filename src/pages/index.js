@@ -137,7 +137,7 @@ const IndexPage = () => {
             ...frontmatter,
             thumbnailSrc: nonSenseImages[index % nonSenseImages.length],
             thumbnailAlt: 'blog',
-          }))} />
+          }))} hiddenOnResponsive />
         </ResponsiveBlock>
         <ResponsiveBlock
           id="scroll-block-3"

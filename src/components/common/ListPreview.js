@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   }
 `
 
-const LinkItem = styled(Link)`
+const LinkItemWithHidden = styled(Link)`
   display: block;
   color: ${colors.grey};
   text-decoration: none;
@@ -42,17 +42,36 @@ const LinkItem = styled(Link)`
   }
 `
 
+const LinkItem = styled(Link)`
+  display: block;
+  color: ${colors.grey};
+  text-decoration: none;
+  width: 33%;
+
+  @media screen and (max-width: ${(devices.tablet + devices.mobile) / 2}px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: ${devices.mobile}px) {
+    width: 100%;
+  }
+`
+
 const ListPreview = ({
   articles,
+  hiddenOnResponsive,
 }) => {
   return (
     <Wrapper>
       {
-        articles.map((article) => (
-          <LinkItem key={article.path} to={article.path}>
-            <PreviewCard {...article} />
-          </LinkItem>
-        ))
+        articles.map((article) => {
+          const ItemComponent = hiddenOnResponsive ? LinkItemWithHidden : LinkItem
+          return (
+            <ItemComponent key={article.path} to={article.path}>
+              <PreviewCard {...article} />
+            </ItemComponent>
+          )
+        })
       }
     </Wrapper>
   )
@@ -62,10 +81,12 @@ ListPreview.propTypes = {
   articles: PropTypes.arrayOf(PropTypes.shape({
     path: PropTypes.string.isRequired,
   })),
+  hiddenOnResponsive: PropTypes.bool,
 }
 
 ListPreview.defaultProps = {
   articles: [],
+  hiddenOnResponsive: false,
 }
 
 export default ListPreview
