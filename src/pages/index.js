@@ -5,10 +5,10 @@ import _ from "lodash"
 import Seo from "@components/seo"
 import FlexBox from "@components/basic/FlexBox"
 import Nav from "@components/common/Nav"
+import ListPreview from "@components/common/ListPreview"
 import Banner from "@components/home/Banner"
 import Footer from "@components/footer"
 import IntroCard from "@components/home/IntroCard"
-import ListPreview from "@components/home/ListPreview"
 import PlayListPreview from "@components/home/PlayListPreview"
 import ResponsiveBlock from "@components/home/ResponsiveBlock"
 
@@ -137,7 +137,7 @@ const IndexPage = () => {
             ...frontmatter,
             thumbnailSrc: nonSenseImages[index % nonSenseImages.length],
             thumbnailAlt: 'blog',
-          }))} />
+          }))} hiddenOnResponsive />
         </ResponsiveBlock>
         <ResponsiveBlock
           id="scroll-block-3"

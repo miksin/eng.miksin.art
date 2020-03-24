@@ -5,9 +5,9 @@
 ## WIP
 
 - [ ] new layout
-  - [ ] top
-  - [ ] profile
-  - [ ] blog
+  - [x] top
+  - [x] profile
+  - [x] blog
   - [ ] gallery
 - [ ] refactor
   - [ ] path alias
@@ -16,6 +16,7 @@
   - [ ] style files (scss <-> styled-components)
 - [ ] search support
 - [ ] seo
+- [ ] theme
 - [ ] typescript
 - [ ] new pages
   - [ ] works
