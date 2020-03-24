@@ -5,6 +5,7 @@ import styled from "styled-components"
 import FlexBox from "@components/basic/FlexBox"
 import FlexPad from "@components/basic/FlexPad"
 import FixedAspectRatioBox from "@components/basic/FixedAspectRatioBox"
+import Tag from "@components/common/Tag"
 import { colors, sizes } from "@constants/home"
 
 const Wrapper = styled.div`
@@ -54,6 +55,7 @@ const ThumbnailAlt = styled(FlexBox)`
 const Content = styled(FlexBox)`
   padding: 0 8px;
   flex-grow: 1;
+  width: 100%;
 `
 
 const Title = styled.h4`
@@ -86,12 +88,18 @@ const Cover = styled(FlexBox)`
   transform: translateY(-100%);
 `
 
+const TagList = styled(FlexBox)`
+  overflow: hidden;
+  width: 100%;
+`
+
 const PreviewCard = ({
   title,
   thumbnailSrc,
   thumbnailAlt,
   date,
   excerpt,
+  tags,
 }) => {
   return (
     <Wrapper>
@@ -112,6 +120,11 @@ const PreviewCard = ({
           }
         </FixedAspectRatioBox>
         <Content column center>
+          <TagList center className="mg-t-10">
+            {tags.slice(0, 3).map(tag => (
+              <Tag key={tag} text={tag} className="mg-lr-2" small />
+            ))}
+          </TagList>
           <Title>{`${title}`.slice(0, 50)}</Title>
           <Excerpt>{`${excerpt}`.slice(0, 100)} ...</Excerpt>
           <FlexPad />
@@ -133,6 +146,7 @@ PreviewCard.propTypes = {
   thumbnailAlt: PropTypes.string,
   date: PropTypes.string,
   excerpt: PropTypes.string,
+  tags: PropTypes.arrayOf(PropTypes.string),
 }
 
 PreviewCard.defaultProps = {
@@ -140,6 +154,7 @@ PreviewCard.defaultProps = {
   thumbnailAlt: 'thumbnail',
   date: 'APRIL 25, 2019',
   excerpt: 'Lorem ipsum dolor sit amet, conctetur ping elit. A archcto codi cumque dissimos dobus, dolorum eos expbo id iusto lorum',
+  tags: [],
 }
 
 export default PreviewCard
