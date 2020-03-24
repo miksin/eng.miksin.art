@@ -12,4 +12,7 @@ export const sizes = {
   title: 36,
 }
 
-export const displayPerTime = 15;
+export const settings = {
+  displayPerTime: 15,
+  tagShowLimit: 10,
+}

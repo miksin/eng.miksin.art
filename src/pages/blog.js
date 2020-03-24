@@ -10,8 +10,9 @@ import Seo from "@components/seo"
 import Nav from "@components/common/Nav"
 import TopPad from "@components/common/TopPad"
 import ListPreview from "@components/common/ListPreview"
+import Tag from "@components/common/Tag"
 import TypingDisplay from "@components/common/TypingDisplay"
-import { colors, palatte, sizes, devices, displayPerTime } from "@constants/blog"
+import { colors, palatte, sizes, devices, settings } from "@constants/blog"
 import { hexToRgba, mergeHash } from "@src/helpers"
 
 const Base = styled(FlexBox)`
@@ -31,24 +32,8 @@ const Title = styled(Underline)`
 
 const TagList = styled(FlexBox)`
   width: 100%;
-`
-
-const Tag = styled(FlexBox)`
-  background-color: ${props => props.bgColor};
-  color: ${colors.white};
-  margin: 4px 2px;
-  padding: 12px 24px;
-  border-radius: 3px;
-  text-align: center;
-
-  & > .count {
-    background-color: ${hexToRgba(colors.grey, 0.5)};
-    border-radius: 50%;
-    font-size: 14px;
-    padding: 2px;
-    width: 18px;
-    height: 18px;
-    text-align: center;
+  @media screen and (max-width: ${devices.mobile}px) {
+    display: none;
   }
 `
 
@@ -84,7 +69,7 @@ const Blog = () => {
   const allPosts = data.posts.edges.map(edge => edge.node.frontmatter)
 
   // extend display length when detect scroll to bottom
-  const newDisplayNum = now => Math.min(allPosts.length, now + displayPerTime)
+  const newDisplayNum = now => Math.min(allPosts.length, now + settings.displayPerTime)
   const [displayNum, setDisplayNum] = useState(newDisplayNum(0))
   const [nonSenseImages] = useState(_.shuffle(data.nonSenseImages
     .edges.map(edge => edge.node.childImageSharp.fluid.src)))
@@ -101,6 +86,7 @@ const Blog = () => {
   const tags = Object.keys(tagCounts)
     .map(tag => ({ name: tag, count: tagCounts[tag] }))
     .sort((a, b) => b.count - a.count)
+    .slice(0, settings.tagShowLimit)
 
   return (
     <>
@@ -122,15 +108,15 @@ const Blog = () => {
               cursor={'_'}
             />
           </Title>
-          <TagList wrap center>
+          <TagList wrap center className="mg-tb-16">
             {tags.map(((tag, i) => (
               <Tag
+                className="mg-lr-2 mg-tb-4"
                 key={tag.name}
                 bgColor={palatte[i % palatte.length]}
-              >
-                <span className="name">{tag.name}</span>
-                <span className="count mg-l-4">{tag.count}</span>
-              </Tag>
+                text={tag.name}
+                number={tag.count}
+              />
             )))}
           </TagList>
           <ListPreview articles={posts.map((frontmatter, index) => ({
