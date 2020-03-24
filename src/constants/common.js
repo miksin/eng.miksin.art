@@ -57,6 +57,10 @@ export const colors = {
   lime: '#cddc39',
 }
 
+export const palattes = {
+  '5hanayome': ['#E2C648', '#C6ABD4', '#95C1E6', '#A5CD6C', '#EE8893'],
+}
+
 export const languagues = [
   'en',
   'zh',

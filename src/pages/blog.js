@@ -11,8 +11,8 @@ import Nav from "@components/common/Nav"
 import TopPad from "@components/common/TopPad"
 import ListPreview from "@components/common/ListPreview"
 import TypingDisplay from "@components/common/TypingDisplay"
-import { colors, sizes, devices, displayPerTime } from "@constants/blog"
-import { hexToRgba } from "@src/helpers"
+import { colors, palatte, sizes, devices, displayPerTime } from "@constants/blog"
+import { hexToRgba, mergeHash } from "@src/helpers"
 
 const Base = styled(FlexBox)`
   min-height: 100vh;
@@ -33,13 +33,23 @@ const TagList = styled(FlexBox)`
   width: 100%;
 `
 
-const Tag = styled.div`
+const Tag = styled(FlexBox)`
   background-color: ${props => props.bgColor};
   color: ${colors.white};
   margin: 4px 2px;
-  padding: 6px 12px;
+  padding: 12px 24px;
   border-radius: 3px;
   text-align: center;
+
+  & > .count {
+    background-color: ${hexToRgba(colors.grey, 0.5)};
+    border-radius: 50%;
+    font-size: 14px;
+    padding: 2px;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+  }
 `
 
 const Blog = () => {
@@ -84,10 +94,13 @@ const Blog = () => {
   })
 
   const posts = allPosts.slice(0, displayNum)
-  const tagCounts = _.uniq(allPosts.flatMap(frontmatter => frontmatter.tags))
-    .map(tag => tag.toLowerCase())
-
-  const palatte = [colors.cyan, colors.deepPurple, colors.teal, colors.indigo, colors.blue, colors.purple]
+  const tagCounts = allPosts
+    .flatMap(frontmatter => frontmatter.tags)
+    .map(tag => ({ [tag.toLowerCase()]: 1 }))
+    .reduce((a, b) => mergeHash(a, b), {})
+  const tags = Object.keys(tagCounts)
+    .map(tag => ({ name: tag, count: tagCounts[tag] }))
+    .sort((a, b) => b.count - a.count)
 
   return (
     <>
@@ -110,12 +123,13 @@ const Blog = () => {
             />
           </Title>
           <TagList wrap center>
-            {tagCounts.map(((tag, i) => (
+            {tags.map(((tag, i) => (
               <Tag
-                key={tag}
+                key={tag.name}
                 bgColor={palatte[i % palatte.length]}
               >
-                {tag}
+                <span className="name">{tag.name}</span>
+                <span className="count mg-l-4">{tag.count}</span>
               </Tag>
             )))}
           </TagList>

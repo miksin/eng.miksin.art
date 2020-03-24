@@ -56,3 +56,15 @@ export const hexToRgba = (hex, alpha = 1) => {
   const b = parseInt(hex.slice(5, 7), 16)
   return `rgba(${r}, ${g}, ${b}, ${alpha})`
 }
+
+export const mergeHash = (objA, objB, onDuplicated = (a, b) => a + b) => {
+  const result = { ...objA }
+  Object.keys(objB).forEach(key => {
+    if (Object.prototype.hasOwnProperty.call(result, key)) {
+      result[key] = onDuplicated(result[key], objB[key])
+    } else {
+      result[key] = objB[key]
+    }
+  })
+  return result
+}
