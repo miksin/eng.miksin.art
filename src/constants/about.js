@@ -16,6 +16,7 @@ export const about = common.about
 export const skills = {
   languages: {
     'JavaScript': 3,
+    'TypeScript': 2,
     'Java': 1,
     'Python': 2,
     'Ruby': 2,

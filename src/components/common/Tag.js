@@ -16,6 +16,7 @@ const Base = styled(FlexBox)`
 
   & > .name {
     font-size: 18px;
+    line-height: 20px;
     white-space: nowrap;
   }
 
@@ -23,9 +24,9 @@ const Base = styled(FlexBox)`
     background-color: ${hexToRgba(colors.grey, 0.5)};
     border-radius: 10px;
     font-size: 14px;
-    padding: 3px;
     min-width: 20px;
     height: 20px;
+    line-height: 20px;
     text-align: center;
   }
 `
