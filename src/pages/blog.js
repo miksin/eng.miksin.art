@@ -16,7 +16,6 @@ import { colors, palatte, sizes, devices, settings } from "@constants/blog"
 import { hexToRgba, mergeHash } from "@src/helpers"
 
 const Base = styled(FlexBox)`
-  min-height: 100vh;
 `
 
 const Wrapper = styled(FlexBox)`
