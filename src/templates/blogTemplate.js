@@ -34,6 +34,7 @@ const Timestamp = styled.h4`
 `
 
 const Content = styled.div`
+  width: 100%;
   padding: 12px;
 
   a {
