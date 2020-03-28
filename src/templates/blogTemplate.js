@@ -67,6 +67,8 @@ function Template({
     title: frontmatter.title,
   }
 
+  const tags = frontmatter.tags || []
+
   return (
     <>
       <Seo title={frontmatter.title} />
@@ -82,7 +84,7 @@ function Template({
             <Title>{frontmatter.title}</Title>
             <Timestamp>{frontmatter.date}</Timestamp>
             <TagList>
-              {frontmatter.tags.map(tag => (
+              {tags.map(tag => (
                 <Tag key={tag} text={tag} className="mg-lr-2" small />
               ))}
             </TagList>
