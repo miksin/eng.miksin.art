@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import styled from "styled-components"
 import { Disqus, CommentCount } from "gatsby-plugin-disqus"
 
@@ -58,10 +58,6 @@ function Template({
       html,
     },
     site,
-  },
-  pageContext: {
-    next,
-    prev,
   },
 }) {
   const { links } = site.siteMetadata
