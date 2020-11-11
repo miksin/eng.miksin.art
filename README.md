@@ -1,6 +1,6 @@
 # miksin-personal-home-page
 
-> https://miksin.github.io/
+> https://miksin.art/
 
 ## WIP
 
@@ -16,6 +16,7 @@
   - [ ] style files (scss <-> styled-components)
 - [ ] search support
 - [ ] seo
+- [x] self domain
 - [ ] theme
 - [ ] typescript
 - [ ] new pages
