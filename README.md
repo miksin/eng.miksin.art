@@ -4,12 +4,13 @@
 
 ## WIP
 
-- [ ] new layout
+- [x] new layout
   - [x] top
   - [x] profile
   - [x] blog
-  - [ ] gallery
+  - [x] gallery
 - [ ] refactor
+  - [ ] GalleryItem, GridView
   - [ ] path alias
   - [ ] coding style (lint fix)
   - [ ] basic/common components

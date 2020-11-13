@@ -1,112 +1,100 @@
 import React, { useState } from "react"
-import PropTypes from "prop-types"
-import { graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
+import styled from "styled-components"
 import { useBottomScrollListener } from "react-bottom-scroll-listener"
-import GridView from "../components/GridView"
-import GalleryItem from "../components/GalleryItem"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
 
-const Gallery = ({
-  data,
-  displayPerTime,
-  location,
-}) => {
+import FlexBox from "@components/basic/FlexBox"
+import Underline from "@components/basic/Underline"
+import Seo from "@components/seo"
+import Nav from "@components/common/Nav"
+import TopPad from "@components/common/TopPad"
+import GridView from "@components/GridView"
+import GalleryItem from "@components/GalleryItem"
+import TypingDisplay from "@components/common/TypingDisplay"
+import { colors, sizes, devices, settings } from "@constants/gallery"
+import { hexToRgba } from "@src/helpers"
+
+const Base = styled(FlexBox)`
+`
+
+const Wrapper = styled(FlexBox)`
+  width: 100%;
+  max-width: ${devices.tablet}px;
+  margin: 0 auto;
+  padding: 12px;
+`
+
+const Title = styled(Underline)`
+  padding: 24px 0;
+`
+
+const Gallery = () => {
+  const data = useStaticQuery(graphql`
+    query GalleryPageQuery {
+      site {
+        ...SiteMetaFragment
+      }
+
+      posts: allMarkdownRemark (
+        filter: {frontmatter: {path: {regex: "/\/gallery\/.*/"}}}
+        sort: { order: DESC, fields: [frontmatter___date] }
+      ) {
+        ...ArticlePreviewFragment
+      }
+    }
+  `)
+
+  const {
+    links,
+  } = data.site.siteMetadata
+  const allPosts = data.posts.edges.map(edge => edge.node.frontmatter)
+
   // extend display length when detect scroll to bottom
-  const newDisplayNum = now => Math.min(data.posts.edges.length, now + displayPerTime)
-  const [display, setDisplay] = useState(newDisplayNum(0))
+  const newDisplayNum = now => Math.min(allPosts.length, now + settings.displayPerTime)
+  const [displayNum, setDisplayNum] = useState(newDisplayNum(0))
+
   useBottomScrollListener(() => {
-    setDisplay(newDisplayNum(display))
+    setDisplayNum(newDisplayNum)
   })
 
-  const posts = data.posts.edges.slice(0, display).map(edge => {
-    const { frontmatter } = edge.node
+  const posts = allPosts.slice(0, displayNum).map(frontmatter => {
     const inverseRatio = 1 / frontmatter.featuredImage.childImageSharp.fluid.aspectRatio
 
     return {
       id: frontmatter.path,
       inverseRatio,
       viewProps: {
-        frontmatter: edge.node.frontmatter,
+        frontmatter: frontmatter,
       },
       viewType: GalleryItem,
     }
   })
 
   return (
-    <Layout location={location}>
-      <SEO title="Gallery" />
-      <div className="gallery">
-        <GridView
-          viewList={posts}
-        />
-        <div className="display-num-nav">
-          <h4>{display} / {data.posts.edges.length} Posts</h4>
-        </div>
-      </div>
-    </Layout>
+    <>
+      <Seo title="Gallery" />
+      <Nav
+        links={links}
+        bgColor={hexToRgba(colors.white, 0.7)}
+        iconColor={colors.lightBlue}
+      />
+      <Base column center>
+        <TopPad />
+        <Wrapper center column>
+          <Title color={colors.lightBlue}>
+            <TypingDisplay
+              words={['GALLERY']}
+              color={colors.lightBlue}
+              size={sizes.title}
+              typeInterval={50}
+              cursor={'_'}
+            />
+          </Title>
+          <GridView viewList={posts} />
+        </Wrapper>
+      </Base>
+    </>
   )
-}
-
-export const query = graphql`
-  query GalleryPageQuery {
-    posts: allMarkdownRemark(
-      filter: {frontmatter: {path: {regex: "/\/gallery\/.*/"}}}
-      sort: { order: DESC, fields: [frontmatter___date] }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            path
-            title
-            excerpt
-            fromNow: date(fromNow: true)
-            date: date(formatString: "YYYY-MM-DD")
-            featuredImage {
-              childImageSharp {
-                fluid {
-                  src
-                  aspectRatio
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
-
-Gallery.propTypes = {
-  displayPerTime: PropTypes.number,
-  data: PropTypes.shape({
-    posts: PropTypes.shape({
-      edges: PropTypes.arrayOf(PropTypes.shape({
-        node: PropTypes.shape({
-          frontmatter: PropTypes.shape({
-            path: PropTypes.string.isRequired,
-            title: PropTypes.string,
-            excerpt: PropTypes.string,
-            fromNow: PropTypes.string,
-            date: PropTypes.string,
-            featuredImage: PropTypes.shape({
-              childImageSharp: PropTypes.shape({
-                fluid: PropTypes.shape({
-                  src: PropTypes.string.isRequired,
-                  aspectRatio: PropTypes.number.isRequired
-                })
-              })
-            })
-          }).isRequired
-        }).isRequired
-      })).isRequired
-    }).isRequired
-  }).isRequired,
-  location: PropTypes.object.isRequired,
-}
-
-Gallery.defaultProps = {
-  displayPerTime: 10,
 }
 
 export default Gallery
