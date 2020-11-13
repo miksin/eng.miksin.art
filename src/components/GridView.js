@@ -98,7 +98,7 @@ GridView.defaultProps = {
   viewList: [],
   gridSpec: [
     { gridNum: 3 },
-    { gridNum: 2, width: 1080 },
+    { gridNum: 2, width: 768 },
     { gridNum: 1, width: 480 },
   ],
   margin: 4,
