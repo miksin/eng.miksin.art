@@ -1,4 +1,4 @@
-# miksin-personal-home-page
+# miksin.art
 
 > https://miksin.art/
 
