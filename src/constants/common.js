@@ -3,6 +3,7 @@ import {
   Twitter,
   Instagram,
   PenTool,
+  Youtube,
 } from "react-feather"
 
 export const featherIcons = {
@@ -10,6 +11,7 @@ export const featherIcons = {
   twitter: Twitter,
   instagram: Instagram,
   pixiv: PenTool,
+  youtube: Youtube,
 }
 
 export const devices = {

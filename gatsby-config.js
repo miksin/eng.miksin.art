@@ -9,7 +9,7 @@ module.exports = {
       `I'm a Software Engineer`,
       `I'm Painting`,
       `I'm Programming`,
-      `I come from TAIWAN`
+      `I come from TAIWAN`,
     ],
     description: `Software Engineer`,
     author: `Miksin`,
@@ -35,6 +35,10 @@ module.exports = {
       {
         name: `pixiv`,
         link: `https://www.pixiv.net/member.php?id=3774481`,
+      },
+      {
+        name: `youtube`,
+        link: `https://www.youtube.com/channel/UCmYleBoaTtNtPVZkaUwFxOw`,
       },
     ],
   },
