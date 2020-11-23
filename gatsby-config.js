@@ -34,7 +34,7 @@ module.exports = {
       },
       {
         name: `pixiv`,
-        link: `https://www.pixiv.net/member.php?id=3774481`,
+        link: `https://pixiv.me/miksin`,
       },
       {
         name: `youtube`,
