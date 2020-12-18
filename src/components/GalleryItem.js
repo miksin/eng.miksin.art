@@ -11,7 +11,7 @@ function GalleryItem ({
     date,
     featuredImage,
   } = frontmatter
-  const { src } = featuredImage.childImageSharp.fluid
+  const src = featuredImage ? featuredImage.childImageSharp.fluid.src : ''
 
   return (
     <Link to={path}>

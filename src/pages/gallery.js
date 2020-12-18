@@ -58,7 +58,8 @@ const Gallery = () => {
   })
 
   const posts = allPosts.slice(0, displayNum).map(frontmatter => {
-    const inverseRatio = 1 / frontmatter.featuredImage.childImageSharp.fluid.aspectRatio
+    const inverseRatio = frontmatter.featuredImage ?
+      1 / frontmatter.featuredImage.childImageSharp.fluid.aspectRatio : 1.0
 
     return {
       id: frontmatter.path,

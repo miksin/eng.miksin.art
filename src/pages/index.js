@@ -152,8 +152,8 @@ const IndexPage = () => {
         >
           <PlayListPreview articles={galleryArticles.map(frontmatter => ({
             ...frontmatter,
-            src: frontmatter.featuredImage.childImageSharp.fluid.src,
-            aspectRatio: frontmatter.featuredImage.childImageSharp.fluid.aspectRatio,
+            src: frontmatter.featuredImage ? frontmatter.featuredImage.childImageSharp.fluid.src : '',
+            aspectRatio: frontmatter.featuredImage ? frontmatter.featuredImage.childImageSharp.fluid.aspectRatio : 1.0,
           }))} color={colors.white} />
         </ResponsiveBlock>
       </FlexBox>
