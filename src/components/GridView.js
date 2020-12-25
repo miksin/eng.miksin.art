@@ -10,7 +10,7 @@ function GridView ({
 }) {
   const wrapperRef = useRef(null)
   const getSize = () => {
-    if (wrapperRef.current) 
+    if (wrapperRef.current)
       return {
         width: wrapperRef.current.clientWidth,
         height: wrapperRef.current.clientHeight

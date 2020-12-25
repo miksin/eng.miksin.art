@@ -13,6 +13,7 @@ import GalleryItem from "@components/GalleryItem"
 import TypingDisplay from "@components/common/TypingDisplay"
 import { colors, sizes, devices, settings } from "@constants/gallery"
 import { hexToRgba } from "@src/helpers"
+import ModelFrontmatter from "@models/Frontmatter"
 
 const Base = styled(FlexBox)`
 `
@@ -47,7 +48,7 @@ const Gallery = () => {
   const {
     links,
   } = data.site.siteMetadata
-  const allPosts = data.posts.edges.map(edge => edge.node.frontmatter)
+  const allPosts = data.posts.edges.map(edge => new ModelFrontmatter(edge.node.frontmatter))
 
   // extend display length when detect scroll to bottom
   const newDisplayNum = now => Math.min(allPosts.length, now + settings.displayPerTime)
@@ -58,12 +59,9 @@ const Gallery = () => {
   })
 
   const posts = allPosts.slice(0, displayNum).map(frontmatter => {
-    const inverseRatio = frontmatter.featuredImage ?
-      1 / frontmatter.featuredImage.childImageSharp.fluid.aspectRatio : 1.0
-
     return {
       id: frontmatter.path,
-      inverseRatio,
+      inverseRatio: frontmatter.featuredImage.inverseRatio,
       viewProps: {
         frontmatter: frontmatter,
       },
