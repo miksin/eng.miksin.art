@@ -1,6 +1,6 @@
 # miksin.art
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/50f308bc-70d2-4696-9aff-3047d19a2270/deploy-status)](https://app.netlify.com/sites/condescending-perlman-4f8ca0/deploys)
+![example](https://github.com/miksin/miksin.art/actions/workflows/main.yml/badge.svg)
 
 > https://miksin.art/
 
