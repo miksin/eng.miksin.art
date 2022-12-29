@@ -9,7 +9,6 @@ import ListPreview from "@components/common/ListPreview"
 import Banner from "@components/home/Banner"
 import Footer from "@components/footer"
 import IntroCard from "@components/home/IntroCard"
-import PlayListPreview from "@components/home/PlayListPreview"
 import ResponsiveBlock from "@components/home/ResponsiveBlock"
 
 import { scrollToAnchor, assignLanguages } from "@src/helpers"
@@ -36,14 +35,6 @@ const IndexPage = () => {
         limit: 3
       ) {
         ...ArticlePreviewFragment
-      }
-
-      gallery: allMarkdownRemark (
-        filter: {frontmatter: {path: {regex: "/\/gallery\/.*/"}}}
-        sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 5
-      ) {
-        ...GalleryPreviewFragment
       }
 
       nonSenseImages: allFile(filter: {extension: {regex: "/(jpg)|(png)|(jpeg)/"}, relativeDirectory: {eq: "nonsense"}}) {
@@ -86,7 +77,6 @@ const IndexPage = () => {
   } = data.site.siteMetadata
 
   const blogArticles = data.blogs.edges.map(edge => edge.node.frontmatter)
-  const galleryArticles = data.gallery.edges.map(edge => edge.node.frontmatter)
   const nonSenseImages = _.shuffle(data.nonSenseImages.edges.map(edge => edge.node.childImageSharp.fluid.src))
   const blockTitleSize = vw && vw <= devices.mobile ? sizes.scrollTitleMobile : sizes.scrollTitle
 
@@ -138,23 +128,6 @@ const IndexPage = () => {
             thumbnailSrc: nonSenseImages[index % nonSenseImages.length],
             thumbnailAlt: 'blog',
           }))} hiddenOnResponsive />
-        </ResponsiveBlock>
-        <ResponsiveBlock
-          id="scroll-block-3"
-          bgColors={colors.lightBlue}
-          title={{
-            show: true,
-            text: 'Gallery',
-            color: colors.white,
-            size: blockTitleSize,
-          }}
-          onTitle={() => navigate('/gallery')}
-        >
-          <PlayListPreview articles={galleryArticles.map(frontmatter => ({
-            ...frontmatter,
-            src: frontmatter.featuredImage ? frontmatter.featuredImage.childImageSharp.fluid.src : '',
-            aspectRatio: frontmatter.featuredImage ? frontmatter.featuredImage.childImageSharp.fluid.aspectRatio : 1.0,
-          }))} color={colors.white} />
         </ResponsiveBlock>
       </FlexBox>
       <Footer
