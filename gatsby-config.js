@@ -2,7 +2,7 @@
 module.exports = {
   pathPrefix: process.env.NODE_ENV === 'production' ? process.env.PUBLIC_PATH || '' : '',
   siteMetadata: {
-    siteUrl: `https://miksin.art`,
+    siteUrl: `https://eng.miksin.art`,
     title: `Miksin`,
     subtitles: [
       `Hello! I am Miksin`,
