@@ -194,7 +194,7 @@ const About = () => {
             </TabNav>
           </IntroCard>
         </Wrapper>
-        <Wrapper className="mg-t-16" column>
+        {false && <Wrapper className="mg-t-16" column>
           <Title color={colors.lightBlue}>
             <TypingDisplay
               words={['SKILLS']}
@@ -232,7 +232,7 @@ const About = () => {
               </Cell>)
             )}
           </TwoColumnWrapper>
-        </Wrapper>
+        </Wrapper>}
         <TopPad />
       </Base>
     </>
