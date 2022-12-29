@@ -5,7 +5,7 @@ const Footer = ({ siteAuthor, links }) => (
   <footer>
     <div className="content">
       <h4 style={{ flexGrow: 1 }}>
-        © {new Date().getFullYear()}, {siteAuthor}
+        © 2020, {siteAuthor}
       </h4>
       <div className="links">
         {
