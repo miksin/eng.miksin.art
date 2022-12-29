@@ -17,7 +17,6 @@ module.exports = {
       { path: '/', name: 'Home' },
       { path: '/about', name: 'About' },
       { path: '/blog', name: 'Blog' },
-      { path: '/gallery', name: 'Gallery' },
     ],
     socialLinks: [
       {
