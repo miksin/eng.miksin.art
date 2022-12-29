@@ -44,10 +44,7 @@ const SubTitle = styled(Underline)`
 const IdentityCard = styled(FlexBox)`
   width: 100%;
   justify-content: space-around;
-
-  @media screen and (max-width: ${sizes.description}px) {
-    flex-direction: column !important;
-  }
+  gap: 24px;
 `
 
 const IntroCard = styled(FlexBox)`
@@ -111,7 +108,7 @@ const About = () => {
         ...SiteMetaFragment
       }
 
-      avatar: file(relativePath: {eq: "miksin-avatar.jpg"}){
+      avatar: file(relativePath: {eq: "miksin-avatar.png"}){
         childImageSharp {
           fluid {
             src
@@ -165,7 +162,7 @@ const About = () => {
             />
           </Title>
           <IntroCard column center>
-            <IdentityCard className="mg-tb-8" center>
+            <IdentityCard className="mg-tb-8" column center>
               <Avatar
                 src={data.avatar.childImageSharp.fluid.src}
                 alt="avatar"
